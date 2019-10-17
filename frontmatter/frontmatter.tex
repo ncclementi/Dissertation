@@ -1,0 +1,109 @@
+% !TEX root = ../thesis-sample.tex
+
+% --------- FRONT MATTER PAGES ---------------------
+% Title of the thesis
+\title{Insert Thesis title here}
+
+% Author name
+\author{Natalia Carolina Clementi}
+
+% Previous degrees
+\bsdepartment{Department}
+\bsschool{University}
+\bsgrad{year}
+
+\msdepartment{MS department}
+\msschool{University}
+\msgrad{year}
+\showmsdegree % you can show or hide the MS degree line 
+% \hidemsdegree
+
+% PhD degree commands
+% Committee
+\showcommitteepage % hide this page if you're doing a MS thesis
+%\hidecommitteepage 
+\committee{ %
+Lorena A. Barba, Professor of Mechanical and Aerospace Engineering,\\ 
+Dissertation Director\\ % remember to add a space between committee members
+
+Full Name, Title, \\
+Dissertation Director/Dissertation Co-Director/Committee Member
+}
+
+% Chair must be entered separately for formatting reasons.
+\chair{Lorena A. Barba}
+\chairtitle{Professor of Mechanical and Aerospace Engineering}
+% Department
+\department{Mechanical and Aerospace Engineering}
+
+\phdgrad{March 1, 2020}
+\defensedate{March 1, 2020}
+% Year of completion for copyright page and perhaps other places
+\year=2020
+
+% Copyright page
+%\copyrightholder{Someone else}
+
+% Dedication
+\dedication{ %
+Include a fancy quote or dedication
+}
+
+% Acknowledgments
+\acknowledgments{
+    Here you can acknowledge all of those people who have helped you to reach this point.
+    It's rare that any work is done in a vacuum and your research is no exception.
+    Feel free to be grateful for all those who've aided you along your way.
+}
+
+% -----------------------------------------------------------------
+% Typically only one of Preface/Foreward/Prologue would be in your thesis.
+% To choose one simply delete the others and they will automatically dissappear
+
+% Preface
+\preface{
+    This is the preface. 
+    It's another front matter page that offers additional detail into your work.
+    Typically, only one (preface OR prologue OR foreword) is used. 
+    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+}
+
+\prologue{
+    This is the prologe. 
+    It's another front matter page that offers additional detail into your work.
+    Typically, only one (preface OR prologue OR foreword) is used. 
+    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+}
+
+\foreword[2]{
+    This is the forword. 
+    It's another front matter page that offers additional detail into your work.
+    Typically, only one (preface OR prologue OR foreword) is used. 
+    You can remove the other sections by deleting them inside \texttt{tex/frontmatter.tex} or using the appropriate show or hide commands.
+}
+% ----------------------------------------------------------------------
+
+% commands to show or hide front matter pages
+
+\showcopyright
+\showabstract
+\showcommitteepage
+\showdedication
+\showacknowledgments
+\hidepreface
+\hideprologue
+\hideforeword
+
+% ------------ TABLE OF CONTENTS ----------------------
+% Commands to hide or show lists of figures, tables, etc.
+\showlistoffigures
+\showlistoftables
+\hidenomenclature
+
+\makeglossaries
+
+% Some abstract text
+\abstract{
+This is the abstract. 
+It contains some random text from 
+}
