@@ -1,8 +1,7 @@
 % !TEX root = ../thesis-sample.tex
 
-\graphicspath{{figs/}}
-
 \chapter{Methods} \label{chap:methods}
+\graphicspath{{methods/figs/}}
 
 The original implementation of \pygbe used continuum electrostatic theory to compute
 the solvation energy of biomolecular systems. In that setting, biomolecules are modeled as 
@@ -12,54 +11,53 @@ This set of partial differential equations can be
 expressed with the corresponding boundary integral equation along the molecular interface.
 which \pygbe solves using a boundary element method \cite{CooperBardhanBarba2013,CooperClementiBarba2015}.
 
-% The present work extends \pygbe to the LSPR biosensing application. 
-% In the long-wavelength limit, Maxwell's equations can be approximated by a Laplace equation,
-% which permits using the methods implemented in \pygbe, with modifications
-% to allow for complex-valued permittivities, and to include the
-% effect of an external electric field.
-% This section describes the mathematical formulation for computing electromagnetic scattering 
-% in the long-wavelength setting, and develops the associated boundary integral equations 
-% and their discretized form.
+The present work extends \pygbe to the LSPR biosensing application. 
+In the long-wavelength limit, Maxwell's equations can be approximated by a Laplace equation,
+which permits using the methods implemented in \pygbe, with modifications
+to allow for complex-valued permittivities, and to include the
+effect of an external electric field.
+This section describes the mathematical formulation for computing electromagnetic scattering 
+in the long-wavelength setting, and develops the associated boundary integral equations 
+and their discretized form.
 
-% \subsection{Scattering of small particles} \label{sec:scattering_small}
+\section{Scattering of small particles} \label{sec:scattering_small}
 
-% Electromagnetic scattering is usually modeled with Maxwell's equations.
-% When the wavelength of the incoming wave is much larger than the
-% scatterer, these can be reduced to a \emph{quasi-static} 
-% first-order approximation \cite{MayergoyzZhang2007}:
-% %
-% \begin{align} \label{eq:electrostatic_scatter_E}
-% \nabla \cdot \mathbf{E}_{1s} &= 0 \qquad \nabla \times \mathbf{E}_{1s} = 0, \nonumber \\
-% \nabla \cdot \mathbf{E}_{2s} &= 0 \qquad \nabla \times \mathbf{E}_{2s} = 0, \nonumber \\
-% \text{with interface conditions, } \nonumber \\
-% (\epsilon_1\mathbf{E}_{1s} - \epsilon_2\mathbf{E}_{2s})\cdot\mathbf{n} &= (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot \mathbf{n}.
-% \end{align}
-% %
-% In Equation \eqref{eq:electrostatic_scatter_E}, $\mathbf{E}_{1s}$ and $\mathbf{E}_{2s}$ 
-% are the electric fields of the scattered wave in the nanoparticle and host regions, respectively 
-% (see Figure \ref{fig:part_wave}), 
-% $\mathbf{E}_{i}$ is the field of the incoming wave, and $\epsilon_1$ 
-% and $\epsilon_2$ are the permittivities.
-% This approximation decouples the electric and magnetic fields, neglects the magnetic field, 
-% and describes the electric field as a curl-free vector field.
-% Hence, we can reformulate Equation \eqref{eq:electrostatic_scatter_E} with a scalar potential
-% ($-\nabla \phi_{js} = \mathbf{E}_{js}$), as follows:
-% %
-% \begin{align} \label{eq:electrostatic_scatter}
-% \nabla^2 \phi_{1s} &= 0 \qquad \nabla^2 \phi_{2s} = 0 \qquad\text{on $\Omega_1$, $\Omega_2$} \nonumber \\
-% \epsilon_1\frac{\partial\phi_{1s}}{\partial \mathbf{n}} - \epsilon_2\frac{\partial\phi_{2s}}{\partial\mathbf{n}} &= (\epsilon_2-\epsilon_1)\frac{\partial\phi_i}{\partial\mathbf{n}} \quad \phi_{1s} = \phi_{2s} \quad \text{on $\Gamma$}.
-% \end{align}
-% %
-% Equation \eqref{eq:electrostatic_scatter} is an electrostatic equation 
-% with an imposed electric field $\mathbf{E}_i=-\nabla\phi_i$, where $\Gamma$ 
-% is the boundary between regions $\Omega_1$ and $\Omega_2$.
+Electromagnetic scattering is usually modeled with Maxwell's equations. When the wavelength of the incoming wave is much larger than the
+scatterer, these can be reduced to a \emph{quasi-static} 
+first-order approximation \cite{MayergoyzZhang2007}:
 
-% \begin{figure}%[h] %  figure placement: here, top, bottom, or page
-%    \centering
-%    \includegraphics[width=0.45\textwidth]{particle_wave.pdf} 
-%    \caption{Nanoparticle interacting with an electromagnetic wave.}
-%    \label{fig:part_wave}
-% \end{figure}
+\begin{align} \label{eq:electrostatic_scatter_E}
+\nabla \cdot \mathbf{E}_{1s} &= 0 \qquad \nabla \times \mathbf{E}_{1s} = 0, \nonumber \\
+\nabla \cdot \mathbf{E}_{2s} &= 0 \qquad \nabla \times \mathbf{E}_{2s} = 0, \nonumber \quad
+\text{with interface conditions, } \nonumber \\
+(\epsilon_1\mathbf{E}_{1s} &- \epsilon_2\mathbf{E}_{2s})\cdot\mathbf{n} = (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot \mathbf{n}.
+\end{align}
+
+In Equation \eqref{eq:electrostatic_scatter_E}, $\mathbf{E}_{1s}$ and $\mathbf{E}_{2s}$ 
+are the electric fields of the scattered wave in the nanoparticle and host regions, respectively 
+(see Figure \ref{fig:part_wave}), 
+$\mathbf{E}_{i}$ is the field of the incoming wave, and $\epsilon_1$ 
+and $\epsilon_2$ are the permittivities.
+This approximation decouples the electric and magnetic fields, neglects the magnetic field, 
+and describes the electric field as a curl-free vector field.
+Hence, we can reformulate Equation \eqref{eq:electrostatic_scatter_E} with a scalar potential
+($-\nabla \phi_{js} = \mathbf{E}_{js}$), as follows:
+%
+\begin{align} \label{eq:electrostatic_scatter}
+\nabla^2 \phi_{1s} &= 0 \qquad \nabla^2 \phi_{2s} = 0 \qquad\text{on $\Omega_1$, $\Omega_2$} \nonumber \\
+\epsilon_1\frac{\partial\phi_{1s}}{\partial \mathbf{n}} - \epsilon_2\frac{\partial\phi_{2s}}{\partial\mathbf{n}} &= (\epsilon_2-\epsilon_1)\frac{\partial\phi_i}{\partial\mathbf{n}} \quad \phi_{1s} = \phi_{2s} \quad \text{on $\Gamma$}.
+\end{align}
+%
+Equation \eqref{eq:electrostatic_scatter} is an electrostatic equation 
+with an imposed electric field $\mathbf{E}_i=-\nabla\phi_i$, where $\Gamma$ 
+is the boundary between regions $\Omega_1$ and $\Omega_2$.
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=0.55\textwidth]{particle_wave.pdf} 
+   \caption{Nanoparticle interacting with an electromagnetic wave.}
+   \label{fig:part_wave}
+\end{figure}
 
 % \subsection{Far-field scattering} \label{sec:ff_scattering}
 
