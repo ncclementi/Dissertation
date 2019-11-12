@@ -3,13 +3,20 @@
 \chapter{Methods} \label{chap:methods}
 \graphicspath{{methods/figs/}}
 
-The original implementation of \pygbe used continuum electrostatic theory to compute
-the solvation energy of biomolecular systems. In that setting, biomolecules are modeled as 
-dielectric cavities inside an infinite continuum solvent, 
-leading to a Poisson equation inside the molecules and Laplace or Poisson-Boltzmann in the solvent medium (with appropriate boundary conditions).
-This set of partial differential equations can be 
-expressed with the corresponding boundary integral equation along the molecular interface.
-which \pygbe solves using a boundary element method \cite{CooperBardhanBarba2013,CooperClementiBarba2015}.
+The first implementation of \pygbe relies on continuum electrostatics to compute the solvation energy
+of biomolecules. This biomolecules are modeled as dielectric cavities inside an infinite continuum 
+solvent, leading to a Poisson equation inside the molecules and Laplace or Poisson-Boltzmann
+(accountability  of salt ions) in the solvent. The partial differential equations that model this problem
+can be be expressed as boundary integral equations along the molecular interface, and solved using 
+\pygbe's boundary element method implementation \cite{CooperBardhanBarba2013,CooperClementiBarba2015}.
+
+% The original implementation of \pygbe used continuum electrostatic theory to compute
+% the solvation energy of biomolecular systems. In that setting, biomolecules are modeled as 
+% dielectric cavities inside an infinite continuum solvent, 
+% leading to a Poisson equation inside the molecules and Laplace or Poisson-Boltzmann in the solvent medium (with appropriate boundary conditions).
+% This set of partial differential equations can be 
+% expressed with the corresponding boundary integral equation along the molecular interface.
+% which \pygbe solves using a boundary element method \cite{CooperBardhanBarba2013,CooperClementiBarba2015}.
 
 The present work extends \pygbe to the LSPR biosensing application. 
 In the long-wavelength limit, Maxwell's equations can be approximated by a Laplace equation,
@@ -121,41 +128,6 @@ with Equation \eqref{eq:cext_fwa}.
 
 \subsubsection{Integral formulation}
 
-Using Green's second identity, the system of partial differential equations 
-in Equation \eqref{eq:electrostatic_scatter} can be rewritten as a system 
-of boundary integral equations \cite{BrebbiaDominguez1992}. Evaluating on the surface $\Gamma$, this
-becomes
-%
-\begin{align} \label{eq:integral_eq_lspr_nobc}
-\frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) = 0&  \nonumber \\
-\frac{\phi_{2s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{2s,\Gamma}) + V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{2s,\Gamma} \right) = 0&,
-\end{align}
-%
-where $V$ and $K$ are the single- and double-layer operators, respectively:
-%
-\begin{equation}\label{eq:single_layer}
-V^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma',
-\end{equation}
-%
-\begin{equation}\label{eq:double_layer}
-K^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) \frac{\partial}{\partial \mathbf{n}}G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma'.
-\end{equation}
-%
-Here, $G_L$ is the free-space Green's function of the Laplace equation:
-%
-\begin{equation}
-G_L(\mathbf{r},\mathbf{r}') = \frac{1}{4\pi|\mathbf{r}-\mathbf{r}'|}
-\end{equation}
-
-Applying the interface conditions of Equation \eqref{eq:electrostatic_scatter},
-leads to:
-
-\begin{align} \label{eq:integral_eq_lspr}
-\frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) &= 0  \nonumber \\
-\frac{\phi_{1s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{1s,\Gamma}) + \frac{\epsilon_1}{\epsilon_2}V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{1s,\Gamma}  \right) &=
- \frac{\epsilon_2-\epsilon_1}{\epsilon_2}V_{L}^{\Gamma}\left( \frac{\partial}{\partial \mathbf{n}} \phi_{i,\Gamma} \right)\quad \text{on $\Gamma$.}
-\end{align}
-
 The weak formulation of Laplace equation with test function $w$:
 
 \begin{equation} \label{eq:lap_weak}
@@ -194,18 +166,20 @@ where these are Cauchy principal value integrals.
 
 Using the single and double layer operators:
 
-{\color{red} Ask Chris, V is single layer operator but is it K the double layer one? 
-In your thesis you have that the double layer is W and you refers as K as
-"an operator" eq 2.108 and 2.112 in your thesis. Also shouldn't the $\text{d} \Gamma$
-be $\text{d} \Gamma'$? }
-
 \begin{equation}\label{eq:single_layer}
-V^{\mathbf{r}_\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma.
-\end{equation}
-
-\begin{equation}\label{eq:double_layer}
-K^{\mathbf{r}_\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) \frac{\partial}{\partial \mathbf{n}}G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma.
-\end{equation}
+   V^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma',
+   \end{equation}
+   %
+   \begin{equation}\label{eq:double_layer}
+   K^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) \frac{\partial}{\partial \mathbf{n}}G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma'.
+   \end{equation}
+   %
+   Here, $G_L$ is the free-space Green's function of the Laplace equation:
+   %
+   \begin{equation}
+   G_L(\mathbf{r},\mathbf{r}') = \frac{1}{4\pi|\mathbf{r}-\mathbf{r}'|}
+   \end{equation}
+   
 
 We can rewrite equation \eqref{eq:lap_bie} using the operator notation, as:
 
@@ -215,22 +189,28 @@ We can rewrite equation \eqref{eq:lap_bie} using the operator notation, as:
 
 where $\mathbb{I}$ is the identity operator.
 
-Following the same steps, we can rewrite the Laplace equations in equation
-\eqref{eq:electrostatic_scatter} as:
-
-
+Following the same steps we can write the system of partial differential equations 
+in Equation \eqref{eq:electrostatic_scatter} as a system 
+of boundary integral equations \cite{BrebbiaDominguez1992}. Evaluating on the surface $\Gamma$, this
+becomes
+%
 \begin{align} \label{eq:integral_eq_lspr_nobc}
 \frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) = 0&  \nonumber \\
-\frac{\phi_{2s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{2s,\Gamma}) + V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{2s,\Gamma} \right) = 0& \quad \text{on $\Gamma$,}
+\frac{\phi_{2s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{2s,\Gamma}) + V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{2s,\Gamma} \right) = 0&,
 \end{align}
-
+%
+where $V$ and $K$ are the single- and double-layer operators.
+%
 Applying the interface conditions of Equation \eqref{eq:electrostatic_scatter},
-we get:
+leads to:
 
 \begin{align} \label{eq:integral_eq_lspr}
-\frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) = 0&  \nonumber \\
-\frac{\phi_{1s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{1s,\Gamma}) + \frac{1}{\epsilon_2}V_{L}^{\Gamma} \left( \epsilon_1 \frac{\partial}{\partial \mathbf{n}} \phi_{1s,\Gamma} - (\epsilon_2-\epsilon_1) \frac{\partial}{\partial \mathbf{n}} \phi_{i,\Gamma} \right) = 0& \quad \text{on $\Gamma$.}
+\frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) &= 0  \nonumber \\
+\frac{\phi_{1s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{1s,\Gamma}) + \frac{\epsilon_1}{\epsilon_2}V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{1s,\Gamma}  \right) &=
+ \frac{\epsilon_2-\epsilon_1}{\epsilon_2}V_{L}^{\Gamma}\left( \frac{\partial}{\partial \mathbf{n}} \phi_{i,\Gamma} \right)\quad \text{on $\Gamma$.}
 \end{align}
+
+
 
 \subsection{Analyte-sensor electrostatic potential under an electric field}
 
