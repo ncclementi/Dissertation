@@ -435,6 +435,7 @@ moment, and in Equation \eqref{eq:scat_efield_long_range} to obtain the scattere
 electric field. We can then use Equation \eqref{eq:scat_efield_fwa} and Equation 
 \eqref{eq:cext_fwa} to get the extinction cross section.
 
+
 \subsection{Acceleration strategies} \label{sec:acc_strategies}
 
 One disadvantage of the Boundary Element Method (BEM) is that it generates dense matrices
@@ -481,6 +482,48 @@ To approximate the contribution of the sources, we use Taylor expansions
 of order $P$.
 The treecode allows us to control the accuracy of the approximation by modifying $\theta$ and $P$.
 Further details of the treecode implementation in \pygbe can be found in \cite{CooperBarba-share154331,CooperBardhanBarba2013}.
+
+\subsection{Richardson extrapolation} \label{sec:rich_extrapolation}
+
+In numerical computing, Richardson extrapolation is a technique used to get an estimation
+of the exact solution from multiple computations using consecutive resolutions from coarser
+to finer. In order to be applied, all the computations used need to converge to the exact value
+at a constant rate, in other words, they are in the asymptotic range. When these conditions are met,
+we can compute an estimate of the exact solution as:
+
+\begin{equation} \label{eq:rich_extr}
+   f_{\text{exact}} \approx f_1 + \frac{f_1 - f_2}{r^{p} - 1},
+\end{equation} 
+
+where $f_1$ and $f_2$ are the solutions at the fine and coarse grid, respectively, 
+$r$ is the mesh refinement ratio, and $p$ is the order of convergence.
+
+To use Equation \eqref{eq:rich_extr} we need to make sure that $f_1$ and $f_2$ are in the 
+asymptotic regime. We compute the \textit{observed} order of convergence $p$ from three grid resolutions
+refined at constant ratio $r$:
+
+\begin{equation} \label{eq:observed_order}
+   p = \frac{\log \left( \frac{f_3 - f_2}{f_2-f_1} \right)}{\log (r)}.
+\end{equation}
+   
+and if the result of Eq. \eqref{eq:observed_order} matches the \textit{expected} order of convergence
+of the method, this indicates that the computations for $f_1$, $f_2$ and $f_3$ are in the asymptotic range.
+Once we know that our $f_i$'s are in the asymptotic range, we can use Eq. \eqref{eq:rich_extr} and replacing
+the computed $p$ to get the estimated exact solution. We can also compute the estimated exact solution
+directly from the values of $f_1$, $f_2$ and $f_3$ by doing some algebra on \eqref{eq:rich_extr}.
+
+We know that $\log_r(x) = \log(x)/\log(r)$ and $r^{\log_r(x)} = x$. If we set $x = (f_3 - f_2)/(f_2 -f_1)$ 
+then we can write Eq. \eqref{eq:observed_order}:
+
+\begin{align} \label{eq:rich_extr2}
+   f_{\text{exact}} &\approx f_1 + \frac{(f_1 - f_2)(f_2 -f_1)}{f_3-2f_2+f_1} \\
+   f_{\text{exact}} &\approx \frac{f_1f_3 -{f_2}^2}{f_3-2f_2+f_1}
+\end{align} 
+
+Independently on how we compute the extrapolated value, we need three
+calculations in the asymptotic convergence regime that resulted from computations
+of three grid resolutions refined with constant ratio.
+
 
 \subsection{Code modifications and added features} \label{sec:code_imp}
 
