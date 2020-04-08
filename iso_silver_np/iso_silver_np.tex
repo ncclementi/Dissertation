@@ -51,7 +51,7 @@ with analytical solution given by Eq. \eqref{eq:Cext_analytical_lossy}.
     \label{fig:sph_field}
 \end{figure}
 
-\subsection{Grid convergence analysis}\label{sub_sec:grid_conv}
+\subsection{Grid convergence analysis}\label{sub_sec:grid_conv_iso}
 
 We perform a grid convergence analysis of \pygbe for a silver nanosphere 
 of radius $r=8\,nm$ immersed in water, under a z-polarized electric field
@@ -139,7 +139,7 @@ for each wavelength were obtained by interpolation of experimental data
 a Jupyter notebook and supporting code that can be find as part of the execution files
 repro-package \cite{ClementiETal2018b}.
 For this verification exercise we use a mesh of $N=32768$, and we relaxed some parameters 
-compared to the ones used in the convergence analysis from section \ref{sub_sec:grid_conv} 
+compared to the ones used in the convergence analysis from section \ref{sub_sec:grid_conv_iso} 
 that are shown in Tables \ref{table:quadparams2} and \ref{table:treeparams2}. The errors for each 
 frequency are below $1\%$, and each runtime decrease by $12\times$.
 Figure \ref{fig:verif_sph} exposes a good agreement between the analytical and simulation results, 
