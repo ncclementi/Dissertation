@@ -1,0 +1,30 @@
+% !TEX root = ../thesis-sample.tex
+
+\chapter{LSPR response to Bovine Serum Albumin} \label{chap:lspr_response_bsa}
+\graphicspath{{lspr_response_bsa/figs/}}
+
+Localized surface plasmon resonance (LSPR) biosensors detect target molecules
+by tracking frequency shifts in the plasmon resonance of metallic nanoparticles
+in the presence of analytes \cite{WilletsVandyune2007}. The chapter presents the 
+modeling of LSPR biosensors using \pygbe. We compute the extinction cross section 
+of a silver nanosphere with bovine serum albumin (BSA) proteins (PDB code: 4FS5,
+BSA dimmer) in different locations around it. 
+
+
+{\color{red}
+We might need to add something else here
+}
+
+\section{Grid convergence analysis} \label{sec:grid_conv_bsa}
+We perform a grid convergence study to ensure that the meshes are correctly
+resolving the numerical solutions. We performed the convergence analysis of
+the system sketched in in Figure \ref{fig:analyte-sensor}. Given that we 
+compute the extinction cross section by integrating over the sphere, we set 
+a fixed mesh density for the protein and refined the mesh of the nanosphere 
+(512, 2048, 8192, 32768 elements). For the protein, we found that a mesh with
+two triangles per $\text{\AA}^2$ was fine enough for the convergence 
+analysis, resulting in $N_{prot} = 98116$ elements.
+
+\section{Plasmon resonance frequency shifts} \label{sec:shift_bsa}
+
+\section{Sensitivity study} \label{sec:sensitivity}
