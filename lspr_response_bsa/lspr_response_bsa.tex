@@ -27,7 +27,7 @@ analysis, resulting in $N_{prot} = 98116$ elements.
 We use the same conditions used in the grid convergence analysis of the 
 isolated nanoparticle of section \ref{sub_sec:grid_conv_iso}, presented
 in Tables \ref{table:quadparams1} and \ref{table:treeparams1}. The protein 
-dielectric constant for a wavelngth of 380 nm is $2.7514 + 0.2860i$, this  
+dielectric constant for a wavelength of 380 nm is $2.7514 + 0.2860i$, this  
 value was computed using a functional relationship provided by Phan
  et al.~\cite{PhanETal2013}. The protein was located at a distance of 
  $d=$ 1 nm of the sphere along the z-axis, such that its dipole moment 
@@ -64,11 +64,87 @@ the extinction cross section $C_{ext}= 1778.73$ nm$^2$.
 \end{table}
 
 The observed order of convergence is 0.99, and we can see in Figure
- \ref{fig:err_sph-bsa} that the error decays with the number of boundary elements
- at a rate of $1/N$, which is consistent with the verifications results showed
- in Section \ref{sec:verification}. This shows that the numerical solutions computed
- with \pygbe are correctly resolved by the meshes.
+\ref{fig:err_sph-bsa} that the error decays with the number of boundary elements
+at a rate of $1/N$, which is consistent with the verifications results showed
+in Section \ref{sec:verification}. This shows that the numerical solutions computed
+with \pygbe are correctly resolved by the meshes.
 
 \section{Plasmon resonance frequency shifts} \label{sec:shift_bsa}
+
+When a target molecule approaches the metallic nanoparticle, the resonance frequency
+of this nanoparticle shifts. In this section, we computed the LSPR response as a
+function of the wavelength in the presence of BSA protein. We optimized run times 
+without compromising accuracy by using a relaxed set of parameters. For the protein
+mesh density we used one element per $\text{\AA}^2$ ($N_{prot} = 45140$) and for the
+sphere mesh we used $N_{sensor} = 32768$ elements. These calculations used the same
+parameters from Tables \ref{table:quadparams2} and \ref{table:treeparams2}, which 
+resulted in a percentage error below $1\%$, with respect to the Richardson-extrapolated
+value. The run time for one frequency when two proteins are present, is approximately 
+$15$ min using a NVIDIA Tesla K40c GPU.
+
+
+
+\begin{center}
+    \begin{figure} %  figure placement: here, top, bottom, or page
+       \centering
+       \includegraphics[width=0.65\textwidth]{2prot_1nm_z_R8nm.pdf} 
+       \caption{Sensor protein display: BSA located at $\pm 1$ nm of the 
+                nanoparticle in the $z$-direction. Figure, plotting script and auxiliary 
+                files available under \textsc{cc-by} \cite{ClementiETal2018e}.}
+       \label{fig:display_z}
+    \end{figure}
+    \end{center}
+
+Figure \ref{fig:display_z} shows a visualization of the meshes setup for these 
+calculations, with two BSA proteins located at $d=1$ nm away from the spherical 
+silver nanoparticle, along the $z$ axis. The position of the BSA molecule at $+z$ 
+axis was the same used for the convergence analysis in section \ref{sec:grid_conv_bsa},
+while the protein located in the $-z$ position is a 180$^\circ$ solid rotation 
+about the $y$ axis, of the BSA in $+z$.  Figure \ref{fig:2pz_response} shows the results
+of the calculations between 382 and 387 nm every $0.25$ nm, near the peak seen in Figure
+\ref{fig:verif_sph}. In Figure \ref{fig:2pz_response} we have the variation of the 
+extinction cross section with respect to wavelength for the isolated nanoparticle 
+($d=\infty$) and with BSA proteins located at $d=1$ nm apart from the nanosphere. The
+result shows a redshift ($0.5$ nm) in the resonance frequency due to the presence of 
+the BSA analytes.
+
+\begin{figure} %[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.65\textwidth]{2pz_R8nm.pdf} 
+    \caption{Extinction cross-section as a function of wavelength for an $8$ nm
+             silver sphere immersed in water with two BSA proteins placed 
+             $\pm 1$ nm away from the surface in the $z$-direction, and at
+             infinity (no protein).}
+    \label{fig:2pz_response}
+ \end{figure}
+
+ We also study the effect of the location of the proteins, we performed the same 
+ calculations but now placing the BSA analytes along the $x$ and $y$ axis at $\pm 1$ nm,
+ as shown in Figure \ref{fig:display_xy}. We obtain these configurations by performing
+ a 90$^\circ$ solid rotation of the $z$-configuration (Figure \ref{fig:display_z})
+ along the $x$- and $y$-axis, respectively. Figure \ref{fig:2pxy_response} shows the results for each 
+ configuration.
+
+
+ \begin{figure}
+    \centering
+    \subfloat{\includegraphics[width=0.65\textwidth]{2prot_1nm_x_R8nm.pdf}} \\
+    \subfloat{\includegraphics[width=0.65\textwidth]{2prot_1nm_y_R8nm.pdf}} 
+     \caption{Sensor protein display: BSA located at $\pm 1$ nm of the nanoparticle in the
+            $x$-direction (top) and $y$-direction (bottom). Figure, plotting script and auxiliary files available under \textsc{cc-by} \cite{ClementiETal2018e}.}
+     \label{fig:display_xy}
+ \end{figure}
+
+ \begin{figure}%[t] %  figure placement: here, top, bottom, or page
+    \centering
+    \subfloat{\includegraphics[width=0.65\textwidth]{{2px_R8nm}.pdf}}\\
+    \subfloat{\includegraphics[width=0.65\textwidth]{{2py_R8nm}.pdf}} 
+    \caption{Extinction cross-section as a function of wavelength for an $8$-nm
+             silver sphere immersed in water with two BSA proteins placed at
+             $\pm 1 $ nm away from the surface in the $x$-direction (top) and
+              $y$-direction (bottom), and at infinity (no protein).}
+    \label{fig:2pxy_response}
+ \end{figure}
+
 
 \section{Sensitivity study} \label{sec:sensitivity}
