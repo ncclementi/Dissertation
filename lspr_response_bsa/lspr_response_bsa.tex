@@ -118,13 +118,25 @@ the BSA analytes.
     \label{fig:2pz_response}
  \end{figure}
 
- We also study the effect of the location of the proteins, we performed the same 
- calculations but now placing the BSA analytes along the $x$ and $y$ axis at $\pm 1$ nm,
- as shown in Figure \ref{fig:display_xy}. We obtain these configurations by performing
- a 90$^\circ$ solid rotation of the $z$-configuration (Figure \ref{fig:display_z})
- along the $x$- and $y$-axis, respectively. Figure \ref{fig:2pxy_response} shows the results for each 
- configuration.
+Figure \ref{fig:2pz_response} shows a redshift of the plasmon resonance frequency 
+peak in the presence of two BSA proteins located at 1 nm along the $z$ axis. Experimental 
+observations in the work of Tang, et al.~\cite{TangETal2010} revealed a redshift when 
+BSA proteins in a solution are added to silver nanoparticles of approximately $17$ nm 
+in diameter. They also observed a decrement of the peak amplitude, similarly to the 
+effects we see with our model. Moreover, recent experiments \cite{PuETal2018} report 
+resonance frequency between $380$ and $400$ nm for a silver nanosphere in the presence
+of BSA proteins (check reference and its supplementary material), which is consistent with 
+our results. Other experiments \cite{RaphaelETal2013} also report redshifts in the presence
+of different proteins. The boundary element method approach that we implemented using 
+electrostatic approximation is thus able to capture the characteristics of LSPR biosensors
+based on resonance-frequency shift. 
 
+We also study the effect of the location of the proteins, we performed the same 
+calculations but now placing the BSA analytes along the $x$ and $y$ axis at $\pm 1$ nm,
+as shown in Figure \ref{fig:display_xy}. We obtain these configurations by performing
+a 90$^\circ$ solid rotation of the $z$-configuration (Figure \ref{fig:display_z})
+along the $x$- and $y$-axis, respectively. Figure \ref{fig:2pxy_response} shows the 
+results for each configuration.
 
  \begin{figure}
     \centering
@@ -147,11 +159,16 @@ the BSA analytes.
     \label{fig:2pxy_response}
  \end{figure}
 
-Figure \ref{fig:2pz_response} shows a redshift of the plasmon resonance frequency 
-peak in the presence of two BSA proteins located at 1 nm along the $z$ axis. Experimental 
-observations in the work of Tang, et al.~\cite{TangETal2010} revealed a redshift when 
-BSA proteins in a solution are added to silver nanoparticles of approximately $17$ nm 
-in diameter. They also observed a decrement of the peak amplitude, similarly to the 
-effects we see with our model.
+Figure \ref{fig:display_xy} shows the configuration where the proteins are placed at a 
+distance in the $x$ (top) or $y$ (bottom) direction. For these configurations and with 
+the electric field aligned with the $z$ axis, the LSPR response is negligible. The 
+frequency shifts in Figure \ref{fig:2pxy_response} are smaller than the wavelength 
+resolution ($<0.25$ nm). This finding is consistent with the free electrons oscillating
+along the $z$ axis under a $z$-polarized electric field, and not in the $x$ and $y$ 
+directions {\color{red} ADD REFERENCE TO FIG OF OSCILLATING ELECTRONS - LSPR}. The 
+proteins have a marked effect when placed in the $z$ direction, where they can interfere 
+with the oscillation of the free electrons. 
+
+
 
  \section{Sensitivity study} \label{sec:sensitivity}
