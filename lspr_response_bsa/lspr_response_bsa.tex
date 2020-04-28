@@ -203,3 +203,27 @@ worth noting that quantum effects (e.g., tunneling) at $d=0.5$ nm are ignored wi
 our classical approach. Even if this distance could be close to the quantum regime, 
 there is evidence that classical theory is valid at this distance in similar systems
 \cite{SavageETal2012, EstebanETal2012}
+
+Even though there is evidence that techniques such as plasmon-enhanced Raman 
+scattering are capable of detecting to the single-molecule limit 
+\cite{ZhangZhangETal2013}, as far as we know there is no evidence of a purely
+LSPR approach that can sense such low concentrations of proteins. Our 
+computational results can unveil potential improvements that would enhance 
+the sensitivity of LSPR biosensors, for example by using smaller ligands. 
+
+There are not other LSPR simulations where the molecular details of the analyte 
+are considered, that we are aware of. However, similar calculations can be 
+performed with other open source softwares like BEM++ \cite{SmigajETal2015} and 
+MATLAB toolbox MNPBEM \cite{HohenesterTrugler2012}. BEM++ also models the system
+as a set of boundary integral equations, discretized in flat triangular panels, 
+and it uses a Galerkin approach and algorithmic acceleration via hierarchical 
+matrices. MNPBEM is another alternative software designed to simulate scattering
+of metallic nanoparticles, which its BEM implementation is similar to \pygbe 
+(centroid collocation with flat triangles) but with different acceleration scheme.
+This MATLAB toolbox, similarly to BEM++, also relies on hierarchical matrices 
+rather than a treecode, resulting in higher memory usage compared to our code, 
+making it harder to simulate large analytes in detail. 
+Commercial finite-element or finite-difference solvers can also be used for this
+type of application, for example COMSOL. However, these volumetric approaches 
+struggle to correctly impose the zero boundary condition at infinity, which is
+exactly met for BEM.  
