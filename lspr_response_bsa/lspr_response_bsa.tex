@@ -155,7 +155,7 @@ results for each configuration.
     \caption{Extinction cross-section as a function of wavelength for an $8$-nm
              silver sphere immersed in water with two BSA proteins placed at
              $\pm 1 $ nm away from the surface in the $x$-direction (top) and
-              $y$-direction (bottom), and at infinity (no protein).}
+             $y$-direction (bottom), and at infinity (no protein).}
     \label{fig:2pxy_response}
  \end{figure}
 
@@ -169,6 +169,37 @@ directions {\color{red} ADD REFERENCE TO FIG OF OSCILLATING ELECTRONS - LSPR}. T
 proteins have a marked effect when placed in the $z$ direction, where they can interfere 
 with the oscillation of the free electrons. 
 
+\section{Sensitivity study} \label{sec:sensitivity}
 
+On LSPR biosensors we refer to sensitivity to the relationship between the size of the 
+resonance frequency shift and the number of analytes bound to the sensor (through the 
+ligand). Experiments show that the distance between the protein and the nanoparticle 
+affects the sensitivity of the sensor, to the point that targets placed 15 nm away 
+from the surface are hardly detectable \cite{HaesETal2004}. This is a critical issue
+considering that most common ligands, like antibodies, can be larger than 15 nm. In 
+Figure \ref{fig:dist_response} we can see how the resonance peak varies with the distance 
+at which the  analytes are located ($+z$ and $-z$). When $d=2$ nm we have a shift of 
+$0.25$ nm while when the analytes are at $d=0.5$ nm the shift is $0.75$ nm. The parameters
+used in these simulations remain the same as the ones used for the cases in Figures 
+\ref{fig:2pz_response} and \ref{fig:2pxy_response}.
 
- \section{Sensitivity study} \label{sec:sensitivity}
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=0.65\textwidth]{2pz_lspr_response.pdf} 
+   \caption{Extinction cross-section as a function of wavelength for an $8$-nm
+            silver sphere immersed in water with two BSA proteins placed at
+            $2$, $1$, and $0.5$ nm away from the surface in the 
+            $z$-direction, and at infinity (no protein). The test case with
+            $d=0.5$nm is close to the limit where quantum tunneling might happen. 
+            Such effects are not captured by our classical model.}
+   \label{fig:dist_response}
+\end{figure}
+
+As expected, Figure \ref{fig:dist_response} shows how the shift decreases as the BSA 
+proteins move away from the nanoparticle, to the point that we only see a shift of 
+$0.25$ nm when the analyte is $2$ nm away. This results shows the potential of \pygbe 
+and the electrostatic approach to study biosensors sensitivity with distance. It's 
+worth noting that quantum effects (e.g., tunneling) at $d=0.5$ nm are ignored with 
+our classical approach. Even if this distance could be close to the quantum regime, 
+there is evidence that classical theory is valid at this distance in similar systems
+\cite{SavageETal2012, EstebanETal2012}
