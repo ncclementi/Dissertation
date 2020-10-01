@@ -1,0 +1,46 @@
+% !TEX root = ../thesis_main.tex
+
+\chapter{Replicating Rockstuhl et al 2005} \label{chap:rep_rockstuhl}
+\graphicspath{{replication_validation/figs/}}
+
+When looking for results to attempt the validation of \pygbe we found the study of Rockstuhl et al. 2005 \cite{rockstuhl2005}. 
+Even though their work consist on simulations and therefore does not qualify for a validation study, we decided to 
+attempt the replication of one of their results. 
+
+Rockstuhl and coworkers, in their paper "Analysis of the phonon-polariton response of silicon carbide microparticles 
+and nanoparticles by use of the boundary element method", study the phonon-polariton response of silicon carbide (SiC)
+nanoparticles using boundary element method. They use a two dimensional model developed previously on their group \cite{rockstuhl2003}
+to analyze 6H-SiC multiple "cylindrical particles" (third dimension tends to infinity). The results presented on Figure 14 of their paper  
+present the scattering cross-section of a SiC rectangular cylinder for different aspect ratios, and the case with $a = 672$ nm and $b = 328$ nm
+was a perfect candidate given that these dimensions comply with our quasistatic approach.
+
+In the work of Rockstuhl et al, they compute scattering cross section while with \pygbe we compute the extinction cross-section 
+(absorption plus scattering). In the quasistatic regime absorption dominates over scattering, therefore these results are not directly
+comparable. However, when having materials which show narrow and sharp peaks on their spectra, the wavelength at which the peaks occur 
+in the scattering and extinction spectra, are nearly the same. For example, we can see ion the work of Wiley et al. \cite{wiley-etal-2006}
+that for a silver nanocube the main peaks for extinction and scattering are aligned. In the case of Silicon carbide we are talking about a 
+material which figure of merit (this correlate to narrow peak and sharp ones) is even better than for silver, so in our case we are confident that
+the peaks on scattering and extinction are aligned, therefore we can compare with Rockstuhl results.
+
+Differences between simulations
+
+Method and model
+\begin{itemize}
+
+\item {The main difference between the simulations in Rockstuhl and the ones performed with \pygbe is that the original results where obtained 
+using a 2D boundary element method that solves full Maxwell equations, while we solve a 3D problem with the quasistatic limit approximation.}
+
+
+\item{ Rockstuhl et al. work did not have a section with details on their simulations such as discretization of the geometries or parameters 
+involved in their simulations. We chose parameters for our solver based on our previous experiences, and for the discretization of our 
+geometries we performed a grid-independence study to ensure that we are minimizing discretization errors. It is worth noting that Rockstuhl
+et al. geometries consist in two dimensions (infinite third dimension), while we perform the computations using a full 3D representation of the geometry.} 
+
+\item {Regarding the complex dielectric constant, the study we aim to replicate uses 6h-SiC and their data comes from a source that we were not able
+to replicate. As a replacement, we are using experimental data of 4H-SiC provided to us by the authors of Ellis et al. \cite{ellis2016} via 
+private communications.}
+
+\item {We compute extinction cross-section while they compute scattering cross-section, but since the quantity of interest is the wavelength
+at which the resonance peaks occur we can compare despite this difference.}
+
+\end{itemize}
