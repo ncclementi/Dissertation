@@ -97,7 +97,41 @@ the y-component. We have not explored larger values of $y$ because are limited b
     \label{fig:ext_y_14}   
  \end{figure}
 
- For the simulations of Figure \ref{fig:ext_y_14} we generated the meshes using an open source software Trimesh (\url{https://github.com/mikedh/trimesh}), 
- but we realized that the mesher does not produce a uniform mesh and that we were not able to obtained one with the functions available. To solve this problem 
- and obtained the uniform meshes by creating our own Python script.
+For the simulations of Figure \ref{fig:ext_y_14} we generated the meshes using an open source software Trimesh (\url{https://github.com/mikedh/trimesh}), 
+but we realized that the mesher did not produce a uniform mesh and that it was not possible to obtained one with the functions available. To solve this problem 
+we created a uniform mesh with our own Python script. We wanted to study the effect of using a uniform mesh and the roundness of the edges, the latter being mentioned by 
+Rockstuhl et al. as a cause of the appearance of extra peaks. To generate the roundness of the geometries we relied on Trimesh (we give as input the uniform mesh generated 
+with our Python script), however, we did not have control of the roundness as a function of the geometry dimensions or arc of curvature, so we used the default settings of
+the software. Figure \ref{fig:tri_reg_round_14} shows the results of the effect of mesh uniformity and roundness of the edges of the geometry. We can see that in the for 
+both orientation of the geometry ($E\parallel b$ and $E\parallel a$) the second peak located at $\approx$ 10.6 $\mu$m is much diminished in the green curve. These effects 
+can be attributed to the roundness of the edges, what is consistent with the results of Rockstuhl et al. Once we have found the "best" meshed geometry (uniform mesh plus 
+round edges) that we can construct, we can compare our results (green curve \ref{fig:tri_reg_round_14}) with the ones in Rockstuhl et al. Figure 14. We present the replication 
+results in Figure \ref{fig:rep_14}, and we can see that the main resonance peaks in Figure 14 of Rockstuhl et al. are closely matched. We still have a third peak in our 
+results, but we attribute this to the effects introduced by using a 3D geometry. We obtained the data from Rockstuhl's curves by using the WebPlotDigitizer
+(\url{https://apps.automeris.io/wpd/}).
+ 
 
+ \begin{figure}
+    \centering
+    \subfloat{\includegraphics[width=0.48\textwidth]{tri_reg_round_14a.pdf}}
+    \subfloat{\includegraphics[width=0.48\textwidth]{tri_reg_round_14b.pdf}}
+    \caption{Effect of uniformity of the mesh and roundness of the edges on the 
+    extinction cross-section of a rectangular prism of SiC of dimensions $a=672$ nm, 
+    $b=328$ nm and $y=2688$ nm, submerged in air and under a constant electric field 
+    parallel to the $z$-axis. The labels are: \textbf{Trimesh}, for a non-uniform mesh generated using Trimesh; 
+    \textbf{Uniform}, for a uniform mesh generated using Python scripts; and 
+    \textbf{Uni + round}, for a uniform mesh generated using Python scripts with round 
+    edges obtained using Trimesh.}
+    \label{fig:tri_reg_round_14}
+ \end{figure}
+
+ \begin{figure}
+    \centering
+    \subfloat{\includegraphics[width=0.48\textwidth]{replication_14a.pdf}}
+    \subfloat{\includegraphics[width=0.48\textwidth]{replication_14b.pdf}} 
+    \caption{Replication of the results in Figure 14 of Rockstuhl et al., 2005. Extinction cross-section of a
+    rectangular prism of SiC of dimensions $a=672$ nm, $b=328$ nm and $y=2688$ nm, submerged
+    in air and under a constant electric field parallel to the $z$-axis (green line). 
+    The digitized curve from Rockstuhl et al.\ corresponds to scattering (orange line).}
+    \label{fig:rep_14}
+ \end{figure}
