@@ -1,0 +1,39 @@
+% !TEX root = ../thesis_main.tex
+
+\section{Validation of \pygbe and Replication of Ellis et al. 2016  et al 2005} \label{chap:rep_val_ellis}
+\graphicspath{{replication_validation/figs/}}
+
+The work of Ellis et al. "Aspect-ratio driven evolution of high-order resonant modes and near-field distributions in
+localized surface phonon polariton nanostructures." \cite{ellis2016} has both computational and experimental results, what makes 
+it a perfect candidate to perform a validation as well as a replication study. Ellis and coworkers study the excitation of 
+multipolar localized surface polaritons (SPhP), by computing and measuring the polarized reflectance on 4H-SiC pillars of
+fixed width ($W = 400$ nm), fixed hight ($H=950$ nm) and varied length ($L=400-4800$ nm). To reduce coupling these pillars are 
+pattern on a square grid with $P = L + 500$ nm. In their experiments (simulations), they measure (compute) the polarized reflectance
+where the incident polarization is oriented parallel or perpendicular to the length ($L$) of the pillars.
+
+We started by replicating a computational result shown in Figure S4 of their supplementary material. Figure S4 of the 
+supplementary material shows simulation results for the resonance spectral position of the lower frequency mode when the angle of 
+incidence is 22 degrees and the polarization is parallel to the length of the pillars. They present results for separations of $500$ nm 
+(red curve) and $5000$ (black curve), being the latter a good candidate for replication with \pygbe since a larger gap diminishes 
+the coupling (not included in our model). The setup in our computations consists of a single pillar with no substrate.
+Secondly, we aimed to replicate the results of Figure 2a of the main paper, 
+corresponding to reflectance measurements across the wave number for pillars of aspect ratio $AR=4$, angle of incidence 22 degrees, 
+and incoming parallel polarization. Since for this the authors also reported experimental results we decided to us them for the 
+validation of our solver.
+
+\textbf{Differences in method and input data}
+
+\begin{itemize}
+
+\item {The simulations of Ellis et al. compute the solution of the Maxwell's equations using the RF package
+of the finite element solver in the commercial software COMSOL. Their setup consists of one pillar over a 
+substrate, with periodic boundary conditions to emulate the array of pillar used in their experiments. In our 
+solver we use a boundary element method in the quasistatic approximation, which is suitable since the wavelengths
+involved are in the range $10000-12500$ nm, and are considerably larger than the pillar's dimensions. We compute 
+the extinction cross section, where the resonance express as peaks instead of dips as in the reflection plots of 
+Ellis et al. The intensity of the peaks is not comparable, however, we are looking to match the wave number at which
+they happen}
+
+
+
+\end{itemize}
