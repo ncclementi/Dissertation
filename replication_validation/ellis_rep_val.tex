@@ -141,4 +141,52 @@ percentage error and we can see that is below 2$\%$ for all the cases.
     \end{tabular}
 \end{table}
 
+\subsection{Validation of \pygbe against experimental results in Fig. 2a of Ellis et al., and replications
+of the corresponding computations}
+
+The geometry used in the results of Figure 2a of Ellis et al. correspond to the case of aspect ratio $AR=4$. For this case,
+we have the mesh provided by the authors. Since our computation for the mode $E^{\parallel}_{100}$ compares well with 
+their results (percentage error of $0.16\%$), we chose this particular result from Ellis et al. to validate our simulations 
+with their experimental results (red curve on their paper), as well as to replicate its corresponding computations (green 
+curve on their paper). Figure 2a of Ellis et al. shows experimental and computational results of the reflectance of SiC pillar 
+arrays with a gap of 500 nm, where the angle of incidence was 22$^\circ$ off-normal and the incoming polarization was parallel 
+to the length of the pillar.
+Using \pygbe, we computed the extinction cross section of an isolated SiC pillar of aspect ratio $AR=4$ with no substrate, submerged 
+in air and under a constant electric field in the $z$-direction. The geometry was rotated to match the angle of incidence of 22$^\circ$ 
+used by Ellis et al. (see Figure \ref{fig:ellis_ang_inc}). Figure \ref{fig:pygbe_vs_exp_2a} shows the comparison of our simulations and the 
+experimental results of Ellis et al. We can observe a noticeable difference in between the wave numbers at which the peaks occur. This 
+difference may be attributed to the fact that in their experimental setup the separation between the pillars is 500 nm, which implies there 
+are coupling effects that are not considered in our simulations.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{pygbe_vs_exp_fig2a_Ellis.pdf} 
+    \caption{\pygbe vs.\ the experiments presented in Figure 2a of Ellis et al., 2016 (we obtained the data 
+    digitizing by hand from their figure using WebPlotDigitizer).}
+    \label{fig:pygbe_vs_exp_2a}
+ \end{figure}
+
+\paragraph{First-order correction.} Since our simulations are performed on an isolated prism and do not take into account the coupling effects 
+in an array of prism, we cannot strictly match the conditions to validate our solver. However, from Figure S4 in the supplementary material of 
+Ellis et al., we know that this coupling effects affect the $E^{\parallel}_{100}$ mode by a shift of 12.17 cm$^{-1}$. Then, as a 
+\textbf{first-order correction} we can subtract this amount from our computations to account for the coupling effects. Figure \ref{fig:val_2a}, 
+shows the results after applying the correction. It is worth mentioning that the peaks at 837 cm$^{-1}$) and (964 cm$^{-1}$) on the results of Ellis et al., 
+are associated with the zone-folded LO (longitudinal) phonons of 4H-SiC, an effect they say to be beyond the scope of their analysis \cite{ellis2016}. Their 
+analysis concentrates on the peaks that occur between 864 cm$^{-1}$ and 961 cm$^{-1}$. 
+Figure \ref{fig:rep_2a} shows the comparison between Ellis et al. simulation's results on Figure 2a of their paper (green curve), and our computations
+after applying the first-order correction.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{validation_FOA_fig2a_Ellis.pdf} 
+    \caption{Validation against experiments in Figure 2a of Ellis, et al., 2016, using the first-order correction, as explained in the text.}
+    \label{fig:val_2a}
+ \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{replication_FOA_fig2a_Ellis.pdf} 
+    \caption{Replication of the simulations in Figure 2a of Ellis et al., 2016, using the first-order correction, as explained in the text.}
+    \label{fig:rep_2a}
+ \end{figure}
 
