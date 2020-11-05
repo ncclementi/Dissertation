@@ -135,3 +135,16 @@ results, but we attribute this to the effects introduced by using a 3D geometry.
     The digitized curve from Rockstuhl et al.\ corresponds to scattering (orange line).}
     \label{fig:rep_14}
  \end{figure}
+
+In this section we aim to replicate a result from Rockstuhl et al., 2005 \cite{rockstuhl2005} presented in Figure 14 of their paper. 
+They computed the scattering cross-section as a function of wavelength for a silicon carbide rectangular cylinder, and reported the
+numeric value of the resonance wavelengths in the text. They computed their results using a two-dimensional boundary element solver, 
+but the data behind the plots was not available, so we manually digitize the values from the figure. In Figure \ref{fig:rep_14} we 
+showed the comparison between our results and the digitized version of theirs. We succeed at replicating the peaks reported by 
+Rockstuhl et al.\ at wavelengths 10.42 $\mu$m and 10.7 $\mu$m,  when the electric field $E$ is parallel to the short side of 
+the rectangle, and 10.42 $\mu$m and 10.82 $\mu$m when $E$ is parallel to the long side. However, our results contain extra smaller peaks 
+that are not present in Rockstuhl et al. The first one located between the main two peaks, which we attribute to the effect of sharp edges, 
+since when we introduce roundness, it diminishes (see Figure \ref{fig:tri_reg_round_14}). The second extra peak, on the far right of the spectra, 
+we attribute it to the 3D nature of the geometry, since the intensity of the peak decreases as the third dimension of the prism lengthens
+(see Figure \ref{fig:ext_y_14}). As we mentioned before the quantity of interest in these findings is the wavelength at which the resonance peaks
+occur, we can state that our results match and replicate the findings of Figure 14 of Rockstuhl et al. where $a = 672$ nm and $b = 328$ nm.
