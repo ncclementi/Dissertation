@@ -1,0 +1,31 @@
+% !TEX root = ../thesis_main.tex
+
+\chapter{Reduced order model for protein representation}
+
+In the literature there are several reports that use Bovine Serum Albumin as an analyte
+to simulate the behavior of a bioconjugate sensor. However, they use a simplified model
+of the protein. For example, a layer of protein-water solution \cite{PhanETal2013}, 
+or just a protein dielectric layer \cite{NghiemETal2012}, others model the
+protein as a triangular prism \cite{DanHu2014}, or even a small sphere with a 
+constant dielectric \cite{SantiagoCordobaETal2011, UngerETal2009}. Phan and 
+coworkers \cite{PhanETal2013} present a Lorentz-Drude model for the complex 
+dielectric of the BSA which we use in our work, while most of the literature 
+use a constant dielectric with no losses to represent the BSA 
+(refractive index of $n= 1.9$ \cite{NghiemETal2012}, $n= 1.45$ \cite{SantiagoCordobaETal2011}) or
+other proteins used as analytes ($n=1.58$ polystrene \cite{UngerETal2009}, $n=1.57$ 
+streptavidin \cite{ShenETal2013}). 
+
+Research shows that the shape of both monomer and dimmer of 
+BSA are prolate ellipsoids \cite{MoserETal1966, SquireETal1968, WrightETal1975}. However,
+this is information, to the best of our knwoledge, hasn't been used to model the 
+protein in computational approaches. Our BSA model, based on its crystal 
+structure, can be consider as a good reference of the actual shape of the protein. We 
+explore the effects of using reduced-order models, like ellipsoids, by comparing 
+the results with the full model, and study the consequences of these 
+simplifications. We study the effect of the shape and volume of the protein
+(see section CITE SECT) as well as the presence of charges in it. 
+
+To the best of our knowledge, there is no model in the literature that counts 
+for the charges inside the protein. We study the effect on the LSPR response 
+in the presence and omission of charges and how this varies depending on the 
+intensity of the incoming electric field (see section CITE SECT).\\  
