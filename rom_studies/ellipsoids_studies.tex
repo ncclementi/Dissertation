@@ -1,0 +1,82 @@
+% !TEX root = ../thesis_main.tex
+
+\section{BSA as a prolate ellipsoid}
+\graphicspath{{rom_studies/figs/}}
+
+The crystal structure of the BSA (pdb 4f5s) used in our simulations corresponds
+to a dimer. Knowing that this structure can be modeled as an ellipsoid \cite{SquireETal1968},
+we look for different alternatives to decide the dimensions of the ellipsoid. We took two
+different approaches, a surface model and a volume model. The first attempt is 
+the surface model which consists on finding the dimensions
+of an ellipsoid that encapsules all the charges within the protein. We determined the principal axes of this
+ellipsoid using Principal Component Analysis. Principal component analysis is a technique that
+uses orthogonal transformations and brings out patterns in a set of data. When 
+we use a PCA in three dimensions, these transformations ensure that the first 
+component is the one with most variation, the second one is the second-most, and
+third one the least. This technique provided us the three eigenvectors that best 
+describe the cloud of mesh-vertices. The values of the principal axis are $a=98.9\, \text{\AA}$, $b=54.2\, \text{\AA}$, and $c=41.8\, \text{\AA}$. 
+Using these vectors when creating the mesh of the ellipsoid ensures that all the charges are contained.
+The second approach to model the BSA is to create an ellipsoid that matches the volume of the BSA. To find the dimensions 
+of the volume-equivalent equivalent we made some approximations. We obtained the volume of the BSA protein original mesh
+using Trimesh (\url{https://github.com/mikedh/trimesh})), and looking at the PCA principal axis we notice that $b$ and $c$ are close 
+compared to $a$, then $b=c=x$ and $a$ is double the size $a=2x$. Using these approximations we can write the volume of the ellipsoid:
+
+\begin{equation}
+    V_e = \frac{4\pi}{3}a\,b\,c 
+\end{equation}
+
+as 
+
+\begin{equation}
+    V_e = \frac{4\pi}{3}2\,x^3
+\end{equation}
+
+Knowing that the volume of the volume of the BSA protein is $V_e = 166642 \, \text{\AA}^3$ we get that $x=27.09496 \, \text{\AA}$ 
+and therefore $a=54.18993 \, \text{\AA}$ and $b=c=27.09496 \, \text{\AA}$. These dimensions give us an ellipsoid that hast the same volume 
+as the original BSA mesh, however, we can not encapsule all the charges inside of it. To be able to use this model we needed to study first the 
+effects of replacing the distribution of charges by a monopole, as well as the possibility of not include them in the model. 
+
+\subsection{Effect of presence of charges}
+
+Since the PCA model can encapsuled all the charges we intended to use this model to study the effect of using the charges distribution, versus
+a monopole representation of the charges ("center of mass"), and also no charges present. To ensure that we are solving the equations properly, 
+we perform a convergence analysis.
+
+\subsubsection{PCA ellispoid convergence analysis}
+
+We performed a grid convergence analysis on the PCA (Principal component analysis) ellipsoid - sensor system containing a full pqr. 
+Since we compute the extinction cross section of the sensor (8 nm radius silver sphere), we set a fixed mesh density for the ellipsoid and refine 
+the mesh of the sphere ($N=512, 2048, 8192, 32768$). We found that a mesh with $N=5120$ elements for the ellipsoid was fine enough for the convergence analysis.
+We used the same physical conditions and parameters that were used for the BSA-nanoparticle convergence analysis presented in
+\ref{sec:grid_conv_bsa}. Similarly to the BSA-sensor system, the distance between the sensor and the PCA-ellipsoid 
+was $d=1$ nm, and the ellipsoid was oriented such that the dipole moment of the charges was aligned with the $y$-axis. To obtain the error 
+estimate we used Richardson extrapolated value of the extinction cross section as a reference, $C_{ext} = 1432.6560$ nm$^2$.
+The observed order of convergence is $0.99$, and Figure \ref{fig:err_sph-pca} shows that the error decays with the number of boundary elements ($1/N$). This provides
+evidence that the numerical solutions computed with \pygbe are correctly resolved by the meshes.  Table \ref{table:err_sph-pca} shows the percentages error for the different 
+meshes used in this study.
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{convergence_sensor_pca_w380.pdf} 
+    \caption{Grid-convergence study of extinction cross-section of a spherical silver
+             nanoparticle with a PCA ellipsoid at $d=1$ nm which contains 
+             the charges distribution within it.}
+    \label{fig:err_sph-pca}
+ \end{figure}
+
+ \begin{table}%[h]
+    \centering
+    \caption{\label{table:err_sph-pca} Estimated percentage error of the PCA ellipsoid-sensor 
+    system, with respect to the extrapolated value 
+    (using Richardson extrapolation).} 
+    \begin{tabular}{c c}
+    \hline%\toprule
+    N & \% error \\
+    \hline%\midrule
+     $512$ & $27.2$ \\
+     $2048$ & $6.5$ \\
+     $8192$ & $1.66$ \\
+     $32768$ & $0.42$ \\
+    \hline%\bottomrule
+    \end{tabular}
+\end{table}
