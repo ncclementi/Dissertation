@@ -42,9 +42,10 @@ Since the PCA model can encapsuled all the charges we intended to use this model
 a monopole representation of the charges ("center of mass"), and also no charges present. To ensure that we are solving the equations properly, 
 we perform a convergence analysis.
 
-\subsubsection{PCA ellispoid convergence analysis}
 
-We performed a grid convergence analysis on the PCA (Principal component analysis) ellipsoid - sensor system containing a full pqr. 
+\subsubsection{PCA ellipsoid convergence analysis}
+
+We performed a grid convergence analysis on the PCA (Principal component analysis) ellipsoid - sensor system containing a full pqr (see Figure \ref{fig:one_pca_sketch}). 
 Since we compute the extinction cross section of the sensor (8 nm radius silver sphere), we set a fixed mesh density for the ellipsoid and refine 
 the mesh of the sphere ($N=512, 2048, 8192, 32768$). We found that a mesh with $N=5120$ elements for the ellipsoid was fine enough for the convergence analysis.
 We used the same physical conditions and parameters that were used for the BSA-nanoparticle convergence analysis presented in
@@ -54,6 +55,15 @@ estimate we used Richardson extrapolated value of the extinction cross section a
 The observed order of convergence is $0.99$, and Figure \ref{fig:err_sph-pca} shows that the error decays with the number of boundary elements ($1/N$). This provides
 evidence that the numerical solutions computed with \pygbe are correctly resolved by the meshes.  Table \ref{table:err_sph-pca} shows the percentages error for the different 
 meshes used in this study.
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.65\textwidth]{viz/one_pca_full_display.png} 
+    \caption{Sensor protein display: PCA ellipsoid with charges distribution located at $\pm 1$ nm of the 
+    nanoparticle in the $z$-direction.}
+    \label{fig:one_pca_sketch}
+ \end{figure}
+
 
 \begin{figure}%[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -80,3 +90,57 @@ meshes used in this study.
     \hline%\bottomrule
     \end{tabular}
 \end{table}
+
+After performing the convergence analysis studies, we relaxed the numerical parameters of the computations to reduce the run-time without 
+compromising accuracy. The following parameters were used to obtain non-convergence results presented from now on for the case of PCA ellipsoids.
+
+\begin{table}%[h]
+    \centering
+    \caption{\label{table:rel_pca_par} Relaxed parameters for the PCA ellipsoid case. The parameters that are not 
+    mentioned here remain the same as in the convergence study.} 
+    \begin{tabular}{c c}
+    \hline%\toprule
+    parameter & \% value \\
+    \hline%\midrule
+     $N_{snesor}$ & $8192$ \\
+     $k_{fine}$ & $19$ \\
+     $P$ & $6$ \\
+     $tol$ & $1\times 10^{-3}$ \\
+    \hline%\bottomrule
+    \end{tabular}
+\end{table}
+
+The Richardson extrapolated value for the PCA case is: $1432.6561$ nm$^2$ and the computed value with the relaxed parameters 
+is $1456.0781$ nm$^2$. If we compute the percentage error we obtain $1.63 \%$.
+
+\subsubsection{Charges model analysis}
+
+In order to know if we could use a VE approach we needed to study the effect of the charges. We analyze
+the different representations of pqr (full distribution and equivalent monopole) as well as the impact of having
+no charges present. The setup of the simulations consist in a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
+at 1 nm of the surface of the sensor in the $z$-direction, oriented such that the dipole moment is aligned with the $y$-axis. We run 
+three different cases, one with the full charges distribution, a second case with one equivalent charge located in the
+"center of mass", and lastly an empty ellipsoid with no charges. Figure \ref{fig:pqr_pca} shows the results for the different models of the 
+charge distribution as well as the results when there are no charges present within the ellipsoid. 
+
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{pqr_analysis_pca.pdf} 
+    \caption{Extinction cross-section as a function of wavelength for an $8$ nm
+    silver sphere immersed in water with one PCA ellipsoid at $1$ nm away from 
+    the surface in the $z$-direction, under a constant electric field on the $z$-direction.
+    The label "Full pqr" corresponds to the full distribution of charges, the label "CM pqr" corresponds to a monopole representation 
+    of the charges obtained by computing the center of mass of them, and the label "No pqr" 
+    corresponds to the case where there are no charges present.}
+    \label{fig:pqr_pca}
+ \end{figure}
+
+ The maximum value for all the curves in Figure \ref{fig:pqr_pca} occurs at $385.25$ nm. The 
+ maximum value of the extinction cross section for the full distribution ("Full pqr") is $3827.06$ nm$^2$ and for 
+ the monopole/center-of-mass representation ("CM pqr") is $3828.21$ nm$^2$, what results in a difference of $0.03 \,\%$. The
+ maximum value of the extinction cross section when there are no charges present ("No pqr") is $3755.51$ nm$^2$ which compared to 
+ the maximum for the full distribution gives us a difference of $1.87 \,\%$. Looking at these results we can say that the presence of 
+ charges inside the protein does not affect the wavelength shift. However, it does affect the intensity of the maximum value of the 
+ extinction cross section by approximately $2 \,\%$. Finally, we can say that using a monopole approximation for the distribution of charges, 
+ is equivalent to using teh full distribution of charges.
