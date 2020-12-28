@@ -19,7 +19,8 @@ Using these vectors when creating the mesh of the ellipsoid ensures that all the
 The second approach to model the BSA is to create an ellipsoid that matches the volume of the BSA. To find the dimensions 
 of the volume-equivalent equivalent we made some approximations. We obtained the volume of the BSA protein original mesh
 using Trimesh (\url{https://github.com/mikedh/trimesh})), and looking at the PCA principal axis we notice that $b$ and $c$ are close 
-compared to $a$, then $b=c=x$ and $a$ is double the size $a=2x$. Using these approximations we can write the volume of the ellipsoid:
+compared to $a$, then $b=c=x$ and $a$ is double the size $a=2x$, agreeing with the results from Squire and co-workers
+\cite{SquireETal1968}. Using these approximations we can write the volume of the ellipsoid:
 
 \begin{equation}
     V_e = \frac{4\pi}{3}a\,b\,c 
@@ -69,16 +70,15 @@ meshes used in this study.
     \centering
     \includegraphics[width=0.85\textwidth]{convergence_sensor_pca_w380.pdf} 
     \caption{Grid-convergence study of extinction cross-section of a spherical silver
-             nanoparticle with a PCA ellipsoid at $d=1$ nm which contains 
-             the charges distribution within it.}
+             nanoparticle with a PCA ellipsoid which contains 
+             the charges distribution within it, located at $d=1$ nm.}
     \label{fig:err_sph-pca}
  \end{figure}
 
  \begin{table}%[h]
     \centering
     \caption{\label{table:err_sph-pca} Estimated percentage error of the PCA ellipsoid-sensor 
-    system, with respect to the extrapolated value 
-    (using Richardson extrapolation).} 
+    system, with respect to the extrapolated value (using Richardson extrapolation).} 
     \begin{tabular}{c c}
     \hline%\toprule
     N & \% error \\
@@ -92,7 +92,7 @@ meshes used in this study.
 \end{table}
 
 After performing the convergence analysis studies, we relaxed the numerical parameters of the computations to reduce the run-time without 
-compromising accuracy. The following parameters were used to obtain non-convergence results presented from now on for the case of PCA ellipsoids.
+compromising accuracy. The following parameters were used to obtain all non-convergence results presented from now on for the case of PCA ellipsoids.
 
 \begin{table}%[h]
     \centering
@@ -102,7 +102,7 @@ compromising accuracy. The following parameters were used to obtain non-converge
     \hline%\toprule
     parameter & \% value \\
     \hline%\midrule
-     $N_{snesor}$ & $8192$ \\
+     $N_{sensor}$ & $8192$ \\
      $k_{fine}$ & $19$ \\
      $P$ & $6$ \\
      $tol$ & $1\times 10^{-3}$ \\
@@ -113,15 +113,26 @@ compromising accuracy. The following parameters were used to obtain non-converge
 The Richardson extrapolated value for the PCA case is: $1432.6561$ nm$^2$ and the computed value with the relaxed parameters 
 is $1456.0781$ nm$^2$. If we compute the percentage error we obtain $1.63 \%$.
 
-\subsubsection{Charges model analysis}
+\subsubsection{Charges model analysis} \label{ssub:pqr_analysis}
 
-In order to know if we could use a VE approach we needed to study the effect of the charges. We analyze
+In order to know if we could use a VE approach we studied the effect of the charges inside the protein. We analyzed
 the different representations of pqr (full distribution and equivalent monopole) as well as the impact of having
-no charges present. The setup of the simulations consist in a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
+no charges present. The setup of the simulations consists in a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
 at 1 nm of the surface of the sensor in the $z$-direction, oriented such that the dipole moment is aligned with the $y$-axis. We run 
 three different cases, one with the full charges distribution, a second case with one equivalent charge located in the
-"center of mass", and lastly an empty ellipsoid with no charges. Figure \ref{fig:pqr_pca} shows the results for the different models of the 
-charge distribution as well as the results when there are no charges present within the ellipsoid. 
+"center of mass" (See Figure \ref{fig:one_pca_cm_sketch}), and lastly an empty ellipsoid with no charges. Figure 
+\ref{fig:pqr_pca} shows the results for the different models of the charge distribution as well as the results when 
+there are no charges present within the ellipsoid. 
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.65\textwidth]{viz/one_pca_cm_gc_display.png} 
+    \caption{Sensor protein display: PCA ellipsoid with equivalent monopole charge, located at $\pm 1$ nm of the 
+    nanoparticle in the $z$-direction. The label "CM" indicates center of mass where the monopole charge is located, and
+    the label "GC" indicates the geometric center for reference.}
+    \label{fig:one_pca_cm_sketch}
+ \end{figure}
+
 
 
 \begin{figure}%[h] %  figure placement: here, top, bottom, or page
@@ -143,4 +154,97 @@ charge distribution as well as the results when there are no charges present wit
  the maximum for the full distribution gives us a difference of $1.87 \,\%$. Looking at these results we can say that the presence of 
  charges inside the protein does not affect the wavelength shift. However, it does affect the intensity of the maximum value of the 
  extinction cross section by approximately $2 \,\%$. Finally, we can say that using a monopole approximation for the distribution of charges, 
- is equivalent to using teh full distribution of charges.
+ is equivalent to using the full distribution of charges.
+
+\subsection{Surface equivalent vs Volume equivalent} \label{ssec:surf_vol_ell}
+
+In section \ref{ssub:pqr_analysis} we show that using a monopole approximation is equivalent to using the full distribution of charges. This 
+allow us to explore the effects of the volume equivalent model. Similarly to the PCA case we need to perform convergence analysis for
+the volume equivalent case, we present the results of the convergence analysis in section \ref{sssec:ve_conv}. Following the convergence 
+study of the volume equivalent ellipsoid we present, in section \ref{sssec:ell_mod_comp}, the comparison of the PCA ellipsoid model and the volume equivalent 
+model with the original BSA protein structure model, replicating the configuration shown in Figure \ref{fig:display_z}. 
+
+
+\subsubsection{Volume Equivalent ellipsoid convergence analysis}\label{sssec:ve_conv}
+
+We performed a grid convergence analysis on the VE (volume equivalent) ellipsoid - sensor system containing a monopole charge located 
+in the center of mass of the charge distribution. (see Figure \ref{fig:one_ve_sketch}). Since we compute the extinction cross section of the sensor 
+(8 nm radius silver sphere), we set a fixed mesh density for the ellipsoid and refine 
+the mesh of the sphere ($N=512, 2048, 8192, 32768$). We found that a mesh with $N=1280$ elements for the ellipsoid was fine enough for the convergence analysis.
+We used the same physical conditions and parameters that were used for the BSA-nanoparticle convergence analysis presented in
+\ref{sec:grid_conv_bsa}. Similarly to the BSA-sensor system, the distance between the sensor and the VE-ellipsoid 
+was $d=1$ nm, and the ellipsoid was oriented such that the dipole moment of the charges was aligned with the $y$-axis. To obtain the error 
+estimate we used Richardson extrapolated value of the extinction cross section as a reference, $C_{ext} = 1683.8117$ nm$^2$.
+The observed order of convergence is $0.99$, and Figure \ref{fig:err_sph-ve} shows that the error decays with the number of boundary elements ($1/N$). This provides
+evidence that the numerical solutions computed with \pygbe are correctly resolved by the meshes.  Table \ref{table:err_sph-ve} shows the percentages error for the different 
+meshes used in this study.
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.65\textwidth]{viz/one_ve_cm_gc_display.png} 
+    \caption{Sensor protein display: Volume equivalent ellipsoid with monopole charge ("CM"), located at $1$ nm of the 
+    nanoparticle in the $z$-direction. The geometric center ("GC") is display for reference.}
+    \label{fig:one_ve_sketch}
+ \end{figure}
+
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{convergence_sensor_ve_w380.pdf} 
+    \caption{Grid-convergence study of extinction cross-section of a spherical silver
+             nanoparticle with a volume equivalent ellipsoid at $d=1$ nm which contains 
+             a monopole charge..}
+    \label{fig:err_sph-ve}
+ \end{figure}
+
+ \begin{table}%[h]
+    \centering
+    \caption{\label{table:err_sph-ve} Estimated percentage error of the VE ellipsoid-sensor 
+    system, with respect to the extrapolated value (using Richardson extrapolation).} 
+    \begin{tabular}{c c}
+    \hline%\toprule
+    N & \% error \\
+    \hline%\midrule
+     $512$ & $28.8$ \\
+     $2048$ & $6.96$ \\
+     $8192$ & $1.78$ \\
+     $32768$ & $0.45$ \\
+    \hline%\bottomrule
+    \end{tabular}
+\end{table}
+
+After performing the convergence analysis studies, we relaxed the numerical parameters of the computations to reduce the run-time without 
+compromising accuracy. We use the parameters from Table \ref{table:rel_pca_par} to obtain all non-convergence results presented from 
+now on for the case of VE ellipsoids. The Richardson extrapolated value for the VE case is: $1683.8117$ nm$^2$ and the computed value with 
+the relaxed parameters is $1713.1972$ nm$^2$. If we compute the percentage error we obtain $1.75 \%$.
+
+\subsubsection{Ellipsoid model vs original BSA}\label{sssec:ell_mod_comp}
+
+In Figure \ref{fig:2pz_ell_resp} we show the results of comparing both ellipsoidal models of the protein with the 
+original representation of the protein obtained from the crystal structure. We present the LSPR response 
+of the system showed in Figure \ref{fig:display_z}, and for the ellipsoidal models we use an equivalent 
+setup that replaces the proteins, located at $\pm 1$ nm in the $z$-direction, for the respective ellipsoids.
+Both the PCA and VE model contain a monopole charge in the center of mass of the distribution.
+
+\begin{figure} %[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{two_ell_analysis.pdf} 
+    \caption{Extinction cross-section as a function of wavelength for a 8 nm silver sphere immersed 
+    in water with two BSA proteins ("BSA"), two PCA-ellipsoids with one equivalent charge ("PCA"), and two
+    volume equivalent ellipsoids ("VE") with one equivalent charge. In all cases the proteins or equivalents
+    are placed at $\pm 1$ nm away from the surface in the $z$-direction, except for the case where there is 
+    no protein ("Sensor").}
+    \label{fig:2pz_ell_resp}
+ \end{figure}
+
+ Looking at the results on the figure we can say that the model chosen to represent the analytes matters. The PCA model (surface based model, 
+ surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, by giving us a shift of $2.5$ nm 
+ ($400$ $\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based) shift it is still bigger ($0.75$ nm) than the original 
+ by $50$ $\%$, but we can say that a reduced order model based on the volume is a closer representation of the full protein. 
+ 
+In both cases we can see that the intensity of the peak decreases. This can be a problem, along with the overestimation of the shift,
+if the results are intended to be used in the computation of sensitivity. The Figure of Merit is usually how a
+nanoparticle’s sensing capabilities is characterized, and it is defined as the ratio between the 
+sensitivity ($S = \Delta \lambda / \Delta n$) over the full width mid hight (FWMH) \cite{otte2012}. Making 
+conclusion of sensitive capabilities of a sensors, based on models that under estimate the magnitude of the peak and 
+overestimate the shift can lead to incorrect assessments.
