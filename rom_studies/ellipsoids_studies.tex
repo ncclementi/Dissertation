@@ -37,7 +37,7 @@ and therefore $a=54.18993 \, \text{\AA}$ and $b=c=27.09496 \, \text{\AA}$. These
 as the original BSA mesh, however, we can not encapsule all the charges inside of it. To be able to use this model we needed to study first the 
 effects of replacing the distribution of charges by a monopole, as well as the possibility of not include them in the model. 
 
-\subsection{Effect of presence of charges}
+\subsection{Effect of charges within the protein}
 
 Since the PCA model can encapsuled all the charges we intended to use this model to study the effect of using the charges distribution, versus
 a monopole representation of the charges ("center of mass"), and also no charges present. To ensure that we are solving the equations properly, 
@@ -248,3 +248,41 @@ nanoparticle’s sensing capabilities is characterized, and it is defined as the
 sensitivity ($S = \Delta \lambda / \Delta n$) over the full width mid hight (FWMH) \cite{otte2012}. Making 
 conclusion of sensitive capabilities of a sensors, based on models that under estimate the magnitude of the peak and 
 overestimate the shift can lead to incorrect assessments.
+
+\subsection{Effect of protein orientation}
+
+\begin{figure} %[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{two_ve_ell_mult_config.pdf} 
+    \caption{.}
+    \label{fig:}
+ \end{figure}
+
+\subsection{Effect of protein-model geometry}
+
+\begin{figure} %[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{two_ve_ell_sph_vs_BSA.pdf} 
+    \caption{ell vs sphere.}
+    \label{fig:}
+ \end{figure}
+
+\subsection{Effect of number of proteins}
+
+\begin{figure} %[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{six_ve_ell_mult_config.pdf} 
+    \caption{multiple ell.}
+    \label{fig:}
+ \end{figure}
+
+\subsection{Effect of magnitude of electric field}
+
+\begin{figure}%[t] %  figure placement: here, top, bottom, or page
+    \centering
+    \subfloat{\includegraphics[width=0.85\textwidth]{VE_ell_cm_elec_field_var.pdf}}\\
+    \subfloat{\includegraphics[width=0.85\textwidth]{VE_ell_cm_elec_field_var_zoom.pdf}} 
+    \caption{Effect of Electric field, labels are magnitude in [put units here], bottom is zoom}
+    \label{fig:efield effect}
+ \end{figure}
+
