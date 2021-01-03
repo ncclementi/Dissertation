@@ -257,7 +257,10 @@ Spheres are one of the geometries used in the literature to represent the protei
 section we compare a spherical volume-equivalent model with the ellipsoidal volume-equivalent model used in section
 \ref{ssec:surf_vol_ell}. Figures \ref{fig:sph_vs_ell_ve} shows the different LSPR responses of a silver nanoparticle of $8$ nm of radius, 
 for the different models. The peak for both the ellipsoid and the sphere of equivalent volume, happens at $384.75$ nm, and the 
-maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). 
+maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). For the sphere simulations 
+the monopole charge was located at the geometric center, we run simulations on a volume-equivalent ellipsoid that show 
+that locating the monopole charge at the geometric center compared to the center of mass, does not cause a shift on the peak 
+and it only affects the intensity by {\color{red} PUT PERCENTAGE OF CHANGE OF VE GC VS PQR}.
 
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
@@ -303,15 +306,44 @@ when we use a spherical model for the protein we lose any information regarding 
      \label{fig:two_ell_mult_config}
   \end{figure}
  
-
+Figure \ref{fig:two_ell_mult_config} show the LSPR response of a silver nanoparticle and how it changes when the ellipsoids 
+are placed in different orientations. The peak when the dipole moment is parallel to the $y$-axis (original)
+is $3815.72$ $nm^2$ and occurs at $384.75$ nm, causing a shift of $0.75$ nm. When the orientation of the ellipsoid 
+is such that $a//y$, the maximum value is $3802.51$ $nm^2$ and it happens at $385$ nm, which results in a shift of 
+$1$ nm. The final orientation we study is when $b//y$ which has a peak of $3898.10$ $nm^2$ at $384.375$ nm, resulting 
+in a shift of $0.375$ nm. These results tell us that the orientation of the protein affects the LSPR response, we can 
+see that the shifts vary depending the orientation, as well as the intensity of the peak. When using a spherical model, 
+all these effects are not capture due to the nature of the geometry, which can lead to misleading conclusions.
 
 \subsubsection{Effect of number of proteins}
+
+In this section we study the effect of having multiple proteins around the nanoparticle. Even though we know 
+that volume equivalent ellipsoids are over estimating the response, they still account for the effects of 
+orientation and they can give us an estimation on how the LSPR response changes when having multiple 
+ellipsoids. We use the same orientations showed in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
+at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} show the results of the LSPR response 
+of six ellipsoids located atv$\pm 1$ nm in the $x$, $y$, and $z$-axis, for different orientations. The peak when the dipole 
+moment is parallel to the $y$-axis (original) is $3673.89$ $nm^2$ and occurs at $385.375$ nm, causing a shift of 
+$1.375$ nm. When the orientation of the ellipsoid is such that $a//y$, the maximum value is $3643.97$ $nm^2$ and it
+happens at $385.5$ nm, which results in a shift of $1.5$ nm. The final orientation we study is when $b//y$ which 
+has a peak of $3814.23$ $nm^2$ at $384.625$ nm, resulting in a shift of $0.625$ nm. We can see that adding more proteins, 
+regardless the orientation, increases the shift. However, depending on the orientation the percentage of shift increment 
+varies. When we go from two ellipsoids on $\pm 1$ nm on the $z$-direction to six ellipsoids located at 
+$\pm 1$ nm in the $x$, $y$, and $z$-axis we see an increment on the shift of:
+
+\begin{itemize}
+    \item {$~83\%$ when the dipole moment is parallel to the $y$-axis}
+    \item {$50\%$ when the principal axis $a$ is parallel to the $y$-axis}
+    \item {$~66.67\%$ when the principal axis $b$ is parallel to the $y$-axis}
+\end{itemize}    
+ 
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{six_ve_ell_mult_config.pdf} 
-    \caption{multiple ell.}
-    \label{fig:}
+    \caption{Multiple ellipsoids in different orientations located at $\pm 1$ nm of the nanoparticle
+            in the $x$, $y$ and $z$-axis.}
+    \label{fig:mult_ell}
  \end{figure}
 
 \subsubsection{Effect of magnitude of electric field}
@@ -330,7 +362,7 @@ Most computational works in the literature use a constant real dielectric value 
 embedding medium \cite{NghiemETal2012, SantiagoCordobaETal2011,UngerETal2009}, such modeling does not count for the losses 
 in that medium. LSPR biosensors detect a target molecule by monitoring plasmon resonance frequency changes due to the proximity 
 of the target to the metallic nanoparticle. In this section we show how the LSPR response changes when choosing different models 
-for the dielectric in the protein and the medium around the system sensor-protein. We use the same setup used in chapter \ref{hap:lspr_response_bsa}
+for the dielectric in the protein and the medium around the system sensor-protein. We use the same setup used in chapter \ref{chap:lspr_response_bsa}
 where we have two BSA proteins located at $\pm$ 1 nm on the $z$-direction of a silver nanoparticle of radius $r=8$ nm (see 
 Figure \ref{fig:display_z}). The system sensor-protein is submerged in water and under a constant electric field of 
 $0.0037$ $[e]/([{\text{\AA}}^2][\epsilon_0])$ in the $z$-direction. We firstly study the effect of having a real-valued dielectric 
