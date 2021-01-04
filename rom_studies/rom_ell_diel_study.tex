@@ -260,7 +260,7 @@ for the different models. The peak for both the ellipsoid and the sphere of equi
 maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). For the sphere simulations 
 the monopole charge was located at the geometric center, we run simulations on a volume-equivalent ellipsoid that show 
 that locating the monopole charge at the geometric center compared to the center of mass, does not cause a shift on the peak 
-and it only affects the intensity by {\color{red} PUT PERCENTAGE OF CHANGE OF VE GC VS PQR}.
+and the difference between the intensities at the peak is $<1\%$.
 
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
@@ -293,8 +293,6 @@ when we use a spherical model for the protein we lose any information regarding 
     \caption{Different configurations for two volume equivalent ellipsoids.}
     \label{fig:two_ve_conf_display}
  \end{figure}
-
-
  
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
      \centering
@@ -322,41 +320,66 @@ that volume equivalent ellipsoids are over estimating the response, they still a
 orientation and they can give us an estimation on how the LSPR response changes when having multiple 
 ellipsoids. We use the same orientations showed in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
 at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} show the results of the LSPR response 
-of six ellipsoids located atv$\pm 1$ nm in the $x$, $y$, and $z$-axis, for different orientations. The peak when the dipole 
-moment is parallel to the $y$-axis (original) is $3673.89$ $nm^2$ and occurs at $385.375$ nm, causing a shift of 
-$1.375$ nm. When the orientation of the ellipsoid is such that $a//y$, the maximum value is $3643.97$ $nm^2$ and it
-happens at $385.5$ nm, which results in a shift of $1.5$ nm. The final orientation we study is when $b//y$ which 
-has a peak of $3814.23$ $nm^2$ at $384.625$ nm, resulting in a shift of $0.625$ nm. We can see that adding more proteins, 
-regardless the orientation, increases the shift. However, depending on the orientation the percentage of shift increment 
-varies. When we go from two ellipsoids on $\pm 1$ nm on the $z$-direction to six ellipsoids located at 
-$\pm 1$ nm in the $x$, $y$, and $z$-axis we see an increment on the shift of:
-
-\begin{itemize}
-    \item {$~83\%$ when the dipole moment is parallel to the $y$-axis}
-    \item {$50\%$ when the principal axis $a$ is parallel to the $y$-axis}
-    \item {$~66.67\%$ when the principal axis $b$ is parallel to the $y$-axis}
-\end{itemize}    
+of six ellipsoids located atv$\pm 1$ nm in the $x$, $y$, and $z$-axis, for different orientations. 
  
-
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{six_ve_ell_mult_config.pdf} 
-    \caption{Multiple ellipsoids in different orientations located at $\pm 1$ nm of the nanoparticle
-            in the $x$, $y$ and $z$-axis.}
+    \caption{Extinction cross-section as a function of wavelength for an $8$ nm
+            silver sphere immersed in water, under a constant electric field, with multiple ellipsoids in different orientations 
+            located at $\pm 1$ nm of the nanoparticle in the $x$, $y$ and $z$-axis.}
     \label{fig:mult_ell}
  \end{figure}
 
+ The peak when the dipole 
+ moment is parallel to the $y$-axis (original) is $3673.89$ $nm^2$ and occurs at $385.375$ nm, causing a shift of 
+ $1.375$ nm. When the orientation of the ellipsoid is such that $a//y$, the maximum value is $3643.97$ $nm^2$ and it
+ happens at $385.5$ nm, which results in a shift of $1.5$ nm. The final orientation we study is when $b//y$ which 
+ has a peak of $3814.23$ $nm^2$ at $384.625$ nm, resulting in a shift of $0.625$ nm. We can see that adding more proteins, 
+ regardless the orientation, increases the shift. However, depending on the orientation the percentage of shift increment 
+ varies. When we go from two ellipsoids on $\pm 1$ nm on the $z$-direction to six ellipsoids located at 
+ $\pm 1$ nm in the $x$, $y$, and $z$-axis we see an increment on the shift of:
+ 
+ \begin{itemize}
+     \item {$~83\%$ when the dipole moment is parallel to the $y$-axis}
+     \item {$50\%$ when the principal axis $a$ is parallel to the $y$-axis}
+     \item {$~66.67\%$ when the principal axis $b$ is parallel to the $y$-axis}
+ \end{itemize}    
+ 
 \subsubsection{Effect of magnitude of electric field}
+
+Another effect we study is the effect of the magnitude of the incident electric field. For 
+all the simulations of this work we the magnitude of the electric field from Phan and 
+coworkers \cite{PhanETal2013}. We did not find other values in the literature that we can compare to since
+it was not reported. In this section we vary the magnitude of the electric field across several order of magnitudes 
+and study its effect on the LSPR response. 
 
 \begin{figure}%[t] %  figure placement: here, top, bottom, or page
     \centering
     \subfloat{\includegraphics[width=0.85\textwidth]{VE_ell_cm_elec_field_var.pdf}}\\
     \subfloat{\includegraphics[width=0.85\textwidth]{VE_ell_cm_elec_field_var_zoom.pdf}} 
-    \caption{Effect of Electric field, labels are magnitude in [put units here], bottom is zoom}
+    \caption{Extinction cross-section as a function of wavelength for an $8$ nm
+    silver sphere immersed in water, under a constant electric field, with a volume equivalent ellipsoid
+    located at $1$ nm in the $z$-direction. The different colors represent different magnitudes of the 
+    electric field where the units are $[e]/([{\text{\AA}}^2][\epsilon_0])$. The bottom figure is a zoom of the top 
+    figure.}
     \label{fig:efield effect}
  \end{figure}
 
- \section{Dielectric study}
+Figure \ref{fig:efield effect} shows how the magnitude of the incident electric field affects the LSPR response 
+of a silver nanoparticle of radius $r=8$ nm when having a volume equivalent ellipsoid located 
+$\pm 1$ nm in the $z$-direction. We can see that as we decrease the magnitude of the electric field, 
+the intensity of the extinction cross section increases. For all the different values of electric field except 
+$1\times10^{-5}$ the peak occurs at $384.25$ nm, when the magnitude is $1\times10^{-5}$ the peak occurs at 
+$384.5$ nm. This tells us that the magnitude of the electric field affects the shift. We computed, approximately, 
+the magnitude of the electric field due to the single charge inside the ellipsoid, on the surface of the nanoparticle,
+and we found that its magnitude is $~5.4 \times 10^{-4}$ $[e]/([{\text{\AA}}^2][\epsilon_0])$. Therefore, 
+when the magnitude of the incident electric field is smaller than the magnitude of the electric field generated by 
+the protein on the surface of the nanoparticle, the shift increases. It is worth mentioning that if there are no charges 
+present in the protein, the extinction cross section does not varies when the magnitude of the incident electric field 
+changes. 
+
+\section{Dielectric study}
 
 Most computational works in the literature use a constant real dielectric value both in the protein and the
 embedding medium \cite{NghiemETal2012, SantiagoCordobaETal2011,UngerETal2009}, such modeling does not count for the losses 
