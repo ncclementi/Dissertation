@@ -407,33 +407,73 @@ in most cases they provided the refractive index $n$ which we convert to the rea
     \item {Hale and Querry 1972 \cite{HaleQuerry1972}: Average of experimental real values $e_r = 1.7962$}
 \end{itemize}
   
-\subsection{BSA real dielectric}
+\subsection{BSA with real dielectric}
+
+We study the effect of using a real-valued dielectric for the BSA, while keeping a complex-valued dielectric for the water where  
+the system protein-sensor is embedded. Figure \ref{fig:bsa_diel} shows the extinction cross-section of silver nanoparticle 
+of radius $r=8$ nm when having two BSA proteins located at $\pm1$ nm in the $z$-direction, for different dielectric models for the BSA. 
+The computation of the original curve ("Complex") uses the complex dielectric for each frequency obtained from the Lorentz-Drude model 
+from Phan et al. \cite{PhanETal2013}. The remaining curves correspond to the real-valued models from Santiago-Cordoba et al.\cite{SantiagoCordobaETal2011},
+Nghiem et al \cite{NghiemETal2012}, and the average value of the real part from Phan et al. \cite{PhanETal2013}. The peak of the extinction cross section 
+for both the complex model from Phan work \cite{PhanETal2013} and the average of its real part happen at $384.5$ nm, which represents a shift of $0.5$ nm from 
+the isolated nanoparticle. However, the intensity of the peak goes from $3901.06$ nm$^2$ to $4063.95$ nm$^2$ which is approximately a $~4.2\%$ increment. 
+The resonance peaks for the values from Nghiem et al. and Santiago-Cordoba et al. occur at wavelengths $384.75$ nm and $384$ nm, respectively. This translates in 
+no shift for the case of Santiago-Cordoba et al., and a shift of $0.75$ nm for the case of Nghiem et al. Moreover, the intensity for these two cases is 
+bigger than the case where we used a complex dielectric for the model. 
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{bsa_diel_study.pdf} 
-    \caption{Comparison of BSA LSPR response when using a complex vs a real dielectric models.}
+    \caption{Comparison of LSPR response of a silver nanoparticle to two BSA proteins located at $\pm1$ nm on the $z$-direction
+    when using a complex vs a real dielectric for the protein.}
     \label{fig:bsa_diel}
  \end{figure}
 
-\subsection{Water real dielectric}
+The results from \ref{fig:bsa_diel}, tell us that using a real dielectric for the protein affects the intensity of the extinction cross section. Using 
+different values for the real dielectric aso affects the LSPR response in terms of the shift. However, when comparing the complex model from Phan et al. versus
+an average of the real parts of the dielectric, we see that the shift does not change. 
 
+\subsection{Water with real dielectric}
+
+After studying the effect of the dielectric model used inside the protein we wanted to explore the effects of the dielectric model in the 
+embedding medium. We analyzed the effect of using a real-valued dielectric in the water when having the isolated nanoparticle (\ref{fig:iso_NP_diel}), 
+as well as having the nanoparticle with two BSA proteins located at $\pm1$ nm on the $z$-direction (\ref{fig:real_w_comp_bsa}). For these results we used, 
+the complex dielectric values obtained from Hale and Querry \cite{HaleQuerry1972}, the average value of the real part from their work, and the real 
+dielectric value for water at room temperature commonly used in the literature ("Generalization"). Figure \ref{fig:iso_NP_diel} shows
+that using a complex representation of the dielectric versus using the average across the wavelengths of its real part, is indistinct. We can see that the curves
+for the complex dielectric case (black curve) and the averaged of the real part of the complex dielectric, match perfectly. However, when we change the value of 
+the real dielectric it has a big impact on where the peak occurs. For the "Generalization" case, where the dielectric is $1.7689$ we see that the peak occurs at 
+a wavelength of $382.75$ nm, compared to the original peak for a dielectric of $1.7962$ which happens at $384$ nm. This shows how sensitive is the LSPR response of the 
+silver nanoparticle to the dielectric in which it is embedded. 
+ 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{iso_np_water_diel_study.pdf} 
     \caption{Comparison of LSPR response of isolated silver nanoparticle when using a complex 
-     vs a real dielectric model}
+     vs a real dielectric model for the water medium}
     \label{fig:iso_NP_diel}
  \end{figure}
+
+Once we understood how the dielectric model affected the LSPR response of the isolated nanoparticle, we decided to study how this 
+effect varies when adding the BSA proteins at $\pm1$ nm on the $z$-direction. To isolate the effect of the dielectric model on the 
+medium, we use the complex dielectric from Phan et al. \cite{PhanETal2013} for the BSA proteins. Figure \ref{fig:real_w_comp_bsa}
+shows the shift in the LSPR response of a silver nanoparticle (dashed lines) when adding the BSA proteins (full lines), for the same 
+real dielectrics models used in Figure \ref{fig:iso_NP_diel}. When using the average of the real part of the complex dielectric from 
+Hale and Querry \cite{HaleQuerry1972} the shift is $0.5$ nm which is the same value compared to the full complex model. However, when using 
+the generalization of the water dielectric, the peak for the extinction cross section when the two BSA proteins are present occurs at a wavelength of 
+$383.5$ nm, what gives us a shift in the LSPR response of $0.75$ nm. These results tell us that there is no difference in the LSPR response, if we wither use 
+the complex dielectric for the water or an average of the real part of it. However, when using the a different real value for the dielectric, it not only 
+affects the wavelength at which the resonance peaks occur but also the shift when proteins are added in the vicinity. 
 
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{bsa_w_real_water_diel.pdf} 
-    \caption{Real water diel with complex BSA}
+    \caption{Comparison of LSPR response of a silver nanoparticle to two BSA proteins located at $\pm1$ nm on the $z$-direction
+    when using a complex vs a real dielectric for the water medium.}
     \label{fig:real_w_comp_bsa}
  \end{figure}
 
- \subsection{BSA-Water real dielectric models comparison}
+ \subsection{BSA-Water with real dielectric - Models comparison}
 
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
