@@ -1,7 +1,39 @@
 % !TEX root = ../thesis_main.tex
+% !TEX root = ../thesis_main.tex
+\chapter{Effects of a reduced order model for protein representation}
+\graphicspath{{rom_studies/figs/}}
+
+Part of the process of computational modelling is making assumptions about the problem we are trying to solve. In the 
+field of localized surface plasmon resonance for biosensing applications there are several reports that use Bovine Serum Albumin 
+as an analyte to simulate the behavior of a bioconjugate sensor. However, they use a simplified model
+of the protein, and often a real-valued dielectric for the medium. Some use a model that is 
+a layer of protein-water solution \cite{PhanETal2013}, 
+or just a protein dielectric layer \cite{NghiemETal2012}, others model the
+protein as a triangular prism \cite{DanHu2014}, or even a small sphere with a 
+constant dielectric \cite{SantiagoCordobaETal2011, UngerETal2009}. Phan and 
+coworkers \cite{PhanETal2013} present a Lorentz-Drude model for the complex 
+dielectric of the BSA which we use in our work, while most of the literature 
+use a constant dielectric with no losses to represent the BSA 
+(refractive index of $n= 1.9$ \cite{NghiemETal2012}, $n= 1.45$ \cite{SantiagoCordobaETal2011}) or
+other proteins used as analytes ($n=1.58$ polystrene \cite{UngerETal2009}, $n=1.57$ 
+streptavidin \cite{ShenETal2013}). 
+
+Research shows that the shape of both monomer and dimmer of BSA are prolate ellipsoids 
+\cite{MoserETal1966, SquireETal1968, WrightETal1975}. However, we have not seen in the literature the use of ellipsoids 
+to model the protein in the computational approaches. Our BSA model, based on its crystal 
+structure, is a good reference of the actual shape of the protein. We 
+explore the effects of using reduced-order models for the protein representation like ellipsoids and spheres. We compared 
+the results with the full model, and study the consequences of these simplifications. We also studied the effects of the model chosen 
+for the charges inside the protein (full distribution, monopole equivalent charge, and no charges), the protein orientation, the 
+amount of proteins in the vicinity of the nanoparticle, the magnitude of the incident electric field, the value and type (complex or real)
+of the protein and water medium dielectrics. 
+
+To the best of our knowledge, there is no model in the literature that counts for the charges inside the protein. 
+Moreover, there are no study that explore the effects of using reduced-order models for the protein representations 
+in computational models. This chapter cover the results of using different assumptions in the modelling process and what 
+are the implications of them.
 
 \section{BSA as a prolate ellipsoid}
-\graphicspath{{rom_studies/figs/}}
 
 The crystal structure of the BSA (pdb 4f5s) used in our simulations corresponds
 to a dimer. Knowing that this structure can be modeled as an ellipsoid \cite{SquireETal1968},
@@ -237,19 +269,29 @@ Both the PCA and VE model contain a monopole charge in the center of mass of the
     \label{fig:2pz_ell_resp}
  \end{figure}
 
- Looking at the results on the figure we can say that the model chosen to represent the analytes matters. The PCA model (surface based model, 
- surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, by giving us a shift of $2.5$ nm 
- ($400$ $\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based) shift it is still bigger ($0.75$ nm) than the original 
- by $50$ $\%$, but we can say that a reduced order model based on the volume is a closer representation of the full protein. 
- 
-In both cases we can see that the intensity of the peak decreases. This can be a problem, along with the overestimation of the shift,
+Looking at the results on the figure we can say that the model chosen to represent the analytes matters. The PCA model (surface based model, 
+surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, by giving us a shift of $2.5$ nm 
+($400$ $\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based) shift it is still bigger ($0.75$ nm) than the original 
+by $50$ $\%$, but we can say that a reduced order model based on the volume is a closer representation of the full protein. In both cases we can see 
+that the intensity of the peak decreases. This can be a problem, along with the overestimation of the shift,
 if the results are intended to be used in the computation of sensitivity. The Figure of Merit is usually how a
 nanoparticle's sensing capabilities is characterized, and it is defined as the ratio between the 
 sensitivity ($S = \Delta \lambda / \Delta n$) over the full width mid hight (FWMH) \cite{otte2012}. Making 
 conclusion of sensitive capabilities of a sensors, based on models that under estimate the magnitude of the peak and 
 overestimate the shift can lead to incorrect assessments.
 
+In summary, using an ellipsoidal shape of equivalent surface that contains all the charges is not a good approximation
+since it overestimates the shift considerably. The VE-equivalent model exhibits a shift of $0.75$ nm, which is still  
+an overestimated the response. However, we believe that the volume equivalent approximation can be used to investigate 
+qualitative behaviors, and take advantage of the less expensive simulations to get insights on the physics of problems 
+that might not be possible to simulate due to memory restrictions.
+
 \subsection{Other model considerations}
+
+Besides studying the effect of choosing a surface versus a volume based model as an approximation of protein, there are other
+factors that can affect the behavior of the system sensor-BSA. In this section we present the results of choosing a spherical 
+geometry instead of an ellipsoidal model, the results of the protein orientation, the number of proteins in the vicinity of the nanoparticle, and 
+the effect of the magnitude of the incident electric field. 
 
 \subsubsection{Sphere vs Ellipsoid for protein modeling}
 
@@ -285,7 +327,6 @@ when we use a spherical model for the protein we lose any information regarding 
  the $y$-axis, a configuration such that the principal axis $a$ is parallel to $y$-axis, 
  and finally a configuration where the principal axis $b$ is parallel to $y$ (see Figure \ref{fig:two_ve_conf_display} for display configurations). Figure \ref{fig:two_ell_mult_config}
  show the LSPR response to the proteins/ellipsoids for the different orientations. 
- 
  
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -371,13 +412,14 @@ of a silver nanoparticle of radius $r=8$ nm when having a volume equivalent elli
 $\pm 1$ nm in the $z$-direction. We can see that as we decrease the magnitude of the electric field, 
 the intensity of the extinction cross section increases. For all the different values of electric field except 
 $1\times10^{-5}$ the peak occurs at $384.25$ nm, when the magnitude is $1\times10^{-5}$ the peak occurs at 
-$384.5$ nm. This tells us that the magnitude of the electric field affects the shift. We computed, approximately, 
+$384.5$ nm. This tells us that the magnitude of the electric field affects the shift. We computed 
 the magnitude of the electric field due to the single charge inside the ellipsoid, on the surface of the nanoparticle,
 and we found that its magnitude is $~5.4 \times 10^{-4}$ $[e]/([{\text{\AA}}^2][\epsilon_0])$. Therefore, 
 when the magnitude of the incident electric field is smaller than the magnitude of the electric field generated by 
 the protein on the surface of the nanoparticle, the shift increases. It is worth mentioning that if there are no charges 
 present in the protein, the extinction cross section does not varies when the magnitude of the incident electric field 
 changes. 
+
 
 \section{Dielectric study}
 
@@ -443,8 +485,8 @@ dielectric value for water at room temperature commonly used in the literature (
 that using a complex representation of the dielectric versus using the average across the wavelengths of its real part, is indistinct. We can see that the curves
 for the complex dielectric case (black curve) and the averaged of the real part of the complex dielectric, match perfectly. However, when we change the value of 
 the real dielectric it has a big impact on where the peak occurs. For the "Generalization" case, where the dielectric is $1.7689$ we see that the peak occurs at 
-a wavelength of $382.75$ nm, compared to the original peak for a dielectric of $1.7962$ which happens at $384$ nm. This shows how sensitive is the LSPR response of the 
-silver nanoparticle to the dielectric in which it is embedded. 
+a wavelength of $382.75$ nm, compared to the original peak for a dielectric of $1.7962$ which happens at $384$ nm. This shows how sensitive is the LSPR response 
+of the silver nanoparticle to the dielectric in which it is embedded. 
  
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -473,13 +515,30 @@ affects the wavelength at which the resonance peaks occur but also the shift whe
     \label{fig:real_w_comp_bsa}
  \end{figure}
 
- \subsection{BSA-Water with real dielectric - Models comparison}
+ \subsection{BSA and water with real-valued dielectric}
+
+Last but not least we study the effect of using real-valued dielectrics for the BSA proteins as well as the water medium. For the BSA proteins 
+we used the average valued of the real component from Phan et al. \cite{PhanETal2013}, and for the protein medium we used both values  
+use for the results in Figure \ref{fig:real_w_comp_bsa}. Figure \ref{fig:bsa_w_real} shows the results of using real dielectrics in both the proteins and
+the water medium. The peaks in all cases occur at the same wavelengths compared to the case where we use a BSA complex dielectric for the protein, and as a 
+consequence the shifts are the same than the ones reported in Figure \ref{fig:real_w_comp_bsa}. However, when we use real dielectric in both the medium 
+and teh proteins we see an increment in the magnitude of the extinction cross section of $~4.2\%$ for the Hale and Querry case, and $~3.6\%$ for the 
+generalization case. These results tells us that there is no difference between using a complex dielectric value for the protein and the medium, and using 
+an averaged value of the real part, when it comes to the shift in the LSPR response. However, there is a difference in the magnitude of the 
+extinction cross section that is a direct consequence of using a real-valued dielectric since this do not counts for the losses in the medium. Similarly to the 
+results shown in Figure \ref{fig:real_w_comp_bsa}, the usage of a different real dielectric for the water medium, changes where the peak occurs and the shift in the 
+LSPR response. 
 
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{bsa_phan_avg_real_water_diel.pdf} 
-    \caption{BSA-Water real dielectric}
+    \caption{Comparison of LSPR response of a silver nanoparticle to two BSA proteins located at $\pm1$ nm on the $z$-direction
+    when using a real dielectric model in the protein and the water medium.}
     \label{fig:bsa_w_real}
  \end{figure}
 
- 
+In summary, when studying the LSPR response of a nanoparticle and how it shifts when proteins are in the vicinity, we can use 
+a real dielectrics for the water medium and the BSA protein, if they come from an average of the real part of the complex dielectric model 
+or experimental data (see Hale and Quarry results on Figure \ref{fig:bsa_w_real}). However, when using real-valued dielectrics for the medium 
+and the protein, the intensity of the extinction cross section increases, which is a problem if the results are intended to be used for 
+sensitivity calculations. 
