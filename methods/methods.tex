@@ -223,7 +223,7 @@ with Equation \eqref{eq:cext_fwa}.
 \section{The boundary element method} \label{sec:lspr_bem}
 
 In the context of PDEs when the differential operator has a fundamental solution and it can be expressed as a boundary integral equation (BIE), we can solve 
-this BIE numerically using the boundary element method (BEM). The idea of representing partial differential equations (PDEs) as boundary integral 
+this BIE numerically using the boundary element method (\bem). The idea of representing partial differential equations (PDEs) as boundary integral 
 equations originated in the late 1800s and early 1900s and it is documented in the work of Betti, Somigliana and Fredholm \cite{Betti1872,Somigliana1885,Fredholm1903},
 which were inspired on the earlier work of Green \cite{Green1828}. The work of Fredholm is considered the starting point of the boundary elements method, 
 since he was the first one in compute boundary data in a potential theory application, where he used analytical techniques valid for simple geometries. Later in 
@@ -234,7 +234,7 @@ as a numerical technique in multiple areas\cite{Atkinson1997,McLean2000,Steinbac
 
 \subsection{Integral formulation of the Laplace equation} \label{ssec:int_form}
 
-A well known PDE that we can solve with BEM is the Laplace equation. For a scalar quantity $\phi$ in a domain $\Omega$ with boundary $\Gamma$, and 
+A well known PDE that we can solve with \bem is the Laplace equation. For a scalar quantity $\phi$ in a domain $\Omega$ with boundary $\Gamma$, and 
 boundary conditions $\phi_0$ or $\partial \phi_0/\partial \mathbf{n}$, the Laplace equation takes the form:
 %
 \begin{align} \label{eq:lap_pde}
@@ -541,7 +541,7 @@ all normals are pointing outwards, and we need to include an extra negative sign
 {p_i} = \epsilon_2 \left[ \oint_\Gamma  x_i  \frac{\partial \phi_{2s}}{\partial \mathbf{n}} \text{d}\Gamma - \oint_\Gamma \phi_{2s} n_i \; \text{d}\Gamma \right].
 \end{equation}
 
-Using BEM, we obtain the electrostatic potential and its normal derivative, on the surface of the nanoparticle, 
+Using \bem, we obtain the electrostatic potential and its normal derivative, on the surface of the nanoparticle, 
 which we use in Equation \eqref{eq:dipole_def_gauss_i_final} to get the dipole 
 moment, and in Equation \eqref{eq:scat_efield_long_range} to obtain the scattered
 electric field. We can then use Equation \eqref{eq:scat_efield_fwa} and Equation 
@@ -550,12 +550,12 @@ electric field. We can then use Equation \eqref{eq:scat_efield_fwa} and Equation
 
 \subsection{Acceleration strategies} \label{sec:acc_strategies}
 
-One disadvantage of the Boundary Element Method (BEM) is that it generates dense matrices
+One disadvantage of the Boundary Element Method (\bem) is that it generates dense matrices
 after discretization. Solving the resulting linear system using
 Gaussian elimination would require $\O{N^3}$ computations and $\O{N^2}$ storage, whereas for a
 Krylov-subspace iterative solver, like the Generalized Minimal Residual Method (GMRES),
 computations drop to $\O{N^2}$ because they are dominated by dense matrix-vector 
-products. This makes BEM inefficient with more than a few thousand boundary elements,
+products. This makes \bem inefficient with more than a few thousand boundary elements,
 which are the mesh sizes required for real applications. 
 
 In our formulation with Gaussian quadrature and collocation, the matrix-vector product
