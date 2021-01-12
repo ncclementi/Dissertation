@@ -1,12 +1,13 @@
 % !TEX root = ../thesis_main.tex
 
-\chapter{Isolated silver nanoparticle} \label{chap:iso_silver_np}
+\chapter{Isolated silver nanoparticle - Verification results} \label{chap:iso_silver_np}
 \graphicspath{{iso_silver_np/figs/}}
 
-{\color{red}
-Write paragraph here to introduce section, once results of the 
-section are written
-}
+When we are in the long wavelength limit, we know that the electrostatic approximation 
+applies and we can model the scattering of a small metallic sphere as a nanoparticle 
+under a constant electric field (see Figure \ref{fig:sph_field}). This problem 
+has an analytical solution and we use it to perform a grid-convergence analysis for 
+the verification of the \pygbe solver.
 
 \section{Verification of \pygbe} \label{sec:verification}
 
@@ -24,7 +25,7 @@ long wavelength limit, electrostatics will lead us to the same solution
     C_\text{ext} = 4\pi a^3 k \operatorname{Im}\left(\frac{\epsilon_p/\epsilon_m -1}{\epsilon_p/\epsilon_m -2}\right)
 \end{equation}
 
-\noindent where $a$ is the radius of the nanosphere, $k$ the wave number, 
+where $a$ is the radius of the nanosphere, $k$ the wave number, 
 $\epsilon_p$ the dielectric constant od the nanoparticle, and $\epsilon_m$ the
 dielectric constant of the host medium, in this case,  vacuum permittivity
 ($\epsilon_m = \epsilon_0$).  This formula, does not count for losses in the medium.
@@ -35,7 +36,7 @@ the host environment:
     C_\text{ext} = \frac{4\pi a^3}{k^\prime} \operatorname{Im}\left(k^2 \frac{\epsilon_p/\epsilon_m -1}{\epsilon_p/\epsilon_m -2}\right)
 \end{equation}
 
-\noindent where $k=k^\prime + k^{\prime\prime}i$. When the host medium is 
+where $k=k^\prime + k^{\prime\prime}i$. When the host medium is 
 non-absorbing, $k$ is real ($k^{\prime\prime} = 0$ and $k=k^\prime$) and we 
 recover \eqref{eq:Cext_analytical}. 
 
