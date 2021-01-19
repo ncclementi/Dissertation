@@ -1,0 +1,63 @@
+A biosensor is a measuring device used to detect the presence or concentration of a biomolecule. The general system includes 
+a probe with a sensitive biological receptor, a transducer and a detector. For the last three decades research in biosensing have experienced a rapid growth with applications in multiple areas like
+medical diagnoses, disease monitoring, drug delivery studies, and detection of biological agents 
+\cite{Turner2000, Mohanty2006, Mehrotra2016}. Optical biosensors are a particular type of biosensors known for their sensitivity and real-time detection. Among many 
+optical sensing techniques we have fluoresence, Raman spectroscopy, lithography, and surface plasmon resonance. One of the most used optical biosensors are the
+ones based on surface plasmon resonance (SPR) changes in thin gold films. These sensors exploit a particular type electromagnetic waves 
+called surface plasmon polaritons for the detection of a biomolecule \cite{Homola2008}. However, when using metallic nanoparticles instead of 
+thin films a powerful resonance peak shows in the visible range, and we called this phenomenon Localized Surface Plasmon Resonance (LSPR). 
+In LSPR the resonance wavelength depends on the refraction index of the environment, the geometry of the nanoparticle and its material. In particular, 
+LSPR biosensors measure the shift in the plasmon resonance wavelength ($\Delta\lambda$) of the metallic nanoparticle as a biomolecule approaches to it.
+Biosensing based on LSPR has shown to be more precise and of high-sensitivity detection \cite{Sepulveda2009}, and this technique has been used in 
+multiple areas of biological detection such viruses and cancer \cite{Wang2010, Liu2014, Zhu2016}. 
+
+The physics of localized surface plasmon resonance are modeled and solved by Maxwell's equations, and they are generally solved numerically 
+by using using finite difference time-domain (FDTD), boundary element, or finite element methods \cite{SolisTaboadaObelleiroLiz-MaarzanGarciadeabajo2014}.
+These methods have been used to study 
+the optical properties of dielectric or metallic nanoparticles \cite{Hohenester2018,HohenesterTrugler2012,
+JungPedersenSondergaardPedersenLarsenNielsen2010, VideenSun2003,
+MayergoyzFredkinZhang2005, MayergoyzZhang2007}, interactions between nanoparticles
+and electron beams \cite{GarciadeabajoAizpurua1997, GarciadeabajoHowie2002},
+and surface plasmon resonance sensors. However, for the latter application researchers use simple mathematical models for the interaction 
+between the nanoparticle and the biomolecules, like representing the molecules as simple spheres \cite{DavisGomezVernon2010,AntosiewiczApellClaudioKall2011, SantiagoCordobaETal2011, ShenETal2013, UngerETal2009}
+or a prisms \cite{DanHu2014}, using constant real dielectrics for the analyte \cite{NghiemETal2012, SantiagoCordobaETal2011, ShenETal2013, UngerETal2009}, 
+or representing the embedding medium and dissolved biomolecules with an effective permittivity \cite{JungCampbellChinowskyMarYee1998,WilletsVandyune2007,PhanETal2013}.
+
+Progress in the field of biosensing is mainly developed through experimental research, which can be costly and time consuming. We believe that 
+computational approaches could complement the design process and play a key role in the optimization of biosensors. Using computational approaches
+can not only reduce the cost of the exploratory stages of but also give access to details that are not always available in experimental settings. For example, 
+the distance between the sensor and the biomolecule, the amount of analytes in the vicinity of the sensor and their orientation, and also other factors such like
+the inclusion of the charges in the protein and the effects of the magnitude in the electric field when they are present. There are studies that show that 
+the sensitivity of the sensor depends highly on the distance between the nanoparticle and the analyte \cite{HaesETal2004}. Some experimental studies complement
+their results with models that ignore the presence of the biomolecules. Beuwer et al.~\cite{BeuwervanHoofZijlstra2018} and Henkel et al.~\cite{HenkelETal2018} 
+used a boundary element method (BEM) in studies of the sensitivity of plasmonic sensors relying on (at least) two metallic nanoparticles 
+(one on the sensor and one attached to the analyte). There is experimental evidence that shows that LSPR sensors are sensitive enough to detect conformational
+changes in the biomolecules used as analytes \cite{HallETal2011}, having overly simplified models will imply not capturing such details. 
+
+
+When the wavelength of the incoming field is much larger than the size of the nanoparticle ($\lambda>>d$), the physics of the optical phenomenon of 
+localized surface plasmon resonance can be reduced to simply electrostatics. This approximation makes possible to use our boundary integral 
+electrostatic solver \pygbe to compute the extinction cross section of metallic or dielectric nanoparticles, and to study how the LSPR response varies in the 
+presence of a biomolecule. In this work we present results on how sensitivity is affected by the distance between the sensor and the analyte in LSPR biosensors, 
+how the geometrical model of the biomolecule and its orientation affects the LSPR response, the impacts of using real versus dielectric models for both 
+the analyte and the embedding medium, as well as how the effects of including charges in the protein model and how the electric field magnitude
+plays a role in it.
+
+\pygbe is a Python implementation of continuum electrostatic theory that relies on the boundary element method, its original application included 
+the computing of solvation energy of biomolecular systems \cite{CooperBardhanBarba2013}, and the studying of protein orientation near charged nanosurfaces \cite{CooperClementiBarba2015}. In 
+2017 we extended \pygbe to to nanoplasmonics, by treating localized surface plasmon resonance (LSPR) quasistatically \cite{ClementiETal2017}. The boundary 
+element solver in \pygbe is accelerated algorithmically via a treecode, an $\mathcal{O}(N\log N)$ fast-summation method, and on hardware by taking advantage of 
+graphic processing units (GPUs). This allows us to handle problems in the order of half a million boundary elements, or more, thus being able to use the explicit 
+representation of the biomolecular surface. There are other research softwares that could be use for this application, like BEM++ \cite{SmigajETal2015} and a Matlab toolbox 
+called MNPBEM \cite{HohenesterTrugler2012}, which have the capability to solve the full Maxwell's equations and the electrostatic approximation in the long-wavelength limit. However, 
+we believe in both cases the size of the problems, in terms of number of boundary elements, they can solve, may not be enough to resolve the details of the biomolecules. 
+ 
+To the best of our knowledge, \pygbe is the only open-source software that uses a fast algorithm ($\mathcal{O}(N\log N)$),
+for N unknowns—and hardware acceleration on GPUs to compute the extinction cross-sections of arbitrary geometries to explore
+nanophotonics applications in the quasistatic limit. Our software it is openly developed via its repository on 
+Github (\url{https://github.com/barbagroup/pygbe}), it has been verified \ref{sec:verification} and validated \ref{ssec:validation},
+and we share it under the BSD 3-clause license.
+This work follows careful reproducibility practices, and the materials necessary to reproduce or replicate our results are publicly available in 
+reproducibility packages.  We use services like Figshare and Zenodo to deposit the meshes, input and configuration files, execution scripts 
+to reproduce the data, and jupyter notebooks and scripts to reproduce the figures. We provide specific information about the reproducibility packages 
+at the end of each chapter with results. 
