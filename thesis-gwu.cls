@@ -432,7 +432,8 @@
     B.S. in \insertbsdepartment, \insertbsgrad, \insertbsschool \\
     M.S. in \insertmsdepartment, \insertmsgrad, \insertmsschool \\[2\baselineskip]
    \else
-    B.S. in \insertbsdepartment, \insertbsgrad, \insertbsschool \\[2\baselineskip]
+    Licenciatura. \insertbsdepartment, \insertbsgrad, \insertbsschool \\[2\baselineskip]
+    %B.S. in \insertbsdepartment, \insertbsgrad, \insertbsschool \\[2\baselineskip]
    \fi
    % Text from guidelines
    A Dissertation submitted to \\[3\baselineskip] %
