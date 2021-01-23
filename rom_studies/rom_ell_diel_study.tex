@@ -32,7 +32,7 @@ Moreover, there are no study that explore the effects of using reduced-order mod
 in computational models. This chapter cover the results of using different assumptions in the modelling process and what 
 are the implications of them.
 
-\section{BSA as a prolate ellipsoid}
+\section{BSA as a prolate ellipsoid} \label{sec:ell_study}
 
 The crystal structure of the BSA (pdb 4f5s) used in our simulations corresponds
 to a dimer. Knowing that this structure can be modeled as an ellipsoid \cite{SquireETal1968},
@@ -420,13 +420,13 @@ present in the protein, the extinction cross section does not varies when the ma
 changes. 
 
 
-\section{Dielectric study}
+\section{Dielectric study}\label{sec:diel_study}
 
 Most computational works in the literature use a constant real dielectric value both in the protein and the
 embedding medium \cite{NghiemETal2012, SantiagoCordobaETal2011,UngerETal2009}, such modeling does not count for the losses 
 in that medium. LSPR biosensors detect a target molecule by monitoring plasmon resonance frequency changes due to the proximity 
 of the target to the metallic nanoparticle. In this section we show how the LSPR response changes when choosing different models 
-for the dielectric in the protein and the medium around the system sensor-protein. We use the same setup used in chapter \ref{chap:lspr_response_bsa}
+for the dielectric in the protein and the medium around the system sensor-protein. We use the same setup used in chapter \ref{sec:lspr_response_bsa}
 where we have two BSA proteins located at $\pm$ 1 nm on the $z$-direction of a silver nanoparticle of radius $r=8$ nm (see 
 Figure \ref{fig:display_z}). The system sensor-protein is submerged in water and under a constant electric field of 
 $0.0037$ $[e]/([{\text{\AA}}^2][\epsilon_0])$ in the $z$-direction. We firstly study the effect of having a real-valued dielectric 
