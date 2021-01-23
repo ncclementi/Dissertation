@@ -3,7 +3,8 @@
 \usepackage{xspace}
 \usepackage{xcolor} %remove if not needed at the end
 \usepackage{multirow} 
-\usepackage{mathpazo}
+\usepackage{mathpazo} %uses palatino in text and math 
+\usepackage{cite} %takes cares of citing 1-5 instead of 1,2,3,4,5
 
 
 \input{macros}
@@ -30,6 +31,10 @@
 \include{replication_validation/rep_val_intro}
 \include{replication_validation/rockstuhl_rep}
 \include{replication_validation/ellis_rep_val}
+
+%conclusions
+\include{conclusions/conclusions}
+
 
 \bibliographystyle{unsrt}
 \bibliography{thesis_ncc_bib}
