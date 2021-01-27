@@ -4,40 +4,41 @@
 
 Up to this point our software \pygbe has gone through a solution verification, and has been used for 
 LSPR biosensing application studies. However, the possibility of validation was hard to imagine. It was not
-until we explored the field of surface phonon polaritons and identify that our electrostatic approach was suitable, 
-that we were able to perform a replication study and also validate our software. In this chapter we present replication 
-studies of computational results and a validation case against experimental results.
-When we talk about replication we refer to the definition established by the National Academies of Science, Engineering 
+until we explored the field of surface phonon polaritons and identify that our electrostatic approach was suitable to model it, 
+that we were able to perform replication studies and also validate our software. In this chapter we present replication 
+studies of computational results and a validation case against experimental results. 
+
+According to the definition established by the National Academies of Science, Engineering 
 and Medicine (NASEM) report on Replicability and Reproducibility in Science \cite{NASEM2019}: "Replicability is obtaining 
 consistent measurements or results, or drawing consistent conclusions using new data, methods, or conditions, in a
 study aimed at the same scientific question.” 
 
-In section \ref{sec:verification} we show the results of the verification of our solver, but the gold standard of confidence 
-in the predictive capability of the computational model comes from validation, which seeks to determine to what extent a
-computational model represents the physical world. As we mentioned the replication and validation studies came to scene 
-when we started exploring the field of surface phonon polaritons. 
+In section \ref{sec:verification} we show the results of the verification of our 
+solver, but the gold standard of confidence in the predictive capability of the computational model comes from validation, which 
+intends to determine if a computational model represents the physics of the real world problem. "Verification is solving the equations
+right, and validation is solving the right equations" \ref{Roache1998}. 
 
 In recent years, polar dielectric crystals such as Silicon Carbide (SiC) became recognized as an alternative to 
 plasmonic metals in many technologies, including biosensors. They manifest oscillations of lattice-bound charges, called surface 
 phonon polaritons, in the mid- to long-wave infrared range with low optical losses. Nanostructures made of these materials offer sensing 
-capabilities, described by their \emph{figure of merits}, that are unattainable with plasmonic metals. The figure of merits of a nanoparticle
+capabilities, described by their "figure of merits", that are unattainable with plasmonic metals. The figure of merit of a nanoparticle
 is defined as the ratio between the sensitivity and the width of the resonance peak at mid-height \cite{otte2012}, where 
 sensitivity is the shift in the resonance position divided by the change in the refractive index: 
-$S = \Delta \lambda / \Delta n$.
+$S = \Delta \lambda / \Delta n$. 
+
 The dielectric function of polar dielectrics has a negative real part and a small imaginary part, in the mid to long infrared regime. 
 This dielectric behavior is similar to that observed in metals like silver in the blue part of the wavelength spectrum. 
 In plasmonics, when illuminating a small particle made of metallic materials, we will observe that certain wavelengths excite a surface plasmon. 
 The main difference with polar dielectrics like SiC is that for this material the frequency of the incoming light matches instead the resonance 
 frequency of the Si and C sub-lattices \cite{caldwell2015,rockstuhl2005}. This excitation leads to a strong extinction cross-section at the 
-resonance wavelength, and an enhanced near-field amplitude. These behaviors can be modeled with the same approaches used for localized surface plasmon 
-resonance, and when the wavelength is much larger than the size of the nanoparticle, we can again apply the electrostatic approach 
+resonance wavelength, and an enhanced near-field amplitude. These behaviors can be modeled with the same approach used for localized surface plasmon 
+resonance, and when the wavelength is much larger than the size of the nanoparticle, we can again apply the electrostatic framework 
 implemented in \pygbe \cite{ClementiETal2017, ClementiETal2019}.
 
 When studying both surface phonon polaritons and surface plasmon resonances, one can analyze the spectrums by measuring different quantities. 
 We can measure scattering cross-section, absorption, or extinction cross-section (scattering plus absorption), as well as reflection. 
 Since the \textit{quantity of interest} is the wavelength (frequency) at which the resonance modes happen, 
 these different approaches are comparable in some cases, e.g., whether we measure reflection or extinction cross-section, the 
-wavelength (frequency) at which the peaks happen remains the same. 
-Throughout this chapter, we concentrate on studying the wavelength (frequency) at which the resonance modes occur, 
-and we aim to replicate results from Rockstuhl et al.\ 2005 \cite{rockstuhl2005} and from Ellis et al.\ 2016 \cite{ellis2016}, 
-and to validate our software against experimental results from Ellis et al.\ 2016 \cite{ellis2016}.
+wavelength (frequency) at which the peaks happen remains the same. Throughout this chapter, we concentrate on studying the wavelength 
+(frequency) at which the resonance modes occur, and we aim to replicate results from Rockstuhl et al.\ 2005 \cite{rockstuhl2005} and from 
+Ellis et al.\ 2016 \cite{ellis2016}, and to validate our software against experimental results from Ellis et al.\ 2016 \cite{ellis2016}.
