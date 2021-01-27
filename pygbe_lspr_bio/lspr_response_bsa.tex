@@ -3,11 +3,12 @@
 \chapter{\pygbelspr: A computational biosensing application} \label{chap:pygbe-lspr}
 \graphicspath{{pygbe_lspr_bio/figs/}}
 
-\pygbelspr \cite{ClementiETal2017} is the python library for applications in 
-nanoplasmonics. This application was added to the original \pygbe \cite{CooperETal2016} which
-is used to study biomolecular electrostatics, and it extends \pygbe to nanoplasmonics, by treating 
-localized surface plasmon resonance (LSPR) quasi-statically \cite{MayergoyzZhang2007}. In this chapter 
-we show the verification of \pygbelspr as well as an application on LSPR biosensing. 
+\pygbelspr \cite{ClementiETal2017} is a python library for applications in 
+nanoplasmonics. The first implementation of \pygbe \cite{CooperETal2016} was used to study electrostatics 
+of biomolecules \cite{CooperBardhanBarba2013} and probing protein orientation \cite{CooperClementiBarba2015}. The 
+most recent implementation extends \pygbe to nanoplasmonics, by treating localized surface plasmon resonance (LSPR) 
+quasi-statically \cite{MayergoyzZhang2007}. In this chapter we show the verification of \pygbelspr as well as an 
+application on LSPR biosensing. 
 
 \section{Verification of \pygbe - Isolated silver nanoparticle } \label{sec:verification}
 
@@ -15,11 +16,9 @@ When we are in the long wavelength limit, we know that the electrostatic approxi
 applies and we can model the scattering of a small metallic sphere as a nanoparticle 
 under a constant electric field (see Figure \ref{fig:sph_field}). This problem 
 has an analytical solution and we use it to perform a grid-convergence analysis for 
-the verification of the \pygbe solver.
-
-In this section we show a verification study. We compare the numerical solution
-obtained we \pygbe against an analytical solution available for spherical 
-nanoparticles. 
+the verification of the \pygbe solver. In this section we show a verification study, where 
+we compare the numerical solution obtained we \pygbe against an analytical solution available 
+for spherical nanoparticles. 
 
 The first analytical solution of the extinction cross section of spherical 
 nanoparticles in vacuum, known as Mie-Theory, was presented by Gustav Mie in 1908
@@ -32,10 +31,10 @@ long wavelength limit, electrostatics will lead us to the same solution
 \end{equation}
 
 where $a$ is the radius of the nanosphere, $k$ the wave number, 
-$\epsilon_p$ the dielectric constant od the nanoparticle, and $\epsilon_m$ the
+$\epsilon_p$ the dielectric constant of the nanoparticle, and $\epsilon_m$ is the
 dielectric constant of the host medium, in this case,  vacuum permittivity
 ($\epsilon_m = \epsilon_0$).  This formula, does not count for losses in the medium.
-However, in 2007 Mishchenko presented a solution that counts for losses in
+However, in 2007 Mishchenko \cite{Mishchenko2007} presented a solution that counts for losses in
 the host environment:
 
 \begin{equation} \label{eq:Cext_analytical_lossy}
@@ -66,6 +65,7 @@ of wavelength 380 nm and intensity of $-0.0037 e/(\text{\AA}^2 \, \epsilon_0)$.
 For these conditions, the dielectric constant of water is
 $1.7972 \, + \, 8.5048^{-09}i$ \cite{HaleQuerry1972} and for silver is
 $-3.3877 \, + \, 0.1922i$ \cite{JohnsonChristy1972}. 
+
 Table  \ref{table:quadparams1} shows the Gauss quadrature points used for each 
 type of boundary element. We used a threshold parameter to define the near-singular
 region of 0.5. This threshold defines the region of near singularity where 
@@ -100,9 +100,10 @@ used in this convergence study.
     \end{tabular}
 \end{table}
 
-Figure \ref{fig:conv_iso_sph} shows the results for the convergence study, with meshes of sizes 512, 2048, 
-8192 and 32768 elements. The errors (Table \ref{table:err_iso_sph}) are computed against 
-the analytical solution $C_{ext} = 1854.48$ nm$^2$ computed using Equation \eqref{eq:Cext_analytical_lossy}.
+Figure \ref{fig:conv_iso_sph} shows the results for the convergence study, with meshes of 512, 2048, 
+8192 and 32768 elements. The meshes for the sphere where created with a python script that can be found in the
+code repository \url{https://github.com/pygbe/pygbe}. Table \ref{table:err_iso_sph} shows the errors that are computed against
+the analytical solution $C_{ext} = 1854.48$ nm$^2$ obtained using Equation \eqref{eq:Cext_analytical_lossy}.
 The dash line in Figure \ref{fig:conv_iso_sph} corresponds to a $1/N$ slope, and the observed order of 
 convergence is $0.98$ which indicates that the meshes are correctly resolving the numerical solution with \pygbe.
 The $1/N$ rate of convergence is consistent with convergence results in
@@ -137,21 +138,21 @@ previous work using \pygbe \cite{CooperBardhanBarba2013}.
 \subsection{LSPR response of silver nanosphere}\label{sub_sec:lspr_silver_np}
 
 To complement the verification test for the Localized Surface Plasmon Resonance (LSPR) implementation
-on \pygbe, we computed the extinction cross section of the isolated silver sphere across multiple 
+of \pygbe, we computed the extinction cross section of the isolated silver nanosphere across multiple 
 wavelengths. Figure \ref{fig:verif_sph} shows the results of comparing the simulations with the
 analytical solution for a range of wavelengths from $[370-400]$ nm. The values of the dielectric 
 for each wavelength were obtained by interpolation of experimental data 
-\cite{HaleQuerry1972, JohnsonChristy1972}. To reproduce the interpolation study, we create
-a Jupyter notebook and supporting code that can be find as part of the execution files
-repro-package \cite{ClementiETal2018b}.
+\cite{HaleQuerry1972, JohnsonChristy1972}. To reproduce the interpolation study, we created
+a Jupyter notebook and supporting code that can be found as part of the execution files of the 
+reproducibility packages (see section \ref{sec:repro_lspr}).
+
 For this verification exercise we use a mesh of $N=32768$, and we relaxed some parameters 
-compared to the ones used in the convergence analysis from section \ref{sub_sec:grid_conv_iso} 
-that are shown in Tables \ref{table:quadparams2} and \ref{table:treeparams2}. The errors for each 
-frequency are below $1\%$, and each runtime decrease by $12\times$.
-Figure \ref{fig:verif_sph} exposes a good agreement between the analytical and simulation results, 
-showing that \pygbe can accurately represent the mathematical model. Moreover, we can say that 
-the level of accuracy is sufficient, given that the experimental uncertainty for the dielectric 
-values for silver is in the order of $1\%$ \cite{JohnsonChristy1972}. 
+compared to the ones used in the convergence analysis from section \ref{sub_sec:grid_conv_iso}. We found 
+that using the parameters in Tables \ref{table:quadparams2} and \ref{table:treeparams2} the errors for each 
+frequency stay below $1\%$, and each runtime decreases by $12\times$. Figure \ref{fig:verif_sph} exposes a good 
+agreement between the analytical and simulation results, showing that \pygbe can accurately represent the 
+mathematical model. Moreover, we can say that the level of accuracy is sufficient, given that the experimental 
+uncertainty for the dielectric values for silver is in the order of $1\%$ \cite{JohnsonChristy1972}. 
 
 \begin{figure}%[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -193,7 +194,7 @@ values for silver is in the order of $1\%$ \cite{JohnsonChristy1972}.
 
 Localized surface plasmon resonance (LSPR) biosensors detect target molecules
 by tracking frequency shifts in the plasmon resonance of metallic nanoparticles
-in the presence of analytes \cite{WilletsVandyune2007}. The chapter presents the 
+in the presence of analytes \cite{WilletsVandyune2007}. This chapter presents the 
 modeling of LSPR biosensors using \pygbe, and we show how our boundary elements approach is 
 suitable to model this phenomenon. We compute the extinction cross section 
 of a silver nanosphere with bovine serum albumin (BSA) proteins (PDB code: 4FS5,
@@ -219,12 +220,12 @@ analysis, resulting in $N_{prot} = 98116$ elements.
 We use the same conditions used in the grid convergence analysis of the 
 isolated nanoparticle of section \ref{sub_sec:grid_conv_iso}, presented
 in Tables \ref{table:quadparams1} and \ref{table:treeparams1}. The protein 
-dielectric constant for a wavelength of 380 nm is $2.7514 + 0.2860i$, this  
-value was computed using a functional relationship provided by Phan
+dielectric constant for a wavelength of 380 nm is $2.7514 + 0.2860 i$,   
+value computed by using a functional relationship provided by Phan
  et al.~\cite{PhanETal2013}. The protein was located at a distance of 
  $d=$ 1 nm of the sphere along the z-axis, such that its dipole moment 
- was aligned with the y-axis. We show the errors in Figure  \ref{fig:err_sph-bsa} 
- and table \ref{table:err_sph-bsa} which were computed using the Richardson extrapolated
+ was aligned with the y-axis. Figure  \ref{fig:err_sph-bsa} sows the results of the convergence study and 
+ table \ref{table:err_sph-bsa} shows the errors computed using the Richardson extrapolated
 \ref{sec:rich_extrapolation} value of the extinction cross section $C_{ext}= 1778.73$ nm$^2$.
 
 \begin{figure}%[h] %  figure placement: here, top, bottom, or page
@@ -254,7 +255,7 @@ value was computed using a functional relationship provided by Phan
 
 The observed order of convergence is 0.99, and we can see in Figure
 \ref{fig:err_sph-bsa} that the error decays with the number of boundary elements
-at a rate of $1/N$, which is consistent with the verifications results showed
+at a rate of $1/N$, which is consistent with the verifications results presented
 in Section \ref{sec:verification}. This shows that the numerical solutions computed
 with \pygbe are correctly resolved by the meshes.
 
@@ -262,7 +263,7 @@ with \pygbe are correctly resolved by the meshes.
 
 When a target molecule approaches the metallic nanoparticle, the resonance frequency
 of this nanoparticle shifts. In this section, we computed the LSPR response as a
-function of the wavelength in the presence of BSA protein. We optimized run times 
+function of the wavelength in the presence of BSA proteins. We optimized run times 
 without compromising accuracy by using a relaxed set of parameters. For the protein
 mesh density we used one element per $\text{\AA}^2$ ($N_{prot} = 45140$) and for the
 sphere mesh we used $N_{sensor} = 32768$ elements. These calculations used the same
@@ -271,7 +272,18 @@ resulted in a percentage error below $1\%$, with respect to the Richardson-extra
 value. The run time for one frequency when two proteins are present, is approximately 
 $15$ min using a NVIDIA Tesla K40c GPU.
 
-
+Figure \ref{fig:display_z} shows a visualization of the meshes setup for these 
+calculations, with two BSA proteins located at $d=1$ nm away from the spherical 
+silver nanoparticle, along the $z$ axis. The position of the BSA molecule at $+z$ 
+axis is the same used for the convergence analysis in section \ref{sec:grid_conv_bsa},
+while the protein located in the $-z$ position is a 180$^\circ$ solid rotation 
+about the $y$ axis, of the BSA in $+z$.  Figure \ref{fig:2pz_response} shows the results
+of the calculations between 382 and 387 nm every $0.25$ nm, near the peak seen in Figure
+\ref{fig:verif_sph}. In Figure \ref{fig:2pz_response} we have the variation of the 
+extinction cross section with respect to wavelength for the isolated nanoparticle 
+($d=\infty$) and with BSA proteins located at $d=1$ nm apart from the nanosphere. The
+result shows a redshift ($0.5$ nm) in the resonance frequency due to the presence of 
+the BSA analytes.
 
 \begin{center}
     \begin{figure} %  figure placement: here, top, bottom, or page
@@ -283,19 +295,6 @@ $15$ min using a NVIDIA Tesla K40c GPU.
     \end{figure}
     \end{center}
 
-Figure \ref{fig:display_z} shows a visualization of the meshes setup for these 
-calculations, with two BSA proteins located at $d=1$ nm away from the spherical 
-silver nanoparticle, along the $z$ axis. The position of the BSA molecule at $+z$ 
-axis was the same used for the convergence analysis in section \ref{sec:grid_conv_bsa},
-while the protein located in the $-z$ position is a 180$^\circ$ solid rotation 
-about the $y$ axis, of the BSA in $+z$.  Figure \ref{fig:2pz_response} shows the results
-of the calculations between 382 and 387 nm every $0.25$ nm, near the peak seen in Figure
-\ref{fig:verif_sph}. In Figure \ref{fig:2pz_response} we have the variation of the 
-extinction cross section with respect to wavelength for the isolated nanoparticle 
-($d=\infty$) and with BSA proteins located at $d=1$ nm apart from the nanosphere. The
-result shows a redshift ($0.5$ nm) in the resonance frequency due to the presence of 
-the BSA analytes.
-
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{2pz_R8nm.pdf} 
@@ -306,24 +305,21 @@ the BSA analytes.
     \label{fig:2pz_response}
  \end{figure}
 
-Figure \ref{fig:2pz_response} shows a redshift of the plasmon resonance frequency 
-peak in the presence of two BSA proteins located at 1 nm along the $z$ axis. Experimental 
-observations in the work of Tang, et al.~\cite{TangETal2010} revealed a redshift when 
+Experimental observations in the work of Tang, et al.~\cite{TangETal2010} revealed a redshift when 
 BSA proteins in a solution are added to silver nanoparticles of approximately $17$ nm 
 in diameter. They also observed a decrement of the peak amplitude, similarly to the 
 effects we see with our model. Moreover, recent experiments \cite{PuETal2018} report 
 resonance frequency between $380$ and $400$ nm for a silver nanosphere in the presence
 of BSA proteins (check reference and its supplementary material), which is consistent with 
 our results. Other experiments \cite{RaphaelETal2013} also report redshifts in the presence
-of different proteins. The boundary element method approach that we implemented using 
+of different proteins. We can say that the boundary element method approach that we implemented using 
 electrostatic approximation is thus able to capture the characteristics of LSPR biosensors
 based on resonance-frequency shift. 
 
-We also study the effect of the location of the proteins, we performed the same 
-calculations but now placing the BSA analytes along the $x$ and $y$ axis at $\pm 1$ nm,
-as shown in Figure \ref{fig:display_xy}. We obtain these configurations by performing
-a 90$^\circ$ solid rotation of the $z$-configuration (Figure \ref{fig:display_z})
-along the $x$- and $y$-axis, respectively. 
+We also studied the effect of the location of the proteins in the lSPR response. We performed 
+the same calculations but now placing the BSA analytes along the $x$ and $y$ axis at $\pm 1$ nm,
+as shown in Figure \ref{fig:display_xy}. We obtained these configurations by performing
+a 90$^\circ$ solid rotation of the $z$-configuration (Figure \ref{fig:display_z}) along the $x$- and $y$-axis, respectively. 
 
  \begin{figure}
     \centering
@@ -346,9 +342,9 @@ along the $x$- and $y$-axis, respectively.
  \end{figure}
 
 Figure \ref{fig:display_xy} shows the configuration where the proteins are placed at a 
-distance in the $x$ (top) or $y$ (bottom) direction, and Figure \ref{fig:2pxy_response} 
+distance of $\pm 1$ nm in the $x$ (top) or $y$ (bottom) direction, and Figure \ref{fig:2pxy_response} 
 shows the  results for each configuration. For these setups where the 
- electric field is aligned with the $z$ axis, the LSPR response is negligible. The 
+electric field is aligned with the $z$ axis, the LSPR response is negligible. The 
 frequency shifts in Figure \ref{fig:2pxy_response} are smaller than the wavelength 
 resolution ($<0.25$ nm). This finding is consistent with the free electrons oscillating
 along the $z$ axis under a $z$-polarized electric field, and not in the $x$ and $y$ 
@@ -369,26 +365,26 @@ $0.25$ nm while when the analytes are at $d=0.5$ nm the shift is $0.75$ nm. The 
 used in these simulations remain the same as the ones used for the cases in Figures 
 \ref{fig:2pz_response} and \ref{fig:2pxy_response}.
 
-\begin{figure}%[h] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=0.85\textwidth]{2pz_lspr_response.pdf} 
-   \caption{Extinction cross-section as a function of wavelength for an $8$-nm
-            silver sphere immersed in water with two BSA proteins placed at
-            $2$, $1$, and $0.5$ nm away from the surface in the 
-            $z$-direction, and at infinity (no protein). The test case with
-            $d=0.5$nm is close to the limit where quantum tunneling might happen. 
-            Such effects are not captured by our classical model.}
-   \label{fig:dist_response}
-\end{figure}
-
 As expected, Figure \ref{fig:dist_response} shows how the shift decreases as the BSA 
 proteins move away from the nanoparticle, to the point that we only see a shift of 
-$0.25$ nm when the analyte is $2$ nm away. This results shows the potential of \pygbe 
-and the electrostatic approach to study biosensors sensitivity with distance. It's 
+$0.25$ nm when the analyte is $2$ nm away. These results shows the potential of \pygbe 
+and the electrostatic approach to study biosensors sensitivity with distance. It is 
 worth noting that quantum effects (e.g., tunneling) at $d=0.5$ nm are ignored with 
 our classical approach. Even if this distance could be close to the quantum regime, 
 there is evidence that classical theory is valid at this distance in similar systems
 \cite{SavageETal2012, EstebanETal2012}
+
+\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=0.85\textwidth]{2pz_lspr_response.pdf} 
+    \caption{Extinction cross-section as a function of wavelength for an $8$-nm
+             silver sphere immersed in water with two BSA proteins placed at
+             $2$, $1$, and $0.5$ nm away from the surface in the 
+             $z$-direction, and at infinity (no protein). The test case with
+             $d=0.5$nm is close to the limit where quantum tunneling might happen. 
+             Such effects are not captured by our classical model.}
+    \label{fig:dist_response}
+ \end{figure}
 
 Even though there is evidence that techniques such as plasmon-enhanced Raman 
 scattering are capable of detecting to the single-molecule limit 
@@ -418,7 +414,7 @@ exactly met for BEM.
 
 All the results of this chapter have been published in the journal 
 Physical Review E \cite{ClementiETal2019} and can be reproduced or replicated. \pygbe is openly developed and 
-shared under the BSD3-clause license via its repository at \url{https://github.com/barbagroup/pygbe}.
+shared under the BSD3-clause license via its repository at \url{https://github.com/pygbe/pygbe}.
 
 All results of this chapter were obtained on a lab workstation, built from parts. Hardware specifications are as follows:
 
@@ -435,6 +431,6 @@ Each folder contains the geometry files and charges files when applicable (.pqr)
 We provide the scripts and any additional file needed to run \pygbe to re-generate every result in this chapter, in a 
 separate Zenodo deposit \cite{ClementiETal2018b}. The execution of these scripts will generate the user's own version of the data needed to re-create 
 the figures of this chapter (For more details, the reader can consult a \texttt{README} file in the Zenodo archive).
-Finally we provide \emph{Reproducibility packages} deposited on Figshare to reproduce the figures in this chapter, which include 
+Finally we provide reproducibility packages deposited on Figshare to reproduce the figures in this chapter, which include 
 figures, plotting scripts and Jupyter notebooks that organize and re-create the results 
 \cite{ClementiETal2018c,ClementiETal2018d,ClementiETal2018e,ClementiETal2018f}.
