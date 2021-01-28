@@ -1,7 +1,7 @@
 % !TEX root = ../thesis_main.tex
 \chapter{Conclusions}
 
-In this work we extended the implicit-solvent model of electrostatics implemented in \pygbe \cite{CooperClementiBarba2015}
+In this work, we extended the implicit-solvent model of electrostatics implemented in \pygbe \cite{CooperClementiBarba2015}
 to study nanoplasmonics in the quasistatic limit for applications in biosensing \cite{ClementiETal2017, ClementiETal2019}.
 We applied this model to simulations of localized surface plasmon resonance, where we computed the extinction cross section of 
 conductive nanoparticles and computed the shift in the resonance frequency when having biomolecules in the vicinity of the 
@@ -12,24 +12,24 @@ nanoparticle.
 We developed an open source boundary integral solver for computational nanoplasmonics in the quasistatic limit. We extended \pygbe to work 
 with complex values, and added the functionality needed to solve localized surface plasmon resonance problems. \pygbe 
 counts with an algorithmic acceleration with a treecode, and hardware acceleration with GPUs, making this solver 
-suitable to compute problems of at least half a million boundary elements, which is required to represent the solvent excluded 
+suitable to compute problems of at least a half million boundary elements, which is required to represent the solvent excluded 
 surface of the biomolecule accurately.
 
 We verified our solver against an analytical solution based on the Mie theory for silver nanospheres (section \ref{sec:verification}), and 
 presented convergence studies for our results, building confidence on the suitability of our boundary integral model and the  
 correctness of our solver. We performed a sensitivity study of an LSPR biosensor model by computing the resonance-frequency shift
 while varying the distance between the nanoparticle and the biomolecules. We showed that our boundary element methods approach in
-the quasistatic limit, is able to capture the characteristic behavior of LSPR biosensors (section \ref{sec:lspr_response_bsa}).
+the quasistatic limit can capture the characteristic behavior of LSPR biosensors (section \ref{sec:lspr_response_bsa}).
 
 We explored different reduced-order models for the protein, and showed that geometries like ellipsoids and spheres
 are not accurate models for the protein representation compared to using a meshed constructed from its crystal structure. Even though
 none of these models were accurate, the volume equivalent ellipsoidal model performed better compared to the surface based ellipsoidal 
 model and the volume equivalent spherical model. Using volume equivalent ellipsoids for the protein representation 
 translated to fast computations, that even if they were not accurate compared to the full model, they served as great candidates to
-explore the different components of the computational model of the biosensor. We used this model to shine light on the effects of multiple factors such us 
+explore the different components of the computational model of the biosensor. We used this model to shine light on the effects of multiple factors such as 
 the orientation of the protein, the presence of charges in the protein, the number of proteins, and the effect of the incoming electric field \ref{sec:ell_study}.
 We found that using real dielectrics for the protein and the embedding medium does not affect the shift in the resonance frequency, 
-as long as they are averaged values from the real part of the original complex data. However, using real dielectrics it does affect the 
+as long as they are averaged values from the real part of the original complex data. However, using real dielectrics does affect the 
 intensity of the extinction cross section, which is a problem if the results are intended to be used for sensitivity calculations \ref{sec:diel_study}. 
 These reduced-order models, despite not being accurate compared to the full protein model, provide fast computed insights that can be used 
 in the exploratory stage on the design or study of biosensors.
@@ -37,11 +37,11 @@ in the exploratory stage on the design or study of biosensors.
 We matched and replicated the findings of computational results in the general area of nanostructure responses to electromagnetic waves 
 from Rockstuhl et al. \cite{rockstuhl2005} and Ellis et al.\cite{ellis2016} (section \ref{sec:rep_rockstuhl} and \ref{sec:rep_val_ellis}). We validated
 \pygbe against experimental results of reflectance of localized surface phonon polariton (SPhP) nanostructures from Ellis et 
-al. (section \ref{sec:rep_val_ellis}). Both replication and validation studies were hard to achieve due to insufficient data and experiments 
+al. (section \ref{sec:rep_val_ellis}). Both replication and validation studies were difficult to achieve due to insufficient data and experiments 
 and/or simulation details, and we stated that the lack of reproducible open practices is the reason for it. We concluded that open reproducible 
-practices are needed not only to guarantee the work published is possible to reproduce, but also for replicability and validation studies. 
+practices are needed not only to guarantee the work published is possible to reproduce, but also for future replicability and validation studies. 
 
-All of the results of this work, along with the materials needed to reproduce or replicate them, were made publicly available in the form of 
+All of the results of this work, along with the materials needed to reproduce or replicate them, are publicly available in the form of 
 reproducibility packages (sections \ref{sec:repro_lspr}, \ref{sec:repro_ell}, and \ref{sec:repro_val}). The nanoplasmonics extension of \pygbe, and 
 the results of this work, can offer a valuable computational approach for the future studies on the field, and aid in the design of LSPR biosensors 
 as well as SPhP based sensors. 
