@@ -4,19 +4,19 @@
 \graphicspath{{replication_validation/figs/}}
 
 When looking for results to attempt the validation of \pygbe we found the study of Rockstuhl et al. 2005 \cite{rockstuhl2005}. 
-Even though their work consists on simulations and therefore does not qualify for a validation study, we 
-attempted the replication of one of their results. 
+Even though their work consists of simulations and therefore does not qualify as a validation study, we 
+attempted to replicate of one of their results. 
 
-Rockstuhl and coworkers, in their paper "Analysis of the phonon-polariton response of silicon carbide microparticles 
+Rockstuhl and coworkers, in their paper, "Analysis of the phonon-polariton response of silicon carbide microparticles 
 and nanoparticles by use of the boundary element method", study the phonon-polariton response of silicon carbide (SiC)
 nanoparticles using boundary element method. They use a two dimensional model previously developed on their group \cite{rockstuhl2003}
 to analyze 6H-SiC multiple "cylindrical particles" (third dimension tends to infinity). The results presented on Figure 14 of their paper  
 present the scattering cross-section of a SiC rectangular cylinder for different aspect ratios, and the case with $a = 672$ nm and $b = 328$ nm
 was a perfect candidate given that these dimensions comply with our quasistatic approach.
 
-In the work of Rockstuhl et al., they compute scattering cross section while with \pygbe we compute the extinction cross-section 
+In the work of Rockstuhl et al., they compute the scattering cross section, while with \pygbe we compute the extinction cross section 
 (absorption plus scattering). In the quasistatic regime absorption dominates over scattering, therefore these results are not directly
-comparable. However, when having materials which show narrow and sharp peaks on their spectra, the wavelength at which the peaks occur 
+comparable. However, when having materials that show narrow and sharp peaks on their spectra, the wavelength at which the peaks occur 
 in the scattering and extinction spectra, are nearly the same. For example, in the work of Wiley et al. \cite{wiley-etal-2006}
 we see that for a silver nanocube, the wavelength at which the main peaks occur for extinction and scattering, are nearly the same. Due to the properties 
 of silicon carbide, its spectra presents sharper and narrower peaks than silver, which leads to closely aligned extinction and scattering peaks.
@@ -25,7 +25,7 @@ of silicon carbide, its spectra presents sharper and narrower peaks than silver,
 
 \begin{itemize}
 
-\item {The main difference between the simulations in Rockstuhl and the ones performed with \pygbe is that the original results where obtained 
+\item {The main difference between the simulations in Rockstuhl and the ones performed with \pygbe is that the original results were obtained 
 using a 2D boundary element method that solves full Maxwell equations, while we solve a 3D problem with the quasistatic limit approximation.}
 
 \item{Rockstuhl et al. work did not have a section with details on their simulations such as discretization of the geometries or parameters 
@@ -65,9 +65,9 @@ Figure 14 of Rockstuhl et al. and we show the effects of the 3D model as well as
 
 \subsection{Replication of Figure 14 (case a1) of Rockstuhl et al., 2005}
 
-We replicate the case "a1" ($a=672$ nm and $b=328$ nm) from the Figure 14 from Rockstuhl et al., 
-this case has dimensions that are within the quasistatic limit used in \pygbe. Rockstuhl and coworkers show the normalized
-scattering cross-section of a SiC rectangular cylinder, and they perform simulations for the setups showed in the Figure
+We replicate the case "a1" ($a=672$ nm and $b=328$ nm) from Figure 14 from Rockstuhl et al.. This 
+case has dimensions that are within the quasistatic limit used in \pygbe. Rockstuhl and coworkers show the normalized
+scattering cross-section of a SiC rectangular cylinder, and they perform simulations for the setups shown in the Figure
 \ref{fig:rectangle_sketch}. In Figure \ref{fig:rectangle_sketch} (A) the electric field is parallel to the long side of the geometry, which 
 corresponds to the configuration of Figure 14 (right) of Rockstuhl et al. where the wave vector (illumination) goes along the short side of the geometry. 
 Similarly, we see that in Figure \ref{fig:rectangle_sketch} (B) the electric field is parallel to the short side of the geometry, which 
@@ -99,13 +99,13 @@ some peaks decreases, due to their association to the $y$-component. We have not
  \end{figure}
 
 For the simulations of Figure \ref{fig:ext_y_14} we generated the meshes using an open source software Trimesh (\url{https://github.com/mikedh/trimesh}), 
-but we realized that the mesher did not produce a uniform mesh and that it was not possible to obtained one with the functions available. To solve this problem 
+but we realized that the mesher did not produce a uniform mesh and that it was not possible to obtain one with the functions available. To solve this problem 
 we created a uniform mesh with our own Python script that can be found in the software repository (\url{https://github.com/pygbe/pygbe}). We study the 
 effect of using a uniform mesh and the roundness of the edges, the latter being mentioned by Rockstuhl et al. as a cause of the appearance of extra peaks. To 
 generate the roundness of the geometries we relied on Trimesh (we give as input the uniform mesh generated with our Python script), however, we did not have 
 control of the roundness as a function of the geometry dimensions or arc of curvature, so we used the default settings of
 the software. Figure \ref{fig:tri_reg_round_14} shows the results of the effect of mesh uniformity and roundness of the edges of the geometry. We can see 
-that for both orientation of the geometry ($E\parallel b$ and $E\parallel a$) the second peak located at $\approx$ 10.6 $\mu$m is much diminished in the
+that for both orientations of the geometry ($E\parallel b$ and $E\parallel a$) the second peak located at $\approx$ 10.6 $\mu$m is much diminished in the
 green curve. These effects can be attributed to the roundness of the edges, what is consistent with the results of Rockstuhl et al. Once we have found the
 "best" meshed geometry (uniform mesh plus round edges) that we can construct, we can compare our results (green curve \ref{fig:tri_reg_round_14}) with the ones
 in Rockstuhl et al. Figure 14. We present the replication results in Figure \ref{fig:rep_14}, and we can see that the main resonance peaks in Figure 14 of 
@@ -138,15 +138,15 @@ obtained the data from Rockstuhl's curves by using the WebPlotDigitizer (\url{ht
     \label{fig:rep_14}
  \end{figure}
 
-In this section we aimed to replicate a result from Rockstuhl et al., 2005 \cite{rockstuhl2005} presented in Figure 14 of their paper. 
+In this section, we aimed to replicate a result from Rockstuhl et al., 2005 \cite{rockstuhl2005} presented in Figure 14 of their paper. 
 They computed the scattering cross-section as a function of wavelength for a silicon carbide rectangular cylinder, and reported the
 numeric value of the resonance wavelengths in the text. They computed their results using a two-dimensional boundary element solver, 
-but the data behind the plots was not available, so we manually digitize the values from the figure. In Figure \ref{fig:rep_14} we 
-showed the comparison between our results and the digitized version of theirs. We succeed at replicating the peaks reported by 
+but the data behind the plots was not available, so we manually digitized the values from the figure. In Figure \ref{fig:rep_14} we 
+showed the comparison between our results and the digitized version of theirs. We succeeded at replicating the peaks reported by 
 Rockstuhl et al.\ at wavelengths 10.42 $\mu$m and 10.7 $\mu$m,  when the electric field $E$ is parallel to the short side of 
 the rectangle, and 10.42 $\mu$m and 10.82 $\mu$m when $E$ is parallel to the long side. However, our results contain extra smaller peaks 
-that are not present in Rockstuhl et al. The first one located between the main two peaks, which we attribute to the effect of sharp edges, 
-since when we introduce roundness, it diminishes (see Figure \ref{fig:tri_reg_round_14}). The second extra peak, on the far right of the spectra, 
-we attribute it to the 3D nature of the geometry, since the intensity of the peak decreases as the third dimension of the prism lengthens
-(see Figure \ref{fig:ext_y_14}). As we mentioned before the quantity of interest in these findings is the wavelength at which the resonance peaks
-occur, we can state that our results match and replicate the findings of Figure 14 of Rockstuhl et al. where $a = 672$ nm and $b = 328$ nm.
+that are not present in Rockstuhl et al. The first one, located between the main two peaks, that we attribute to the effect of sharp edges, 
+because when we introduce roundness, it diminishes (see Figure \ref{fig:tri_reg_round_14}). The second extra peak, on the far right of the spectra, 
+we attribute to the 3D nature of the geometry, because the intensity of the peak decreases as the third dimension of the prism lengthens
+(see Figure \ref{fig:ext_y_14}). As we mentioned before, the quantity of interest in these findings is the wavelength at which the resonance peaks
+occur. Our results match and replicate the findings of Figure 14 of Rockstuhl et al. where $a = 672$ nm and $b = 328$ nm.
