@@ -4,16 +4,16 @@
 \graphicspath{{replication_validation/figs/}}
 
 The work of Ellis et al. "Aspect-ratio driven evolution of high-order resonant modes and near-field distributions in
-localized surface phonon polariton nanostructures." \cite{ellis2016} has both computational and experimental results, what makes 
+localized surface phonon polariton nanostructures." \cite{ellis2016} has both computational and experimental results, that makes 
 it a perfect candidate to perform a validation as well as a replication study. Ellis and coworkers study the excitation of 
 multipolar localized surface polaritons (SPhP), by computing and measuring the polarized reflectance on 4H-SiC pillars of
-fixed width ($W = 400$ nm), fixed hight ($H=950$ nm) and varied length ($L=400-4800$ nm). To reduce coupling, these pillars are 
+fixed width ($W = 400$ nm), fixed height ($H=950$ nm) and varied length ($L=400-4800$ nm). To reduce coupling, these pillars are 
 pattern on a square grid with $P = L + 500$ nm. In their experiments (simulations), they measure (compute) the polarized reflectance
 where the incident polarization is oriented parallel or perpendicular to the length ($L$) of the pillars. We started by replicating a 
 computational result shown in Figure S4 of their supplementary material. Figure S4 of the 
 supplementary material shows simulation results for the resonance spectral position of the lower frequency mode when the angle of 
 incidence is $22$ degrees and the polarization is parallel to the length of the pillars. They present results for separations of $500$ nm 
-(red curve) and $5000$ (black curve), being the latter a good candidate for replication with \pygbe since a larger gap diminishes 
+(red curve) and $5000$ (black curve), the latter a good candidate for replication with \pygbe because a larger gap diminishes 
 the coupling (not included in our model). The setup in our computations consists of a single pillar with no substrate.
 Secondly, we aimed to replicate the results of Figure 2a of the main paper, 
 corresponding to reflectance measurements across the wave number for pillars of aspect ratio $AR=4$, angle of incidence 22 degrees, 
@@ -27,15 +27,15 @@ complex dielectric data for 4H-SIC provided by the authors of Ellis et al. via p
 
 \item {The simulations of Ellis et al. compute the solution of the Maxwell's equations using the RF package
 of the finite element solver in the commercial software COMSOL. Their setup consists of one pillar over a 
-substrate, with periodic boundary conditions to emulate the array of pillar used in their experiments. In our 
+substrate, with periodic boundary conditions to emulate the array of pillars used in their experiments. In our 
 solver we use the boundary element method in the quasistatic approximation, which is suitable since the wavelengths
 involved are in the range $10000-12500$ nm, and are considerably larger than the pillar's dimensions. We compute 
 the extinction cross section, where the resonance expresses as peaks instead of dips as in the reflection plots of 
 Ellis et al. The intensity of the peaks is not comparable, however, we are looking to match the wave number at which
 they happen.}
 
-\item {The simulations of Ellis et al. rely on a volumetric model and consequently it uses a volumetric mesh. In our 
-solver the geometries are represented as a triangular surface meshes. For the validation and replication of Figure 2a of 
+\item {The simulations of Ellis et al. rely on a volumetric model and use a volumetric mesh. In our 
+solver, the geometries are represented as a triangular surface meshes. For the validation and replication of Figure 2a of 
 their paper, where the pillars have an aspect ratio of $AR=4$, we use a non-uniform triangular mesh ($N=4398$) that 
 was provided by the authors of Ellis et al. However, for the replication of the Figure S4 of the supplementary material, 
 we were missing the remaining meshes for the other aspect ratios. To overcome this, we generated the meshes with our Python 
@@ -168,9 +168,9 @@ separation between the pillars is $500$ nm, which implies there are coupling eff
 \textbf{First-order correction.} 
 
 Since our simulations are performed on an isolated prism and do not take into account the coupling effects 
-in an array of prism, we cannot strictly match the conditions to validate our solver. However, from Figure S4 in the supplementary material of 
+in an array of prisms, we cannot strictly match the conditions to validate our solver. However, from Figure S4 in the supplementary material of 
 Ellis et al., we know that this coupling effects affect the $E^{\parallel}_{100}$ mode by a shift of 12.17 cm$^{-1}$. Then, as a 
-\textbf{first-order correction} we can subtract this amount from our computations to account for the coupling effects. Figure \ref{fig:val_2a}, 
+\textbf{first-order correction}, we can subtract this amount from our computations to account for the coupling effects. Figure \ref{fig:val_2a}, 
 shows the results after applying the correction. It is worth mentioning that the peaks at 837 cm$^{-1}$) and (964 cm$^{-1}$) on the results of Ellis et al., 
 are associated with the zone-folded LO (longitudinal) phonons of 4H-SiC, an effect they say to be beyond the scope of their analysis \cite{ellis2016}. Their 
 analysis concentrates on the peaks that occur between 864 cm$^{-1}$ and 961 cm$^{-1}$. 
@@ -192,13 +192,13 @@ after applying the first-order correction.
  \end{figure}
 
 
-In this section we attempted to replicate two results from Ellis et al. \cite{ellis2016} where they study the effect of aspect ratio on the 
+In this section, we attempted to replicate two results from Ellis et al. \cite{ellis2016} where they study the effect of aspect ratio on the 
 excitation of high-order modes in localized surface phonon-polariton nanostructures. Figure \ref{fig:rep_FS4_ellis} shows the results for
 the replication of the black curve of Figure S4 of their supplementary material, where the relative errors between our computations and 
 theirs is always smaller than 2$\%$. This replication study gave us the confidence to approach the replication of Figure 2a of Ellis et al., 
 given that in that case they use a geometry with aspect ratio $AR=4$ presented the smallest error (see Table \ref{tab:err_AR}). Since 
 Figure 2a of Ellis et al. shows results of experiments and simulations with the commercial software COMSOL, we not only pursued replication 
-but we also seeked the validation of \pygbe using this experimental results. The quantity plotted in the original figures is reflectance as a 
+but we also sought the validation of \pygbe using these experimental results. The quantity plotted in the original figures is reflectance as a 
 function of wavenumber, while we compute the extinction cross section. Since the quantity of interest is the wavenumber at which the resonance 
 peaks/dips happen, the results are comparable. 
 
