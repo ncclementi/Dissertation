@@ -3,7 +3,7 @@
 \chapter{\pygbelspr: A computational biosensing application} \label{chap:pygbe-lspr}
 \graphicspath{{pygbe_lspr_bio/figs/}}
 
-\pygbelspr \cite{ClementiETal2017} is a python library for applications in 
+\pygbelspr \cite{ClementiETal2017} is a Python library for applications in 
 nanoplasmonics. The first implementation of \pygbe \cite{CooperETal2016} was used to study electrostatics 
 of biomolecules \cite{CooperBardhanBarba2013} and probing protein orientation \cite{CooperClementiBarba2015}. The 
 most recent implementation extends \pygbe to nanoplasmonics, by treating localized surface plasmon resonance (LSPR) 
@@ -17,7 +17,7 @@ applies and we can model the scattering of a small metallic sphere as a nanopart
 under a constant electric field (see Figure \ref{fig:sph_field}). This problem 
 has an analytical solution and we use it to perform a grid-convergence analysis for 
 the verification of the \pygbe solver. In this section we show a verification study, where 
-we compare the numerical solution obtained we \pygbe against an analytical solution available 
+we compare the numerical solution obtained with \pygbe against an analytical solution available 
 for spherical nanoparticles. 
 
 The first analytical solution of the extinction cross section of spherical 
@@ -30,10 +30,10 @@ long wavelength limit, electrostatics will lead us to the same solution
     C_\text{ext} = 4\pi a^3 k \operatorname{Im}\left(\frac{\epsilon_p/\epsilon_m -1}{\epsilon_p/\epsilon_m -2}\right)
 \end{equation}
 
-where $a$ is the radius of the nanosphere, $k$ the wave number, 
+where $a$ is the radius of the nanosphere, $k$ the wavenumber, 
 $\epsilon_p$ the dielectric constant of the nanoparticle, and $\epsilon_m$ is the
 dielectric constant of the host medium, in this case,  vacuum permittivity
-($\epsilon_m = \epsilon_0$).  This formula, does not count for losses in the medium.
+($\epsilon_m = \epsilon_0$).  This formula does not count for losses in the medium.
 However, in 2007 Mishchenko \cite{Mishchenko2007} presented a solution that counts for losses in
 the host environment:
 
@@ -101,7 +101,7 @@ used in this convergence study.
 \end{table}
 
 Figure \ref{fig:conv_iso_sph} shows the results for the convergence study, with meshes of 512, 2048, 
-8192 and 32768 elements. The meshes for the sphere where created with a python script that can be found in the
+8192 and 32768 elements. The meshes for the sphere were created with a Python script that can be found in the
 code repository \url{https://github.com/pygbe/pygbe}. Table \ref{table:err_iso_sph} shows the errors that are computed against
 the analytical solution $C_{ext} = 1854.48$ nm$^2$ obtained using Equation \eqref{eq:Cext_analytical_lossy}.
 The dash line in Figure \ref{fig:conv_iso_sph} corresponds to a $1/N$ slope, and the observed order of 
@@ -224,7 +224,7 @@ dielectric constant for a wavelength of 380 nm is $2.7514 + 0.2860 i$,
 value computed by using a functional relationship provided by Phan
  et al.~\cite{PhanETal2013}. The protein was located at a distance of 
  $d=$ 1 nm of the sphere along the z-axis, such that its dipole moment 
- was aligned with the y-axis. Figure  \ref{fig:err_sph-bsa} sows the results of the convergence study and 
+ was aligned with the y-axis. Figure  \ref{fig:err_sph-bsa} shows the results of the convergence study and 
  table \ref{table:err_sph-bsa} shows the errors computed using the Richardson extrapolated
 \ref{sec:rich_extrapolation} value of the extinction cross section $C_{ext}= 1778.73$ nm$^2$.
 
@@ -307,7 +307,7 @@ the BSA analytes.
 
 Experimental observations in the work of Tang, et al.~\cite{TangETal2010} revealed a redshift when 
 BSA proteins in a solution are added to silver nanoparticles of approximately $17$ nm 
-in diameter. They also observed a decrement of the peak amplitude, similarly to the 
+in diameter. They also observed a decrement of the peak amplitude, similar to the 
 effects we see with our model. Moreover, recent experiments \cite{PuETal2018} report 
 resonance frequency between $380$ and $400$ nm for a silver nanosphere in the presence
 of BSA proteins (check reference and its supplementary material), which is consistent with 
@@ -426,11 +426,11 @@ All results of this chapter were obtained on a lab workstation, built from parts
 
 We release all of the data and scripts needed to run the calculations reported in this chapter, 
 as well as the post-processing scripts to reproduce the figures. 
-All the input files necessary to reproduce the computations are available in a Zenodo data set \cite{ClementiETal2018a}. 
+All the input files necessary to reproduce the computations are available in a Zenodo dataset \cite{ClementiETal2018a}. 
 Each folder contains the geometry files and charges files when applicable (.pqr), configuration files and parameter files.
-We provide the scripts and any additional file needed to run \pygbe to re-generate every result in this chapter, in a 
-separate Zenodo deposit \cite{ClementiETal2018b}. The execution of these scripts will generate the user's own version of the data needed to re-create 
-the figures of this chapter (For more details, the reader can consult a \texttt{README} file in the Zenodo archive).
+We provide the scripts and any additional file needed to run \pygbe to regenerate every result in this chapter, in a 
+separate Zenodo deposit \cite{ClementiETal2018b}. The execution of these scripts will generate the user's own version of the data 
+needed to re-create the figures of this chapter (For more details, the reader can consult a \texttt{README} file in the Zenodo archive).
 Finally we provide reproducibility packages deposited on Figshare to reproduce the figures in this chapter, which include 
 figures, plotting scripts and Jupyter notebooks that organize and re-create the results 
 \cite{ClementiETal2018c,ClementiETal2018d,ClementiETal2018e,ClementiETal2018f}.
