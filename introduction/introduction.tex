@@ -5,7 +5,7 @@ A biosensor is a measuring device used to detect the presence or concentration o
 a probe with a sensitive biological receptor, a transducer and a detector. For the past three decades, research in biosensing 
 has rapidly grown with applications in multiple areas like medical diagnoses, disease monitoring, drug delivery studies, 
 and detection of biological agents \cite{Turner2000, Mohanty2006, Mehrotra2016}. Optical biosensors are a particular type of biosensor 
-known for their sensitivity and real-time detection. Among many optical sensing techniques we have fluoresence, Raman spectroscopy, lithography, 
+known for their sensitivity and real-time detection. Among many optical sensing techniques we have fluorescence, Raman spectroscopy, lithography, 
 and surface plasmon resonance. Biosensors based on surface plasmon resonance (SPR) changes in thin gold films are some of the most 
 commonly used optical biosensors.  These sensors exploit a particular type of electromagnetic waves called surface plasmon polaritons for the
 detection of a biomolecule \cite{Homola2008}. However, when using metallic nanoparticles instead of thin films, a powerful resonance peak 
@@ -52,8 +52,9 @@ nanosurfaces \cite{CooperClementiBarba2015}. In 2017, we extended \pygbe to the 
 fast-summation method, and on hardware by taking advantage of graphic processing units (GPUs). This allows us to handle problems in the order of half a million 
 boundary elements, or more, thus being able to use the explicit representation of the biomolecular surface. There are other research softwares that could be use 
 for this application, like BEM++ \cite{SmigajETal2015} and a Matlab toolbox called MNPBEM \cite{HohenesterTrugler2012}, which have the capability to solve the 
-full Maxwell's equations and the electrostatic approximation in the long-wavelength limit. However, we believe that the size of the problems that these softwares 
-can solve, may not be enough to resolve the details of the biomolecules
+full Maxwell's equations and the electrostatic approximation in the long-wavelength limit. However, we believe that the size of the
+problems these softwares can solve, in terms of the number of boundary elements,  may not be enough to resolve the details of the biomolecules.
+
  
 To the best of our knowledge, \pygbe is the only open-source software that uses a fast algorithm ($\mathcal{O}(N\log N)$),
 for $N$ unknowns—and hardware acceleration on GPUs to compute the extinction cross-sections of arbitrary geometries to explore
