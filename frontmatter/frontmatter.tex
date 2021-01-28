@@ -55,7 +55,7 @@ Committee Member\\
 %\copyrightholder{Someone else}
 
 % Dedication
-\dedication{To all the women scientist to come. %
+\dedication{To all the women scientists to come. %
 }
 
 % Acknowledgments
@@ -112,23 +112,25 @@ PENDING
 % Some abstract text
 \abstract{
 Localized surface plasmon resonance biosensors provide high sensitivity in detecting biomolecules via shifts in the resonance 
-frequency when targets are in the vicinity. The physics of this field are model with Maxwell's equations but in the long-wavelength 
+frequency when targets are in the vicinity. The physics of this field are modeled with Maxwell's equations but in the long-wavelength 
 limit, electrostatics serves as a good approximation. This work uses this approach, expanding the open-source \pygbe software
 to compute the extinction cross section of metallic and dielectric nanoparticles in the presence of biomolecules. \pygbe is a Python
-boundary integral research software for continuum electrostatics, with computationally expensive parts accelerated on GPU hardware. It is 
-also algorithmically accelerated via a treecode that offers $\mathcal{O}(N \log N)$ computational complexity, what allows \pygbe 
-to handle problems with over half a million boundary elements. These features enable to represent the target model by a solvent 
-excluded mesh based on the crystal structure and capture its complexity.
+boundary integral research software for continuum electrostatics, where the computationally expensive parts are accelerated on GPU 
+hardware. It is also algorithmically accelerated via a treecode that offers $\mathcal{O}(N \log N)$ computational complexity, that 
+allows \pygbe to handle problems with over half a million boundary elements. These features enable \pygbe to represent the target 
+molecule as a solvent excluded mesh based on the crystal structure and capture its complexity.
+
 We demonstrate the suitability of \pygbe for computational nanoplasmonics for biosensing applications. We verify our solver 
 against an analytical solution of the extinction cross section as a function of the wavelength for a silver nanosphere in a
-water medium. We present a sensitivity study for a biosensor model, computing the resonance frequency shift for different distances 
-between the proteins and the nanoparticle, and showing that the shift decays as the proteins move away from the sensor.
+water medium. We present a sensitivity study for a biosensor model, where we compute the resonance frequency shift for different
+distances between the proteins and the nanoparticle, and show that the shift decays as the proteins move away from the sensor.
 Computational studies in the field of nanoplasmonic biosensing have used full Maxwell's equations with simplified models 
 of the sensor-analyte system. We show that reduced order models for the analyte are not accurate compared to the full 
 protein representation extracted from its crystal structure. However, using them results in faster computations that
 we use to explore the multiple factors involved in the computational model of a biosensor. 
 We replicate two studies in electromagnetic excitations on silicon carbide nanostructures, where the quantity of interest 
 is the wavelength of the resonance peak. Finally, we validate \pygbe by comparing against experiments that measured 
-the polarized reflectance of silicon carbide nanopillars. All the results in this work are reproducible, and all the material 
-needed to run the computations and re-create the figures is openly available in the form of reproducibility packages.
+the polarized reflectance of silicon carbide nanopillars. All the results in this work are reproducible, and all the materials 
+needed to run the computations and re-create the figures are openly available in the form of reproducibility packages
+(see sections \ref{sec:repro_lspr}, \ref{sec:repro_ell}, and \ref{sec:repro_val}).
 }
