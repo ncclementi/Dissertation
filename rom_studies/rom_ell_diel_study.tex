@@ -3,9 +3,9 @@
 \graphicspath{{rom_studies/figs/}}
 
 Part of the process of computational modelling is making assumptions about the problem we are trying to solve. In the 
-field of localized surface plasmon resonance for biosensing applications there are several reports that use Bovine Serum Albumin 
-as an analyte to simulate the behavior of a bioconjugate sensor. However, they use a extremely simplified models
-to represent the protein, and often a real-valued dielectric for the medium. Some models consist of  
+field of localized surface plasmon resonance for biosensing applications there are several research papers that use Bovine Serum Albumin 
+as an analyte to simulate the behavior of a bioconjugate sensor. However, they use extremely simplified models
+to represent the protein, and often a real-valued dielectric for the medium. Some models comprise of  
 a layer of protein-water solution \cite{PhanETal2013}, 
 or just a protein dielectric layer \cite{NghiemETal2012}, others model the
 protein as a triangular prism \cite{DanHu2014}, or even a small sphere with a 
@@ -27,10 +27,9 @@ for the charges inside the protein (full distribution, monopole equivalent charg
 amount of proteins in the vicinity of the nanoparticle, the magnitude of the incident electric field, and the value and type (complex or real)
 of the protein and water medium dielectrics. 
 
-To the best of our knowledge, there is no model in the literature that counts for the charges inside the protein. 
+To the best of our knowledge, there is no model in the literature that accounts for the charges inside the protein. 
 Moreover, there are no studies that explore the effects of using reduced-order models for the protein representations 
-in computational models. This chapter covers the results of using different assumptions in the modelling process and what 
-are the implications of them.
+in computational models. This chapter covers the results of using different assumptions in the modelling process and their implications.
 
 \section{BSA as a prolate ellipsoid} \label{sec:ell_study}
 
@@ -38,7 +37,7 @@ The crystal structure of the BSA (pdb 4f5s) used in our simulations corresponds
 to a dimer. Knowing that this structure can be modeled as an ellipsoid \cite{SquireETal1968},
 we look for different alternatives to decide the dimensions of the ellipsoid. We took two
 different approaches, a surface equivalent model and a volume equivalent model. The surface equivalent
-model consists of finding the dimensions of an ellipsoid that encapsules all the charges within the protein. We determined the principal axes of this
+model consists of finding the dimensions of an ellipsoid that encapsulates all the charges within the protein. We determined the principal axes of this
 ellipsoid using Principal Component Analysis (PCA). Principal component analysis is a technique that
 uses orthogonal transformations and brings out patterns in a set of data. When 
 we use a PCA in three dimensions, these transformations ensure that the first 
@@ -64,16 +63,16 @@ as
 
 Knowing that the volume of the BSA protein is $V_e = 166642 \, \text{\AA}^3$ we get that $x=27.09496 \, \text{\AA}$ 
 and therefore $a=54.18993 \, \text{\AA}$ and $b=c=27.09496 \, \text{\AA}$. These dimensions give us an ellipsoid that has the same volume 
-as the original BSA mesh. However, we can not encapsule all the charges inside of it. To be able to use this model we needed to study first the 
-effects of replacing the distribution of charges by a monopole, as well as the possibility of not include them in the model. 
+as the original BSA mesh. However, we can not encapsulates all the charges inside of it. To be able to use this model we needed to study first the 
+effects of replacing the distribution of charges by a monopole, as well as the possibility of not including them in the model. 
 
-All the ellipsoidal meshes were generated with a python script that can be found in the code repository \url{https://github.com/pygbe/pygbe}. The
+All the ellipsoidal meshes were generated with a Python script that can be found in the code repository \url{https://github.com/pygbe/pygbe}. The
 meshes for all the results in this chapter are provided as part of the reproducibility packages. Detailed information regarding this packages can be 
 found in section \ref{sec:repro_ell}
 
 \subsection{Effect of charges within the protein}
 
-Since the PCA model can encapsule all the charges we use this model to study the effect of using a distribution of charges, versus
+Since the PCA model can encapsulates all the charges we use this model to study the effect of using a distribution of charges, versus
 a monopole representation of the charges ("center of mass"), as well as using no charges. To ensure that we are solving the equations 
 properly, we perform a convergence analysis.
 
@@ -149,8 +148,8 @@ is $1456.0781$ nm$^2$, giving us a percentage error of $1.63 \%$.
 \subsubsection{Charges model analysis} \label{ssub:pqr_analysis}
 
 In order to know if we could use a volume equivalent (VE) approach we studied the effect of the charges inside the protein. We analyzed
-the different representations of cahrges (full distribution and equivalent monopole) as well as the impact of having
-no charges. The setup of the simulations consists in a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
+the different representations of charges (full distribution and equivalent monopole), as well as the impact of having
+no charges. The setup of the simulations consists of a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
 at $1$ nm of the surface of the sensor in the $z$-direction, oriented such that the dipole moment is aligned with the $y$-axis. We run 
 three different cases, one with the full distribution of charges, a second case with one equivalent charge located in the
 "center of mass" (See Figure \ref{fig:one_pca_cm_sketch}), and an ellipsoid with no charges. Figure 
@@ -160,7 +159,7 @@ three different cases, one with the full distribution of charges, a second case 
     \centering
     \includegraphics[width=0.65\textwidth]{viz/one_pca_cm_gc_display.png} 
     \caption{Sensor protein display: PCA ellipsoid with equivalent monopole charge, located at $\pm 1$ nm of the 
-    nanoparticle in the $z$-direction. The label "CM" indicates center of mass where the monopole charge is located, and
+    nanoparticle in the $z$-direction. The label "CM" indicates the center of mass where the monopole charge is located, and
     the label "GC" indicates the geometric center for reference.}
     \label{fig:one_pca_cm_sketch}
  \end{figure}
@@ -192,7 +191,7 @@ three different cases, one with the full distribution of charges, a second case 
 \subsection{Surface equivalent vs Volume equivalent model} \label{ssec:surf_vol_ell}
 
 In section \ref{ssub:pqr_analysis} we show that using a monopole approximation is equivalent to using the full distribution of charges. This 
-allow us to explore the effects of the volume equivalent model. Similarly to the PCA case, we present a convergence study for the volume  n section \ref{sssec:ve_conv}. 
+allows us to explore the effects of the volume equivalent model. Similarly to the PCA case, we present a convergence study for the volume  n section \ref{sssec:ve_conv}. 
 Following the convergence study of the volume equivalent ellipsoid we show, in section \ref{sssec:ell_mod_comp}, the comparison of the PCA ellipsoid model and the volume equivalent 
 model with the original BSA protein structure model, replicating the configuration shown in Figure \ref{fig:display_z}. 
 
@@ -213,7 +212,7 @@ with the number of boundary elements ($1/N$). This provides evidence that the nu
     \centering
     \includegraphics[width=0.65\textwidth]{viz/one_ve_cm_gc_display.png} 
     \caption{Sensor protein display: Volume equivalent ellipsoid with monopole charge ("CM"), located at $1$ nm of the 
-    nanoparticle in the $z$-direction. The geometric center ("GC") is display for reference.}
+    nanoparticle in the $z$-direction. The geometric center ("GC") is displayed for reference.}
     \label{fig:one_ve_sketch}
  \end{figure}
 
@@ -223,7 +222,7 @@ with the number of boundary elements ($1/N$). This provides evidence that the nu
     \includegraphics[width=0.85\textwidth]{convergence_sensor_ve_w380.pdf} 
     \caption{Grid-convergence study of extinction cross-section of a spherical silver
              nanoparticle with a volume equivalent ellipsoid at $d=1$ nm which contains 
-             a monopole charge..}
+             a monopole charge.}
     \label{fig:err_sph-ve}
  \end{figure}
 
@@ -243,7 +242,7 @@ with the number of boundary elements ($1/N$). This provides evidence that the nu
     \end{tabular}
 \end{table}
 
-After performing the convergence analysis studies, we relaxed the numerical parameters of the computations to reduce the run-time without 
+After performing the convergence analysis studies, we relaxed the numerical parameters of the computations to reduce the runtime without 
 compromising accuracy. We use the parameters from Table \ref{table:rel_pca_par} to obtain all non-convergence results presented from 
 now on for the case of VE ellipsoids. The Richardson extrapolated value for the VE case is: $1683.8117$ nm$^2$ and the computed value with 
 the relaxed parameters is $1713.1972$ nm$^2$. If we compute the percentage error we obtain $1.75 \%$.
@@ -252,10 +251,10 @@ the relaxed parameters is $1713.1972$ nm$^2$. If we compute the percentage error
 
 In Figure \ref{fig:2pz_ell_resp} we show the results of comparing both ellipsoidal models of the protein with the 
 original representation of the protein obtained from the crystal structure. We present the LSPR response 
-of the system showed in Figure \ref{fig:display_z}, and for the ellipsoidal models we use an equivalent 
+of the system shown in Figure \ref{fig:display_z}, and for the ellipsoidal models we use an equivalent 
 setup that replaces the proteins, located at $\pm 1$ nm in the $z$-direction, for the respective ellipsoids.
 Both the PCA and VE model contain a monopole charge in the center of mass of the distribution. These results reveal 
-the model chosen to represent the analytes matters
+the model chosen to represent the analytes matters.
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -269,21 +268,20 @@ the model chosen to represent the analytes matters
  \end{figure}
 
 The PCA model (surface based model, surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, 
-with a shift of $2.5$ nm ($400$ $\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based)  
-over estimates the original by $50$ $\%$ (shift $0.75$ nm), but we can say that a reduced order model based on the volume 
-is a closer representation of the full protein. In both cases we can see that the intensity of the peak decreases. This can be 
-a problem, along with the overestimation of the shift,
-if the results are intended to be used in the computation of sensitivity. The Figure of Merit is usually how a
-nanoparticle's sensing capabilities is characterized, and it is defined as the ratio between the 
-sensitivity ($S = \Delta \lambda / \Delta n$) over the full width mid hight (FWMH) \cite{otte2012}. Making 
-conclusions of sensitive capabilities of a sensors, based on models that under estimate the magnitude of the peak and 
-overestimate the shift can lead to incorrect assessments.
+with a shift of $2.5$ nm ($400\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based)  
+overestimates the original by $50\%$ (shift $0.75$ nm), but we can say that a reduced order model based on the volume 
+is a closer representation of the full protein. In both cases we see that the intensity of the peak decreases. This can be 
+a problem, along with the overestimation of the shift, if the results are intended for use in the computation of sensitivity. The Figure of
+Merit is usually how a nanoparticle's sensing capabilities are characterized, and is defined as the ratio between the 
+sensitivity ($S = \Delta \lambda / \Delta n$) over the full width mid height (FWMH) \cite{otte2012}. Making 
+conclusions of sensitive capabilities of sensors, based on models that underestimate the magnitude of the peak and 
+overestimate the shift, can lead to incorrect assessments.
 
-In summary, using an ellipsoidal shape of equivalent surface that contains all the charges is not a good approximation
+In summary, using an ellipsoidal shape of equivalent surface that contains all charges is not a good approximation
 since it overestimates the shift considerably. The VE-equivalent model exhibits a shift of $0.75$ nm, which is still  
 an overestimated response. However, we believe that the volume equivalent approximation can be used to investigate 
-qualitative behaviors, and take advantage of the less expensive simulations to get insights on the physics of problems 
-that might not be possible to simulate due to memory restrictions.
+qualitative behaviors and take advantage of less expensive simulations to get insights on the physics of problems 
+that might be impossible to simulate due to memory restrictions.
 
 \subsection{Other model considerations}
 
@@ -294,12 +292,12 @@ the effect of the magnitude of the incident electric field.
 
 \subsubsection{Sphere vs Ellipsoid for protein modeling}
 
-Spheres are one of the geometries used in the literature to represent the protein \cite{SantiagoCordobaETal2011, UngerETal2009}. In this 
+Spheres are one of the most common geometries used to represent the protein \cite{SantiagoCordobaETal2011, UngerETal2009}. In this 
 section we compare a spherical volume-equivalent model with the ellipsoidal volume-equivalent model used in section
 \ref{ssec:surf_vol_ell}. Figure \ref{fig:sph_vs_ell_ve} shows the different LSPR responses of a silver nanoparticle of $8$ nm of radius, 
 for the different models. The peak for both the ellipsoid and the sphere of equivalent volume, happens at $384.75$ nm, and the 
-maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). For the sphere simulation 
-the monopole charge was located at the geometric center, we run simulations on a volume-equivalent ellipsoid that show 
+maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). For the sphere simulation, 
+the monopole charge was located at the geometric center. We run simulations on a volume-equivalent ellipsoid that show 
 that locating the monopole charge at the geometric center compared to the center of mass, does not cause a shift on the peak 
 and the difference between the intensities at the peak is $<1\%$ (computations results in reproducibility materials, section \ref{sec:repro_ell}).
 
@@ -313,14 +311,14 @@ and the difference between the intensities at the peak is $<1\%$ (computations r
     \label{fig:sph_vs_ell_ve}
  \end{figure}
 
-We still have the problem of over estimating the shift by $50$ $\%$ compared to the BSA protein original mesh, 
+We still have the problem of overestimating the shift by $50$ $\%$ compared to the BSA protein original mesh, 
 and at first sight we can consider this model comparable to the ellipsoidal volume-equivalent one. However, 
 when we use a spherical model for the protein we lose any information regarding the orientation of the protein. 
 
 \subsubsection{Effect of protein orientation}
 
 Until this point we always kept the orientation of the proteins such that the dipole moment was parallel to the $y$-axis. In this 
-section we explore the effects of the protein orientation respect to the nanoparticle in the LSPR response. For this study we use the 
+section we explore the effects of protein orientation in respect to the nanoparticle in the LSPR response. For this study we use the 
 volume equivalent ellipsoids in three different orientations: the original configuration where the dipole moment is parallel to 
 the $y$-axis, a configuration such that the principal axis $a$ is parallel to $y$-axis, 
 and finally a configuration where the principal axis $b$ is parallel to $y$ (see Figure \ref{fig:two_ve_conf_display} for configurations). 
@@ -342,24 +340,24 @@ and finally a configuration where the principal axis $b$ is parallel to $y$ (see
      \label{fig:two_ell_mult_config}
   \end{figure}
  
-Figure \ref{fig:two_ell_mult_config} shows the LSPR response of a silver nanoparticle and how it changes when the ellipsoids 
-are placed in different orientations, for the different configurations. The peak when the dipole moment is parallel to the $y$-axis (original)
+Figure \ref{fig:two_ell_mult_config} shows the LSPR response of a silver nanoparticle when ellipsoids 
+are placed in different positions and orientations. The peak when the dipole moment is parallel to the $y$-axis (original)
 is $3815.72$ $nm^2$ and occurs at $384.75$ nm, causing a shift of $0.75$ nm. When the orientation of the ellipsoid 
 is such that $a//y$, the maximum value is $3802.51$ $nm^2$ and it happens at $385$ nm, which results in a shift of 
 $1$ nm. The final orientation we study is when $b//y$ which has a peak of $3898.10$ $nm^2$ at $384.375$ nm, resulting 
 in a shift of $0.375$ nm. These results tell us that the orientation of the protein affects the LSPR response, we can 
-see that the shifts vary depending the orientation, as well as the intensity of the peak. When using a spherical model, 
-all these effects are not capture due to the nature of the geometry, which can lead to misleading conclusions. Even though, 
-we know that using a volume equivalent ellipsoid model over estimates the shift, it stills captures the effect of the orientation, making
+see that the shifts vary depending on the orientation, as well as the intensity of the peak. When using a spherical model, 
+all these effects are not captured due to the nature of the geometry, which can lead to misleading conclusions. Even though, 
+we know that using a volume equivalent ellipsoid model overestimates the shift, it stills captures the effect of the orientation, making
 it a better candidate compared to a simple sphere.
 
 \subsubsection{Effect of number of proteins}
 
 In this section we study the effect of having multiple proteins around the nanoparticle. Even though we know 
-that volume equivalent ellipsoids over estimate the response, they still account for the effects of 
+that volume equivalent ellipsoids overestimate the response, they still account for the effects of 
 orientation and they can give us an estimation on how the LSPR response changes when having multiple 
 ellipsoids. We use the same orientations showed in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
-at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} show the results of the LSPR response 
+at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} shows the results of the LSPR response 
 of six ellipsoids located at $\pm 1$ nm in the $x$, $y$, and $z$-axis, for the different configurations. 
  
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
@@ -375,7 +373,7 @@ of six ellipsoids located at $\pm 1$ nm in the $x$, $y$, and $z$-axis, for the d
  $1.375$ nm. When the orientation of the ellipsoid is such that $a//y$, the maximum value is $3643.97$ $nm^2$ and it
  happens at $385.5$ nm, which results in a shift of $1.5$ nm. The final orientation we study is when $b//y$ which 
  has a peak of $3814.23$ $nm^2$ at $384.625$ nm, resulting in a shift of $0.625$ nm. We can see that adding more proteins, 
- regardless the orientation, increases the shift. However, depending on the orientation the percentage of shift increment 
+ regardless of the orientation, increases the shift. However, depending on the orientation, the percentage of shift increment 
  varies. When we go from two ellipsoids on $\pm 1$ nm on the $z$-direction to six ellipsoids located at 
  $\pm 1$ nm in the $x$, $y$, and $z$-axis we see an increment on the shift of:
  
@@ -385,7 +383,7 @@ of six ellipsoids located at $\pm 1$ nm in the $x$, $y$, and $z$-axis, for the d
      \item {$~66.67\%$ when the principal axis $b$ is parallel to the $y$-axis}
  \end{itemize}    
 
-These results tells us that the LSPR response is not only affected by the orientations but also by the number of protein 
+These results tell us that the LSPR response is not only affected by the orientations but also by the number of proteins 
 in the vicinity of the sensor. The addition of proteins, even though it always translates in a bigger shift, the increment  
 is not linear, and it varies with the orientation. 
 
@@ -393,8 +391,7 @@ is not linear, and it varies with the orientation.
 
 Another factor that is involved in the computational model is the effect of the magnitude 
 of the incident electric field. For all the simulations of this work we used the magnitude of the electric field from Phan and 
-coworkers \cite{PhanETal2013}. We did not find other values in the literature that we can compare to, since
-it was not reported. In this section we vary the magnitude of the electric field across several order of magnitudes 
+coworkers \cite{PhanETal2013}. In this section, we vary the magnitude of the electric field across several orders of magnitude 
 and study its effect on the LSPR response. 
 
 \begin{figure}%[t] %  figure placement: here, top, bottom, or page
@@ -419,24 +416,24 @@ the magnitude of the electric field due to the single charge inside the ellipsoi
 and we found that its magnitude is $~5.4 \times 10^{-4}$ $[e]/([{\text{\AA}}^2][\epsilon_0])$. Therefore, 
 when the magnitude of the incident electric field is smaller than the magnitude of the electric field generated by 
 the protein on the surface of the nanoparticle, the shift increases. It is worth mentioning that if there are no charges 
-present in the protein, the extinction cross section does not varies when the magnitude of the incident electric field 
+present in the protein, the extinction cross section does not vary when the magnitude of the incident electric field 
 changes. 
 
 
 \section{Dielectric study}\label{sec:diel_study}
 
 Most computational works in the literature use a constant real dielectric value both for the protein and the
-embedding medium \cite{NghiemETal2012, SantiagoCordobaETal2011,UngerETal2009}, such modeling does not count for the losses 
+embedding medium \cite{NghiemETal2012, SantiagoCordobaETal2011,UngerETal2009}. Such modeling does not account for the losses 
 in that medium. LSPR biosensors detect a target molecule by monitoring plasmon resonance frequency changes due to the proximity 
-of the target to the metallic nanoparticle. In this section we show how the LSPR response changes when choosing different models 
+of the target to the metallic nanoparticle. In this section, we show how the LSPR response changes when choosing different models 
 for the dielectric in the protein and the medium around the system sensor-protein. We use the same setup used in chapter \ref{sec:lspr_response_bsa}
 where we have two BSA proteins located at $\pm$ 1 nm on the $z$-direction of a silver nanoparticle of radius $r=8$ nm (see 
 Figure \ref{fig:display_z}). The system sensor-protein is submerged in water and under a constant electric field of 
-$0.0037$ $[e]/([{\text{\AA}}^2][\epsilon_0])$ in the $z$-direction. We firstly study the effect of having a real-valued dielectric 
-for the protein, by keeping the water dielectric as complex, secondly we analyze the effect of the medium by using a real-valued 
-dielectric for it but keeping the BSA dielectric complex, and finally we study the effect of certain combination where both the medium 
-and the protein have real-valued dielectrics. We obtained the values for the real dielectric of the BSA and water (medium) from the literature,
-in most of the cases they provided the refractive index $n$ which we convert to the real dielectric $e_r=n^2$:  
+$0.0037$ $[e]/([{\text{\AA}}^2][\epsilon_0])$ in the $z$-direction. We first study the effect of having a real-valued dielectric 
+for the protein, by keeping the water dielectric as complex. Second, we analyze the effect of the medium by using a real-valued 
+dielectric, but we keep the BSA dielectric complex. Finally, we study the effect of certain combinations where both the medium 
+and the protein have real-valued dielectrics. We obtained the values for the real dielectric of the BSA and water (medium) from the literature.
+In most of the cases they provided the refractive index $n$, which we convert to the real dielectric $e_r=n^2$:  
 
 \paragraph{BSA dielectric values:}
 \begin{itemize}
@@ -498,36 +495,37 @@ how sensitive is the LSPR response of the silver nanoparticle to the dielectric 
     \label{fig:iso_NP_diel}
  \end{figure}
 
-Once we understood how the dielectric model affected the LSPR response of the isolated nanoparticle, we study how this 
+Now that we understand how the dielectric model affects the LSPR response of the isolated nanoparticle, we can see how this 
 effect varies when adding the BSA proteins at $\pm1$ nm on the $z$-direction. To isolate the effect of the dielectric model on the 
 medium, we use the complex dielectric from Phan et al. \cite{PhanETal2013} for the BSA proteins. Figure \ref{fig:real_w_comp_bsa}
 shows the shift in the LSPR response of a silver nanoparticle (dashed lines) when adding the BSA proteins (full lines), for the same 
 real dielectrics models used in Figure \ref{fig:iso_NP_diel}. When using the average of the real part of the complex dielectric from 
 Hale and Querry \cite{HaleQuerry1972} the shift is $0.5$ nm which is the same value compared to the full complex model. However, when using 
-the generalization of the water dielectric (refractive index $n=1.33$), the peak for the extinction cross section when the two BSA proteins are present occurs at a wavelength of 
-$383.5$ nm, what gives us a shift in the LSPR response of $0.75$ nm. These results tell us that there is no difference in the LSPR response, if we wither use 
-the complex dielectric for the water or an average of the real part of it. However, when using a different real value for the dielectric, like the generalization $e=1.7689$, it
-not only affects the wavelength at which the resonance peaks occur but also the shift when proteins are added in the vicinity. 
+the generalization of the water dielectric (refractive index $n=1.33$), the peak for the extinction cross section when the two BSA proteins are
+present occurs at a wavelength of $383.5$ nm, which gives us a shift in the LSPR response of $0.75$ nm. These results tell us that there is no 
+difference in the LSPR response, wether we use the complex dielectric for the water or an averaged value of the real component of it. However, when using a
+different real value for the dielectric, like the generalization $e=1.7689$, it not only affects the wavelength at which the resonance peaks occur
+but also the shift when proteins are added in the vicinity. 
 
  \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.85\textwidth]{bsa_w_real_water_diel.pdf} 
     \caption{Comparison of LSPR response of a silver nanoparticle to two BSA proteins located at $\pm1$ nm on the $z$-direction
-    when using a complex vs a real dielectric for the water medium.}
+    when using a complex vs real dielectric for the water medium.}
     \label{fig:real_w_comp_bsa}
  \end{figure}
 
  \subsection{BSA and water with real-valued dielectric}
 
-Last but not least we study the effect of using real-valued dielectrics for the BSA proteins as well as the water medium. For the BSA proteins 
-we used the average valued of the real component from Phan et al. \cite{PhanETal2013}, and for the water medium we used the same two dielectrics cases
+Last but not least, we study the effect of using real-valued dielectrics for the BSA proteins as well as the water medium. For the BSA proteins 
+we used the average value of the real component from Phan et al. \cite{PhanETal2013}, and for the water medium we used the same two dielectrics cases
 used in the study of Figure \ref{fig:real_w_comp_bsa}. Figure \ref{fig:bsa_w_real} shows the results of using real dielectrics in both the proteins and
 the water medium. The peaks in all cases occur at the same wavelengths compared to the case where we use a BSA complex dielectric for the protein, and as a 
 consequence the shifts are the same than the ones reported in Figure \ref{fig:real_w_comp_bsa}. However, when we use real dielectric in both the medium 
 and the proteins we see an increment in the magnitude of the extinction cross section of $~4.2\%$ for the Hale and Querry case, and $~3.6\%$ for the 
-generalization case. These results tells us that, when it comes to the shift in the LSPR response, there is no difference between using a complex dielectric 
+generalization case. These results tell us that, when it comes to the shift in the LSPR response, there is no difference between using a complex dielectric 
 value for the protein and the medium, and using an averaged value of the real part. However, there is a difference in the magnitude of the 
-extinction cross section that is a direct consequence of using a real-valued dielectric since this do not counts for the losses in the medium. Similarly to the 
+extinction cross section that is a direct consequence of using a real-valued dielectric since this does not accounts for the losses in the medium. Similarly to the 
 results shown in Figure \ref{fig:real_w_comp_bsa}, the usage of a different real dielectric for the water medium, changes where the peak occurs and the shift in the 
 LSPR response. 
 
@@ -547,7 +545,7 @@ sensitivity calculations.
 
 \section{Reproducibility and data management} \label{sec:repro_ell}
  
-All the results of this chapter have been can be reproduced or replicated. \pygbe is openly developed and 
+All the results of this chapter can be reproduced or replicated. \pygbe is openly developed and 
 shared under the BSD3-clause license via its repository at \url{https://github.com/pygbe/pygbe}.
 
 All results of this chapter were obtained on a lab workstation, built from parts. Hardware specifications are as follows:
