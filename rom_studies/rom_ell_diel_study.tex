@@ -5,7 +5,7 @@
 Part of the process of computational modelling is making assumptions about the problem we are trying to solve. In the 
 field of localized surface plasmon resonance for biosensing applications there are several research papers that use Bovine Serum Albumin 
 as an analyte to simulate the behavior of a bioconjugate sensor. However, they use extremely simplified models
-to represent the protein, and often a real-valued dielectric for the medium. Some models comprise of  
+to represent the protein, and often a real-valued dielectric for the medium. Some models consist of  
 a layer of protein-water solution \cite{PhanETal2013}, 
 or just a protein dielectric layer \cite{NghiemETal2012}, others model the
 protein as a triangular prism \cite{DanHu2014}, or even a small sphere with a 
@@ -22,7 +22,7 @@ Research shows that the shape of both monomer and dimmer of BSA are prolate elli
 to model the protein in computational approaches. The BSA model that we use, based on its crystal 
 structure, is a good reference of the actual shape of the protein to be used as a comparison with simpler models. We 
 explored the effects of using reduced-order models for the protein representation, like ellipsoids and spheres, and
-study the consequences of these simplifications. We analyzed the effects of the model chosen 
+studied the consequences of these simplifications. We analyzed the effects of the model chosen 
 for the charges inside the protein (full distribution, monopole equivalent charge, and no charges), the protein orientation, the 
 amount of proteins in the vicinity of the nanoparticle, the magnitude of the incident electric field, and the value and type (complex or real)
 of the protein and water medium dielectrics. 
@@ -297,10 +297,10 @@ section we compare a spherical volume-equivalent model with the ellipsoidal volu
 \ref{ssec:surf_vol_ell}. Figure \ref{fig:sph_vs_ell_ve} shows the different LSPR responses of a silver nanoparticle of $8$ nm of radius, 
 for the different models. The peak for both the ellipsoid and the sphere of equivalent volume, happens at $384.75$ nm, and the 
 maximum extinction cross section is nearly the same for both cases (difference $<$0.5$\%$). For the sphere simulation, 
-the monopole charge was located at the geometric center. We run simulations on a volume-equivalent ellipsoid that show 
-that locating the monopole charge at the geometric center compared to the center of mass, does not cause a shift on the peak 
-and the difference between the intensities at the peak is $<1\%$ (computations results in reproducibility materials, section \ref{sec:repro_ell}).
-
+the monopole charge was located at the geometric center. It is worth mentioning that locating the monopole charge in the
+geometric center instead of the center of mass, has no impact on the LSPR response. We run simulations of a volume-equivalent ellipsoid 
+with the charge on the geometric center and resulted in no variation of the resonance. The difference between the intensities at 
+the peak is $<1\%$ (computations results in reproducibility materials, section \ref{sec:repro_ell}).
 
 \begin{figure} %[h] %  figure placement: here, top, bottom, or page
     \centering
@@ -356,7 +356,7 @@ it a better candidate compared to a simple sphere.
 In this section we study the effect of having multiple proteins around the nanoparticle. Even though we know 
 that volume equivalent ellipsoids overestimate the response, they still account for the effects of 
 orientation and they can give us an estimation on how the LSPR response changes when having multiple 
-ellipsoids. We use the same orientations showed in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
+ellipsoids. We use the same orientations shown in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
 at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} shows the results of the LSPR response 
 of six ellipsoids located at $\pm 1$ nm in the $x$, $y$, and $z$-axis, for the different configurations. 
  
@@ -503,7 +503,7 @@ real dielectrics models used in Figure \ref{fig:iso_NP_diel}. When using the ave
 Hale and Querry \cite{HaleQuerry1972} the shift is $0.5$ nm which is the same value compared to the full complex model. However, when using 
 the generalization of the water dielectric (refractive index $n=1.33$), the peak for the extinction cross section when the two BSA proteins are
 present occurs at a wavelength of $383.5$ nm, which gives us a shift in the LSPR response of $0.75$ nm. These results tell us that there is no 
-difference in the LSPR response, wether we use the complex dielectric for the water or an averaged value of the real component of it. However, when using a
+difference in the LSPR response, wether we use the complex dielectric for the water or an averaged value of its real component. However, when using a
 different real value for the dielectric, like the generalization $e=1.7689$, it not only affects the wavelength at which the resonance peaks occur
 but also the shift when proteins are added in the vicinity. 
 
@@ -524,7 +524,7 @@ the water medium. The peaks in all cases occur at the same wavelengths compared 
 consequence the shifts are the same than the ones reported in Figure \ref{fig:real_w_comp_bsa}. However, when we use real dielectric in both the medium 
 and the proteins we see an increment in the magnitude of the extinction cross section of $~4.2\%$ for the Hale and Querry case, and $~3.6\%$ for the 
 generalization case. These results tell us that, when it comes to the shift in the LSPR response, there is no difference between using a complex dielectric 
-value for the protein and the medium, and using an averaged value of the real part. However, there is a difference in the magnitude of the 
+value for the protein and the medium, and using an averaged value of their real component. However, there is a difference in the magnitude of the 
 extinction cross section that is a direct consequence of using a real-valued dielectric since this does not accounts for the losses in the medium. Similarly to the 
 results shown in Figure \ref{fig:real_w_comp_bsa}, the usage of a different real dielectric for the water medium, changes where the peak occurs and the shift in the 
 LSPR response. 
