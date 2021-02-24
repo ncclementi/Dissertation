@@ -72,7 +72,7 @@ found in section \ref{sec:repro_ell}
 
 \subsection{Effect of charges within the protein}
 
-Since the PCA model can encapsulates all the charges we use this model to study the effect of using a distribution of charges, versus
+Since the PCA model can encapsulate all the charges, we use this model to study the effect of using a distribution of charges, versus
 a monopole representation of the charges ("center of mass"), as well as using no charges. To ensure that we are solving the equations 
 properly, we perform a convergence analysis.
 
@@ -170,7 +170,7 @@ three different cases, one with the full distribution of charges, a second case 
  maximum value of the extinction cross section when there are no charges present ("No pqr") is $3755.51$ nm$^2$ which compared to 
  the maximum for the full distribution gives us a difference of $1.87 \,\%$. Looking at these results we can say that the presence of 
  charges inside the protein does not affect the wavelength shift. However, it does affect the intensity of the maximum value of the 
- extinction cross section by approximately $2 \,\%$. Finally, we can say that using a monopole approximation for the distribution of charges, 
+ extinction cross section by approximately $2 \,\%$. Finally, we can say that using a monopole approximation for the distribution of charges 
  is equivalent to using the full distribution of charges. Therefore, we will use the monopole charge model when doing computations with 
  a volume equivalent ellipsoid. 
 
@@ -191,7 +191,7 @@ three different cases, one with the full distribution of charges, a second case 
 \subsection{Surface equivalent vs Volume equivalent model} \label{ssec:surf_vol_ell}
 
 In section \ref{ssub:pqr_analysis} we show that using a monopole approximation is equivalent to using the full distribution of charges. This 
-allows us to explore the effects of the volume equivalent model. Similarly to the PCA case, we present a convergence study for the volume  n section \ref{sssec:ve_conv}. 
+allows us to explore the effects of the volume equivalent model. Similar to the PCA case, we present a convergence study for the volume  in section \ref{sssec:ve_conv}. 
 Following the convergence study of the volume equivalent ellipsoid we show, in section \ref{sssec:ell_mod_comp}, the comparison of the PCA ellipsoid model and the volume equivalent 
 model with the original BSA protein structure model, replicating the configuration shown in Figure \ref{fig:display_z}. 
 
@@ -200,7 +200,7 @@ model with the original BSA protein structure model, replicating the configurati
 We performed a grid convergence analysis on the VE (volume equivalent) ellipsoid - sensor system containing a monopole charge located 
 in the center of mass of the charge distribution. (see Figure \ref{fig:one_ve_sketch}). Since we compute the extinction cross section of the sensor 
 (8 nm radius silver sphere), we set a fixed mesh density for the ellipsoid and refine 
-the mesh of the sphere ($N=512, 2048, 8192, 32768$). We found that a mesh with $N=1280$ elements for the ellipsoid was fine enough for the convergence study.
+the mesh of the sphere ($N=512,\,  2048,\, 8192,\, 32768$). We found that a mesh with $N=1280$ elements for the ellipsoid was fine enough for the convergence study.
 We used the same physical conditions and parameters that were used for the BSA-nanoparticle convergence analysis presented in
 \ref{sec:grid_conv_bsa}. Similarly to the BSA-sensor system, the distance between the sensor and the VE-ellipsoid 
 was $d=1$ nm, and the ellipsoid was oriented such that the dipole moment of the charges was aligned with the $y$-axis. To obtain the error 
@@ -457,7 +457,7 @@ The computation of the original curve ("Complex") uses the complex dielectric fo
 from Phan et al. \cite{PhanETal2013}. The remaining curves correspond to the real-valued models from Santiago-Cordoba et al.\cite{SantiagoCordobaETal2011},
 Nghiem et al \cite{NghiemETal2012}, and the average value of the real component from Phan et al. \cite{PhanETal2013}. The peak of the extinction cross section 
 for both the complex model from Phan work \cite{PhanETal2013} and the average of its real part happen at $384.5$ nm, which represents a shift of $0.5$ nm from 
-the LSRP response of the isolated nanoparticle. However, the intensity of the peak goes from $3901.06$ nm$^2$ to $4063.95$ nm$^2$ which is approximately a $~4.2\%$ increment. 
+the LSPR response of the isolated nanoparticle. However, the intensity of the peak goes from $3901.06$ nm$^2$ to $4063.95$ nm$^2$ which is approximately a $~4.2\%$ increment. 
 The resonance peaks for the values from Nghiem et al. and Santiago-Cordoba et al. occur at wavelengths $384.75$ nm and $384$ nm, respectively. These results 
 translate in no shift for the case of Santiago-Cordoba et al., and a shift of $0.75$ nm for the case of Nghiem et al. The intensity for these two cases is 
 bigger than the case where we used a complex dielectric for the model. 
@@ -521,11 +521,11 @@ Last but not least, we study the effect of using real-valued dielectrics for the
 we used the average value of the real component from Phan et al. \cite{PhanETal2013}, and for the water medium we used the same two dielectrics cases
 used in the study of Figure \ref{fig:real_w_comp_bsa}. Figure \ref{fig:bsa_w_real} shows the results of using real dielectrics in both the proteins and
 the water medium. The peaks in all cases occur at the same wavelengths compared to the case where we use a BSA complex dielectric for the protein, and as a 
-consequence the shifts are the same than the ones reported in Figure \ref{fig:real_w_comp_bsa}. However, when we use real dielectric in both the medium 
+consequence the shifts are the same as the ones reported in Figure \ref{fig:real_w_comp_bsa}. However, when we use real dielectric in both the medium 
 and the proteins we see an increment in the magnitude of the extinction cross section of $~4.2\%$ for the Hale and Querry case, and $~3.6\%$ for the 
 generalization case. These results tell us that, when it comes to the shift in the LSPR response, there is no difference between using a complex dielectric 
 value for the protein and the medium, and using an averaged value of their real component. However, there is a difference in the magnitude of the 
-extinction cross section that is a direct consequence of using a real-valued dielectric since this does not accounts for the losses in the medium. Similarly to the 
+extinction cross section that is a direct consequence of using a real-valued dielectric since this does not account for the losses in the medium. Similarly to the 
 results shown in Figure \ref{fig:real_w_comp_bsa}, the usage of a different real dielectric for the water medium, changes where the peak occurs and the shift in the 
 LSPR response. 
 
