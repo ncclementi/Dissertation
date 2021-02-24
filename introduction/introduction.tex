@@ -50,7 +50,7 @@ the computing of solvation energy of biomolecular systems \cite{CooperBardhanBar
 nanosurfaces \cite{CooperClementiBarba2015}. In 2017, we extended \pygbe to the field of nanoplasmonics, by treating localized surface plasmon resonance 
 (LSPR) quasistatically \cite{ClementiETal2017}. The boundary element solver in \pygbe is accelerated algorithmically via a treecode, an $\mathcal{O}(N\log N)$ 
 fast-summation method, and on hardware by taking advantage of graphic processing units (GPUs). This allows us to handle problems in the order of half a million 
-boundary elements, or more, thus being able to use the explicit representation of the biomolecular surface. There are other research softwares that could be use 
+boundary elements, or more, thus being able to use an accurate representation of the biomolecular surface. There are other research softwares that could be use 
 for this application, like BEM++ \cite{SmigajETal2015} and a Matlab toolbox called MNPBEM \cite{HohenesterTrugler2012}, which have the capability to solve the 
 full Maxwell's equations and the electrostatic approximation in the long-wavelength limit. However, we believe that the size of the
 problems these softwares can solve, in terms of the number of boundary elements,  may not be enough to resolve the details of the biomolecules.
