@@ -221,14 +221,14 @@ with Equation \eqref{eq:cext_fwa}.
 
 \section{The Boundary Element Method} \label{sec:lspr_bem}
 
-In the context of PDEs when the differential operator has a fundamental solution and it can be expressed as a boundary integral equation (BIE), we can solve 
-this BIE numerically using the boundary element method (\bem). The idea of representing partial differential equations (PDEs) as boundary integral 
-equations originated in the late 1800s and early 1900s and it is documented in the work of Betti, Somigliana and Fredholm \cite{Betti1872,Somigliana1885,Fredholm1903},
-which were inspired on the earlier work of Green \cite{Green1828}. The work of Fredholm is considered the starting point of the boundary element method, 
-since he was the first one in compute boundary data in a potential theory application, where he used analytical techniques valid for simple geometries. Later in 
-the early 1960s appeared the first numerical solution to Fredholm's equation for two dimensional potential theory \cite{Jawson1963,Symm1963}, and in the late 1960s 
-for two- and three-dimensional potential theory and elasticity \cite{Rizzo1967,Cruse1969}. Since then, the boundary element method has evolved and been used 
-as a numerical technique in multiple areas\cite{Atkinson1997,McLean2000,Steinbach2008, BrebbiaDominguez1992, Katsikadelis2002}. 
+When a partial differential equation has a fundamental solution and can be expressed as a boundary integral equation (BIE), we can 
+solve this BIE numerically via the boundary element method (\bem). The idea of using a boundary integral equation to represent partial 
+differential equations started early in the 1800s in the work of Green \cite{Green1828}, and followed by Betti, Somigliana and Fredholm \cite{Betti1872,Somigliana1885,Fredholm1903} 
+in the late 1800s and early 1900s. Fredholm was the first one in compute boundary data in a potential theory application, which marks him as a 
+pioneer of the boundary element method. In the 1960s the first numerical solutions to Fredholm's equation for two dimensional potential theory appeared in 
+the works of Jawson \cite{Jawson1963} and Symm \cite{Symm1963}, and Rizzo \cite{Rizzo1967} and Cruse \cite{Cruse1969} presented the solutions for 
+two- and three-dimensional elastostatics. Since then, the boundary element method has evolved and been used as a numerical technique in 
+multiple areas\cite{Atkinson1997,McLean2000,Steinbach2008, BrebbiaDominguez1992, Katsikadelis2002}.
 
 
 \subsection{Integral formulation of the Laplace equation} \label{ssec:int_form}
