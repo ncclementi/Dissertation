@@ -11,7 +11,7 @@ most of the incoming energy is either absorbed by the nanoparticle, or scattered
 creating a large shadow behind the scatterer (a.k.a. extinction cross section). If the nanoparticle is 
 smaller than $20$ nm, absorption dominates and scattering contributions are negligible \cite{PetryayevaKrull2011, OlsonETal2015}.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
      \includegraphics[width=0.55\textwidth]{lspr.pdf} 
      \caption{Illustration of the localized surface plasmon resonance (LSPR) effect of a metallic nanoparticle of diameter $d$, 
@@ -30,7 +30,7 @@ Throughout this work, we use the boundary integral electrostatic solver \pygbe \
 the LSPR response of a silver nanoparticle, and how it varies in the presence of biomolecules. We treat Maxwell's equations
 quasi-statically \cite{MayergoyzZhang2007} and explicitly represent the target biomolecules by a surface mesh.
 
-\begin{figure}
+\begin{figure}[h]
    \centering
      \includegraphics[width=0.95\textwidth]{lspr_biosensing.pdf} 
      \caption{Illustration of LSPR response shift in the presence of an analyte located at a distance $d$
@@ -63,13 +63,12 @@ sketch of the system that we analyze in this derivation. Region $\Omega_1$ is a 
 immersed in a host medium $\Omega_2$, and subjected to an incoming electromagnetic wave with electric field 
 $\mathbf{E}_i$ and magnetic field $\mathbf{B}_i$.
 
-\begin{figure}%[h] %  figure placement: here, top, bottom, or page
+\begin{figure}[h] %  figure placement: here, top, bottom, or page
    \centering
    \includegraphics[width=0.65\textwidth]{particle_wave.pdf} 
    \caption{Nanoparticle interacting with an electromagnetic wave.}
    \label{fig:part_wave}
 \end{figure}
-
 
 Equation \eqref{eq:maxwell_timeharmonic} is a system of partial differential equations that
 models a scattered, time-harmonic electromagnetic field. Assuming a linear material 
@@ -78,8 +77,7 @@ displacement, $\mathbf{E}$ the electric field, $\mathbf{B}$ the magnetic field, 
 field. The subscripts $i$ and $s$ stand for incoming and scattered, respectively. The subscript $1$ and $2$ 
 correspond to the particle and host medium regions, respectively, being $\epsilon$ the permittivity and $\mu$ 
 the permeability, and $\mathbf{n}$ is the unit normal to the interface $\Gamma$, pointing away from the particle. 
-
-
+%
 \begin{align} \label{eq:maxwell_timeharmonic}
    \epsilon_1 \nabla \cdot \mathbf{E}_{1s} =& \rho_{f1} \qquad \nabla \times \mathbf{E}_{1s} = -\mu_1i\omega\mathbf{H}_{1s} \nonumber \\
    \mu_1\nabla \cdot \mathbf{H}_{1s} =& 0 \qquad \nabla \times \mathbf{H}_{1s} = \mathbf{J}_{f1} + \epsilon_1i\omega\mathbf{E}_{1s} + (\epsilon_1-\epsilon_2)i\omega\mathbf{E}_{i}\qquad \text{ on $\Omega_1$,} \nonumber \\
@@ -88,17 +86,17 @@ the permeability, and $\mathbf{n}$ is the unit normal to the interface $\Gamma$,
    (\epsilon_1\mathbf{E}_{1s}-\epsilon_2\mathbf{E}_{2s})&\cdot\mathbf{n} = (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot\mathbf{n} \nonumber \\
    \mathbf{H}_{1s}&\cdot \mathbf{n} = \mathbf{H}_{2s}\cdot\mathbf{n} \qquad\text{ on the interface $\Gamma$}.
 \end{align} 
-
+%
 In a setting with no charges or currents like in Figure \ref{fig:part_wave}, Equation \eqref{eq:maxwell_timeharmonic} becomes
+%
+\begin{align} \label{eq:maxwell_nocharge}
+\nabla \cdot \mathbf{E}_{1s} &= 0 \qquad \nabla \times \mathbf{E}_{1s} = -\mu_1i\omega\mathbf{H}_{1s} \nonumber \\
+\nabla \cdot \mathbf{H}_{1s} &= 0 \qquad \nabla \times \mathbf{H}_{1s} = \epsilon_1i\omega\mathbf{E}_{1s} + (\epsilon_1-\epsilon_2)i\omega\mathbf{E}_{i} \qquad \text{on $\Omega_1$} \nonumber \\
+\nabla \cdot \mathbf{E}_{2s} &= 0 \qquad \nabla \times \mathbf{E}_{2s} = -\mu_2i\omega\mathbf{H}_{2s} \nonumber \\
+\nabla \cdot \mathbf{H}_{2s} &= 0 \qquad \nabla \times \mathbf{H}_{2s} = \epsilon_2i\omega\mathbf{E}_{2s} \qquad \text{on $\Omega_2$} \nonumber \\
+(\epsilon_1\mathbf{E}_{1s} - \epsilon_2\mathbf{E}_{2s})\cdot\mathbf{n} &= (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot \mathbf{n} \nonumber \\(\mathbf{H}_{1s} - \mathbf{H}_{2s})\cdot \mathbf{n}&=0 \qquad \text{on the interface $\Gamma$,}
+\end{align}
  %
- \begin{align} \label{eq:maxwell_nocharge}
- \nabla \cdot \mathbf{E}_{1s} &= 0 \qquad \nabla \times \mathbf{E}_{1s} = -\mu_1i\omega\mathbf{H}_{1s} \nonumber \\
- \nabla \cdot \mathbf{H}_{1s} &= 0 \qquad \nabla \times \mathbf{H}_{1s} = \epsilon_1i\omega\mathbf{E}_{1s} + (\epsilon_1-\epsilon_2)i\omega\mathbf{E}_{i} \qquad \text{on $\Omega_1$} \nonumber \\
- \nabla \cdot \mathbf{E}_{2s} &= 0 \qquad \nabla \times \mathbf{E}_{2s} = -\mu_2i\omega\mathbf{H}_{2s} \nonumber \\
- \nabla \cdot \mathbf{H}_{2s} &= 0 \qquad \nabla \times \mathbf{H}_{2s} = \epsilon_2i\omega\mathbf{E}_{2s} \qquad \text{on $\Omega_2$} \nonumber \\
- (\epsilon_1\mathbf{E}_{1s} - \epsilon_2\mathbf{E}_{2s})\cdot\mathbf{n} &= (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot \mathbf{n} \nonumber \\(\mathbf{H}_{1s} - \mathbf{H}_{2s})\cdot \mathbf{n}&=0 \qquad \text{on the interface $\Gamma$,}
- \end{align}
- 
  We want to study the effect of the size of the particle in the scattered field, to do so we need 
  to use the following scaled quantities:
  %
@@ -106,7 +104,7 @@ In a setting with no charges or currents like in Figure \ref{fig:part_wave}, Equ
  \mathbf{e}_i = \sqrt{\epsilon_2}\mathbf{E}_i, \qquad \mathbf{e}_s = \sqrt{\epsilon_2}\mathbf{E}_s, \nonumber \\
  \mathbf{h}_s = \sqrt{\mu_2}\mathbf{H}_s \qquad \mathbf{x}^\prime = \frac{\mathbf{x}}{d},
  \end{align}
- 
+ %
  where $d$ is the particle size, and $\mathbf{x}^\prime$ a scaled domain. Turning
  Equation \eqref{eq:scaled_quant} into Equation \eqref{eq:maxwell_nocharge}, we get
  %
@@ -117,7 +115,7 @@ In a setting with no charges or currents like in Figure \ref{fig:part_wave}, Equ
  \nabla \cdot \mathbf{h}_{2s} &= 0 \qquad \nabla \times \mathbf{h}_{2s} = i\beta\mathbf{e}_{2s} \qquad \text{on $\Omega_2$} \nonumber \\
  (\epsilon_1\mathbf{e}_{1s} - \epsilon_2\mathbf{e}_{2s})\cdot\mathbf{n} &= (\epsilon_2-\epsilon_1)\mathbf{e}_i\cdot \mathbf{n} \nonumber \\(\mathbf{h}_{1s} - \mathbf{h}_{2s})\cdot \mathbf{n}&=0 \qquad \text{on the interface $\Gamma$,}
  \end{align}
- 
+ %
  with $\beta=\omega d \sqrt{\epsilon_2\mu_2}$. We can expand $\mathbf{e}$ and $\mathbf{h}$ in 
  terms of $\beta$ as
  %
@@ -125,7 +123,7 @@ In a setting with no charges or currents like in Figure \ref{fig:part_wave}, Equ
  \mathbf{e} &= \mathbf{e}_s^{(0)} + \beta \mathbf{e}_s^{(1)} + \beta^2 \mathbf{e}_s^{(2)} + \ldots \nonumber\\
  \mathbf{h} &= \mathbf{h}_s^{(0)} + \beta \mathbf{h}_s^{(1)} + \beta^2 \mathbf{h}_s^{(2)} + \ldots,
  \end{align}
- 
+ %
  If we consider only the zeroth order terms in Equation \eqref{eq:maxwell_scaled} we get
  %
  \begin{align} \label{eq:maxwell_scatter_zeroth}
@@ -135,7 +133,7 @@ In a setting with no charges or currents like in Figure \ref{fig:part_wave}, Equ
  \nabla \cdot \mathbf{h}^{(0)}_{2s} &= 0 \qquad \nabla \times \mathbf{h}^{(0)}_{2s} = 0 \nonumber \\
  (\epsilon_1\mathbf{e}^{(0)}_{1s} - \epsilon_2\mathbf{e}^{(0)}_{2s})\cdot\mathbf{n} &= (\epsilon_2-\epsilon_1)\mathbf{e}_i\cdot \mathbf{n} \nonumber \\(\mathbf{h}^{(0)}_{1s} - \mathbf{h}^{(0)}_{2s})\cdot \mathbf{n}&=0.
  \end{align}
-
+%
 Equation \eqref{eq:maxwell_scatter_zeroth} has the form of an electrostatic field, where the electric
 and magnetic fields are decoupled. Then $\mathbf{h}^{(0)}=0$ and $\mathbf{e}^{(0)}$ can be described by a
 scalar potential since $\nabla \times \mathbf{e}^{(0)}=0$.
@@ -150,14 +148,14 @@ everywhere, therefore we will concentrate only on the electric field. Ignoring a
 to the magnetic field, we can rewrite Equation \eqref{eq:maxwell_scatter_zeroth} in terms of 
 $\mathbf{E}$ and $\mathbf{x}$ instead of the scaled quantities $\mathbf{e}$ and
 $\mathbf{x}^\prime$, as:
-
+%
 \begin{align} \label{eq:electrostatic_scatter_E}
 \nabla \cdot \mathbf{E}_{1s} &= 0 \qquad \nabla \times \mathbf{E}_{1s} = 0, \nonumber \\
 \nabla \cdot \mathbf{E}_{2s} &= 0 \qquad \nabla \times \mathbf{E}_{2s} = 0, \nonumber \quad
 \text{with interface conditions, } \nonumber \\
 (\epsilon_1\mathbf{E}_{1s} &- \epsilon_2\mathbf{E}_{2s})\cdot\mathbf{n} = (\epsilon_2-\epsilon_1)\mathbf{E}_i\cdot \mathbf{n}.
 \end{align}
-
+%
 In Equation \eqref{eq:electrostatic_scatter_E}, $\mathbf{E}_{1s}$ and $\mathbf{E}_{2s}$ 
 are the electric fields of the scattered wave in the nanoparticle and host regions, respectively 
 (see Figure \ref{fig:part_wave}), $\mathbf{E}_{i}$ is the electric field of the incoming wave, and $\epsilon_1$ 
@@ -179,21 +177,21 @@ In LSPR, the scattered electromagnetic wave is measured by a detector located fa
 from the scatterer (nanoparticle), and the plasmon resonance is identified when the energy 
 detected is minimum. In the far-field limit, the scattered field
 in the outside region ($\Omega_2$) is given by: 
-
+%
 \begin{equation} \label{eq:scat_efield_long_range}
     \mathbf{E}_{2s} = \frac{1}{4\pi\epsilon_2}k^2\frac{e^{ikr}}{r} (\mathbf{\hat{r}} \times \mathbf{p})\times\mathbf{\hat{r}}.
 \end{equation} 
-
+%
 where $k=2\pi/\lambda$ is the wave number and $\lambda$ the wavelength, $\mathbf{\hat{r}}$ 
 is a unit vector in the direction of the observation point, and $\mathbf{p}$ is
 the dipole moment. 
 The scattered electric field in the long wavelength limit, can also be expressed in terms of the 
 scattering amplitude $\mathbf{F}$ \cite{Jackson} as:
-
+%
 \begin{equation} \label{eq:scat_efield_fwa}
     \mathbf{E}_{2s}(\mathbf{r})_{r\to\infty} = \frac{e^{ikr}}{r} \mathbf{F}(\mathbf{k},\mathbf{k}_0),
 \end{equation}
-
+%
 where $\mathbf{k}$ is the scattered wave vector in the direction of propagation, and $\mathbf{k}_0$ the 
 wave vector of the incident field. 
 
@@ -209,17 +207,17 @@ The optical theorem connects the extinction cross section with the forward-scatt
 expression for this relationship applies for non-absorbing media 
 \cite{MayergoyzZhang2007, Jackson}; Mishchenko \cite{Mishchenko2007} corrected it for absorbing media, 
 giving an expression that can be rewritten using Jackson's notation \cite{Jackson} as follows:
-
+%
 \begin{equation} \label{eq:cext_fwa}
     C_\text{ext} = \frac{4\pi}{k^\prime} \operatorname{Im} \left[ \frac{\mathbf{\hat{e}}_i}{|\mathbf{E}_i|}\mathbf{F}(\mathbf{k}=\mathbf{k}_0, \mathbf{k}_0) \right].
 \end{equation}
-
+%
 where $k^\prime$ is the real part of the complex wave number, 
-
+%
 \begin{equation}
     k = k^\prime + ik^{\prime\prime} = \frac{2\pi}{\lambda} n,
 \end{equation}
-
+%
 and $n$ is the refraction index of the host medium.
 
 Combining Equations \eqref{eq:scat_efield_long_range} and \eqref{eq:scat_efield_fwa},
@@ -237,7 +235,6 @@ the works of Jawson \cite{Jawson1963} and Symm \cite{Symm1963}, and Rizzo \cite{
 two- and three-dimensional elastostatics. Since then, the boundary element method has evolved and been used as a numerical technique in 
 multiple areas\cite{Atkinson1997,McLean2000,Steinbach2008, BrebbiaDominguez1992, Katsikadelis2002}.
 
-
 \subsection{Integral formulation of the Laplace equation} \label{ssec:int_form}
 
 A well known PDE that we can solve with \bem is the Laplace equation. For a scalar quantity $\phi$ in a domain $\Omega$ with boundary $\Gamma$, and 
@@ -247,31 +244,29 @@ boundary conditions $\phi_0$ or $\partial \phi_0/\partial \mathbf{n}$, the Lapla
 \nabla^2\phi &= 0 \quad \text{ on $\Omega$} \nonumber \\
 \phi = \phi_0 \text{ or } \frac{\partial \phi}{\partial \mathbf{n}} &= \frac{\partial \phi_0}{\partial \mathbf{n}} \quad \text{ on $\Gamma$} 
 \end{align}
-
+%
 The weak formulation of Laplace equation \eqref{eq:lap_pde} with test function $w$ is:
-
+%
 \begin{equation} \label{eq:lap_weak}
 \int_\Omega \nabla^2 \phi(\mathbf{r}_\Omega') w(\mathbf{r}_\Omega') \text{d} \Omega^\prime= 0.
 \end{equation}
-
+%
 where the evaluation point is $\mathbf{r}_\Omega$ a location in the domain $\Omega$.
 
 If we use the Laplace's free-space Green's function ($G_L(\mathbf{r},\mathbf{r}') = 1/(4\pi|\mathbf{r}-\mathbf{r}'|)$) as the test function $w$ we
 get:
-
-
-
+%
 \begin{equation} \label{eq:lap_weak2}
 \int_\Omega \nabla^2 \phi(\mathbf{r}'_\Omega) G_L(\mathbf{r}_\Omega,\mathbf{r}'_\Omega) \text{d} \Omega^\prime= 0.
 \end{equation}
-
+%
 Manipulating the integrand using the product rule and later the divergence 
 theorem, we get:
-
+%
 \begin{equation} \label{eq:lap_bie_dom}
 \phi(\mathbf{r}_\Omega) = \oint_\Gamma G_L(\mathbf{r}_\Omega,\mathbf{r}'_\Gamma)  \frac{\partial} {\partial \mathbf{n}} \phi(\mathbf{r}'_\Gamma)  \text{d} \Gamma^\prime - \oint_\Gamma \phi(\mathbf{r}'_\Gamma)  \frac{\partial}{\partial \mathbf{n}} G_L(\mathbf{r}_\Omega,\mathbf{r}'_\Gamma) \text{d} \Gamma^\prime
 \end{equation}
-
+%
 where \eqref{eq:lap_bie_dom}, $\mathbf{r}$ can be anywhere in the domain $\Omega$, 
 and $\mathbf{r}'$ runs only on the boundary $\Gamma$. This equation has a 
 singularity when $\mathbf{r}=\mathbf{r}'$. To handle this problem, we perform the
@@ -279,36 +274,35 @@ integral on a surface $\Gamma'$ that is like $\Gamma$ but with a hemisphere of
 radius $\varepsilon$ center at $\mathbf{r}$. We split the integrals into the part
 that has no singularity and the part that has the hemisphere. After solving these
 equations when $\varepsilon \to 0$, equation \eqref{eq:lap_bie_dom} results in:
-
+%
 \begin{equation} \label{eq:lap_bie}
 \frac{\phi(\mathbf{r}_\Gamma)}{2} +  \oint_\Gamma \phi(\mathbf{r}'_\Gamma)  \frac{\partial}{\partial \mathbf{n}} G_L(\mathbf{r}_\Gamma,\mathbf{r}'_\Gamma) \text{d} \Gamma^\prime = \oint_\Gamma G_L(\mathbf{r}_\Gamma,\mathbf{r}'_\Gamma)  \frac{\partial} {\partial \mathbf{n}} \phi(\mathbf{r}'_\Gamma)  \text{d} \Gamma^\prime,
 \end{equation}
-
+%
 where the integrals are Cauchy principal value integrals.
 
 Using the single and double layer operators:
-
+%
 \begin{equation}\label{eq:single_layer}
    V^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma',
    \end{equation}
-   %
-   \begin{equation}\label{eq:double_layer}
+%
+\begin{equation}\label{eq:double_layer}
    K^{\Gamma}_L (\psi(\mathbf{r}_\Gamma)) = \oint_\Gamma \psi(\mathbf{r}'_\Gamma) \frac{\partial}{\partial \mathbf{n}}G_L(\mathbf{r}_\Gamma, \mathbf{r}'_\Gamma) \text{d} \Gamma'.
-   \end{equation}
-   %
+\end{equation}
+%
 where $G_L$ is the free-space Green's function of the Laplace equation:
-   %
-   \begin{equation}
+%
+\begin{equation}
    G_L(\mathbf{r},\mathbf{r}') = \frac{1}{4\pi|\mathbf{r}-\mathbf{r}'|}
-   \end{equation}
-   
-
+\end{equation}
+%
 We can rewrite equation \eqref{eq:lap_bie} using operator notation, as:
-
+%
 \begin{equation} \label{eq:lap_operator}
 \left[ \frac{\mathbb{I}}{2} + K_L^{\mathbf{r}_\Gamma} \right] \left( \phi_\Gamma \right) = V_L^{\mathbf{r}_\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_\Gamma \right),
 \end{equation}
-
+%
 where $\mathbb{I}$ is the identity operator.
 
 \subsubsection{Electrostatic potential of a nanoparticle under an electric field} \label{sec:pot_elec_field}
@@ -326,19 +320,18 @@ where $V$ and $K$ are the single- and double-layer operators.
 %
 Applying the interface conditions of Equation \eqref{eq:electrostatic_scatter},
 leads to:
-
+%
 \begin{align} \label{eq:integral_eq_lspr}
 \frac{\phi_{1s,\Gamma}}{2}+ K_{L}^{\Gamma}(\phi_{1s,\Gamma}) - V_{L}^{\Gamma} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma} \right) &= 0  \nonumber \\
 \frac{\phi_{1s,\Gamma}}{2} - K_{L}^{\Gamma}(\phi_{1s,\Gamma}) + \frac{\epsilon_1}{\epsilon_2}V_{L}^{\Gamma} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{1s,\Gamma}  \right) &=
  \frac{\epsilon_2-\epsilon_1}{\epsilon_2}V_{L}^{\Gamma}\left( \frac{\partial}{\partial \mathbf{n}} \phi_{i,\Gamma} \right)\quad \text{on $\Gamma$.}
 \end{align}
-
-
+%
 \subsubsection{Analyte-sensor electrostatic potential under an electric field}
 
 The sketch in Figure \ref{fig:analyte-sensor} shows a metallic nanoparticle ($\Omega_1$) interacting with an analyte ($\Omega_3$), under an external electric field.
 Mathematically, this situation can be modeled as:
-
+%
 \begin{align}\label{eq:electrostatic_scatter_prot_sen}
 \nabla^2 \phi_{1s} &= 0, \qquad \nabla^2 \phi_{2s} = 0 \qquad\text{on $\Omega_1$, $\Omega_2$} \nonumber\\
 \nabla^2 \phi_{3s} &= -\frac{1}{\epsilon_3} \sum_{k=0}^{N_q} \delta(|\mathbf{r}-\mathbf{r}_k|) q_k \qquad\text{on $\Omega_3$} \nonumber \\
@@ -348,16 +341,16 @@ Mathematically, this situation can be modeled as:
 %
 where $q_k$ are the point charges of the atoms inside the protein, located at $\mathbf{r}_k$.
 
-\begin{figure}%[b] %  figure placement: here, top, bottom, or page
+\begin{figure}[b] %  figure placement: here, top, bottom, or page
    \centering
-   \includegraphics[width=0.35\textwidth]{protein_sensor_regions.pdf} 
+   \includegraphics[width=0.28\textwidth]{protein_sensor_regions.pdf} 
    \caption{Analyte-sensor system under electric field.}
    \label{fig:analyte-sensor}
 \end{figure}
 
 Similar to Equation \eqref{eq:integral_eq_lspr}, we can write the system of partial differential equations in 
 \eqref{eq:electrostatic_scatter_prot_sen} as:
-
+%
 \begin{align} \label{eq:integral_eq_lspr_nobc_system}
 \frac{\phi_{1s,\Gamma_1}}{2}+ K_{L,\Gamma_1}^{\Gamma_1}(\phi_{1s,\Gamma_1}) &- V_{L,\Gamma_1}^{\Gamma_1} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma_1} \right) = 0  \nonumber \\
 \frac{\phi_{2s,\Gamma_1}}{2} - K_{L,\Gamma_1}^{\Gamma_1}(\phi_{2s,\Gamma_1}) + V_{L,\Gamma_1}^{\Gamma_1} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{2s,\Gamma_1} \right) 
@@ -373,7 +366,7 @@ surface where the integrals run (subindex), and the surface that contains the ev
 
 Applying the interface conditions of equation \eqref{eq:electrostatic_scatter_prot_sen},
 leads to: 
-
+%
 \begin{align} \label{eq:integral_eq_lspr_system}
 \frac{\phi_{1s,\Gamma_1}}{2}&+ K_{L,\Gamma_1}^{\Gamma_1}(\phi_{1s,\Gamma_1}) - V_{L,\Gamma_1}^{\Gamma_1} \left(\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma_1} \right) = 0  \nonumber \\
  \frac{\phi_{1s,\Gamma_1}}{2}& - K_{L,\Gamma_1}^{\Gamma_1}(\phi_{1s,\Gamma_1}) + V_{L,\Gamma_1}^{\Gamma_1} \left(\frac{\epsilon_1}{\epsilon_2}\frac{\partial}{\partial \mathbf{n}}\phi_{1s,\Gamma_1} \right) - V_{L,\Gamma_1}^{\Gamma_1} \left(\frac{\epsilon_2-\epsilon_1}{\epsilon_2}\frac{\partial}{\partial \mathbf{n}}\phi_{i,\Gamma_1} \right) \nonumber\\ 
@@ -382,9 +375,7 @@ leads to:
 & - K_{L,\Gamma_2}^{\Gamma_2}(\phi_{3s,\Gamma_2}) + V_{L,\Gamma_2}^{\Gamma_2} \left(\frac{\epsilon_3}{\epsilon_2}\frac{\partial}{\partial \mathbf{n}}\phi_{3s,\Gamma_2} \right)  - V_{L,\Gamma_2}^{\Gamma_2} \left(\frac{\epsilon_2 -\epsilon_3}{\epsilon_2}\frac{\partial}{\partial \mathbf{n}}\phi_{i,\Gamma_2} \right) = 0  \nonumber \\
 \frac{\phi_{3s,\Gamma_2}}{2}& + K_{L,\Gamma_2}^{\Gamma_2}(\phi_{3s,\Gamma_2}) - V_{L,\Gamma_2}^{\Gamma_2} \left( \frac{\partial}{\partial \mathbf{n}} \phi_{3s,\Gamma_2} \right) = \frac{1}{4\pi\epsilon_3} \sum_{k=0}^{N_q} \frac{q_k}{|\mathbf{r}_{\Gamma_2} - \mathbf{r}_k|} 
 \end{align}
-
-
-
+%
 \subsection{Discretization and linear system}
 
 We discretize the surface into flat triangles and assume that  $\phi$ and 
@@ -424,6 +415,7 @@ Using centroid collocation, we can write equation \eqref{eq:integral_eq_lspr} in
 %
 Equation \eqref{eq:integral_eq_lspr_system} can be represented as:
 %
+\small
 \begin{align} \label{eq:matrix_multi}
  \left[
     \begin{matrix} 
@@ -457,15 +449,15 @@ Equation \eqref{eq:integral_eq_lspr_system} can be represented as:
 \right]&
 \end{align}
 %
+\normalsize
 where the elements of the matrix are
-% %
+% 
 \begin{align} \label{eq:layers_element}
 V_{L,ij}^{\Gamma} &= \int_{\Gamma_j} G_L(\mathbf{r}_{\Gamma_i},\mathbf{r}_{\Gamma_j})  \mathrm{d} \Gamma_j, \nonumber \\
 K_{L,ij}^{\Gamma} &= \int_{\Gamma_j} \frac{\partial}{\partial \mathbf{n}} \left[ G_L(\mathbf{r}_{\Gamma_i},\mathbf{r}_{\Gamma_j}) \right]\mathrm{d} \Gamma_j,
 \end{align}
 %
 with $\mathbf{r}_{\Gamma_i}$ being at the center of panel $\Gamma_i$.
-
 
 \subsubsection{Integral evaluation}
 
@@ -475,7 +467,6 @@ problem to obtain good accuracy when the integral is
 singular or near-singular. We define three different regions for integration:
 
 \begin{description}
-
 \item[Singular integrals:] If the collocation point is in the integration element,
 the singularity is difficult to resolve with standard
 Gauss integration schemes. In this case, we use a semi-analytical technique 
@@ -552,13 +543,12 @@ all normals are pointing outwards, and we need to include an extra negative sign
 \begin{equation} \label{eq:dipole_def_gauss_i_final}
 {p_i} = \epsilon_2 \left[ \oint_\Gamma  x_i  \frac{\partial \phi_{2s}}{\partial \mathbf{n}} \text{d}\Gamma - \oint_\Gamma \phi_{2s} n_i \; \text{d}\Gamma \right].
 \end{equation}
-
+%
 Using \bem, we obtain the electrostatic potential and its normal derivative on the surface of the nanoparticle. We use
 them in Equation \eqref{eq:dipole_def_gauss_i_final} to get the dipole 
 moment, and in Equation \eqref{eq:scat_efield_long_range} to obtain the scattered
 electric field. Finally, using Equation \eqref{eq:scat_efield_fwa} and Equation 
 \eqref{eq:cext_fwa} we get the extinction cross section.
-
 
 \subsection{Acceleration strategies} \label{sec:acc_strategies}
 
@@ -577,7 +567,7 @@ and the collocation points acting as evaluation points for the potential (\emph{
 To overcome the unfavorable scaling, we accelerate the matrix-vector product using a 
 treecode algorithm \cite{BarnesHut1986,DuanKrasny2001}, which is a fast-summation algorithm capable of reducing $\O{N^2}$
 computational patterns like
-
+%
 \begin{equation} \label{eq:summation}
 V(\mathbf{x}_i) = \sum_{j=1}^{N} q_j \psi(\mathbf{x}_i, \mathbf{y}_j) 
 \end{equation}
@@ -612,22 +602,22 @@ of the exact solution from multiple computations using consecutive mesh resoluti
 to fine. To be applied, all the computations used must converge to the exact value
 at a constant rate. In other words, they are in the asymptotic range. When these conditions are met,
 we can compute an estimate of the exact solution as:
-
+%
 \begin{equation} \label{eq:rich_extr}
    f_{\text{exact}} \approx f_1 + \frac{f_1 - f_2}{r^{p} - 1},
 \end{equation} 
-
+%
 where $f_1$ and $f_2$ are the solutions at the fine and coarse grid, respectively, 
 $r$ is the mesh refinement ratio, and $p$ is the order of convergence.
 
 To use Equation \eqref{eq:rich_extr} we need to make sure that $f_1$ and $f_2$ are in the 
 asymptotic regime. We compute the observed order of convergence $p$ from three grid resolutions
 refined at constant ratio $r$:
-
+%
 \begin{equation} \label{eq:observed_order}
    p = \frac{\log \left( \frac{f_3 - f_2}{f_2-f_1} \right)}{\log (r)}.
 \end{equation}
-   
+%   
 and if the result of Eq. \eqref{eq:observed_order} matches the \textit{expected} order of convergence
 of the method, this indicates that the computations for $f_1$, $f_2$ and $f_3$ are in the asymptotic range.
 Once we know that our $f_i$'s are in the asymptotic range, we can use Eq. \eqref{eq:rich_extr} and replace
@@ -636,16 +626,15 @@ directly from the values of $f_1$, $f_2$ and $f_3$ by doing some algebra on \eqr
 
 We know that $\log_r(x) = \log(x)/\log(r)$ and $r^{\log_r(x)} = x$. If we set $x = (f_3 - f_2)/(f_2 -f_1)$ 
 then we can write Eq. \eqref{eq:observed_order}:
-
+%
 \begin{align} \label{eq:rich_extr2}
    f_{\text{exact}} &\approx f_1 + \frac{(f_1 - f_2)(f_2 -f_1)}{f_3-2f_2+f_1} \\
    f_{\text{exact}} &\approx \frac{f_1f_3 -{f_2}^2}{f_3-2f_2+f_1}
 \end{align} 
-
+%
 Independently of how we compute the extrapolated value, we need three
 calculations in the asymptotic convergence regime that result from computations
 of three grid resolutions refined with constant ratio.
-
 
 \subsection{Code modifications and added features} \label{sec:code_imp}
 
