@@ -53,7 +53,7 @@ et al. \cite{rockstuhl2005}. We attribute this extra peak to the three-dimension
 latter effect also being mentioned by the Rockstuhl et al. In the following sections we present the replication study of one of the results on 
 Figure 14 of Rockstuhl et al. and we show the effects of the 3D model as well as the sharpness of the edges. 
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.75\textwidth]{cubeL535nm_15Kvs19K.pdf} 
     \caption{Grid-independence study for a SiC cube of side $L=535$ nm submerged in air under a constant 
@@ -72,19 +72,20 @@ scattering cross-section of a SiC rectangular cylinder, and they performed simul
 corresponds to the configuration of Figure 14 (right) of Rockstuhl et al. where the wave vector (illumination) goes along the short side of the geometry. 
 Similarly, we see that in Figure \ref{fig:rectangle_sketch} (B) the electric field is parallel to the short side of the geometry, which 
 corresponds to the configuration of Figure 14 (left) of Rockstuhl et al. where the wave vector (illumination) goes along the long side of the geometry.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.45\textwidth]{rockstuhl_rectangles.pdf} 
+   \caption{Configurations for the simulations corresponding to Fig. 14 of Rockstuhl et al., 2005.}
+   \label{fig:rectangle_sketch}
+\end{figure}
+
 For the mesh of the rectangular prisms we used densities like the ones used in the grid-independence study (section \ref{ssec:grid_indep_rock}) or finer. We 
 needed to elongate the third dimension to the point that it represented "infinity". Figure \ref{fig:ext_y_14} shows the results of extending the third 
 dimension ($y$ axis) to $y=1344$ nm ($2\times a$) and $y=2688$ nm ($4\times a$). We can see that when $y$ takes the larger value, the intensity of 
 some peaks decreases, due to their association to the $y$-component. We have not explored larger values of $y$ because we are limited by the quasistatic limit.
 
- \begin{figure}
-    \centering
-    \includegraphics[width=0.45\textwidth]{rockstuhl_rectangles.pdf} 
-    \caption{Configurations for the simulations corresponding to Fig. 14 of Rockstuhl et al., 2005.}
-    \label{fig:rectangle_sketch}
-\end{figure}
-
-\begin{figure}
+\begin{figure}[h]
     \centering
     \subfloat{\includegraphics[width=0.48\textwidth]{ext_y_14a.pdf}}
     \subfloat{\includegraphics[width=0.48\textwidth]{ext_y_14b.pdf}} 
@@ -112,8 +113,7 @@ in Rockstuhl et al. Figure 14. We present the replication results in Figure \ref
 Rockstuhl et al. are closely matched. We still have a third peak in our results, but we attribute this to the effects introduced by using a 3D geometry. We 
 obtained the data from Rockstuhl's curves by using the WebPlotDigitizer (\url{https://apps.automeris.io/wpd/}).
  
-
- \begin{figure}
+ \begin{figure}[h]
     \centering
     \subfloat{\includegraphics[width=0.48\textwidth]{tri_reg_round_14a.pdf}}
     \subfloat{\includegraphics[width=0.48\textwidth]{tri_reg_round_14b.pdf}}
@@ -127,7 +127,7 @@ obtained the data from Rockstuhl's curves by using the WebPlotDigitizer (\url{ht
     \label{fig:tri_reg_round_14}
  \end{figure}
 
- \begin{figure}
+ \begin{figure}[h]
     \centering
     \subfloat{\includegraphics[width=0.48\textwidth]{replication_14a.pdf}}
     \subfloat{\includegraphics[width=0.48\textwidth]{replication_14b.pdf}} 
