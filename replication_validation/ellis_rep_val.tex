@@ -157,7 +157,7 @@ shows the comparison of our simulations and the experimental results of Ellis et
 the wave numbers at which the peaks occur. This difference may be attributed to the fact that in their experimental setup the 
 separation between the pillars is $500$ nm, which implies there are coupling effects that are not considered in our simulations.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.85\textwidth]{pygbe_vs_exp_fig2a_Ellis.pdf} 
     \caption{\pygbe vs.\ the experiments presented in Figure 2a of Ellis et al., 2016 (we obtained the data 
@@ -177,20 +177,12 @@ analysis concentrates on the peaks that occur between 864 cm$^{-1}$ and 961 cm$^
 Figure \ref{fig:rep_2a} shows the comparison between the simulation results of Ellis et al. on Figure 2a of their paper (green curve), and our computations
 after applying the first-order correction.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{validation_FOA_fig2a_Ellis.pdf} 
+    \includegraphics[width=0.75\textwidth]{validation_FOA_fig2a_Ellis.pdf} 
     \caption{Validation against experiments in Figure 2a of Ellis, et al., 2016, using the first-order correction, as explained in the text.}
     \label{fig:val_2a}
  \end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.85\textwidth]{replication_FOA_fig2a_Ellis.pdf} 
-    \caption{Replication of the simulations in Figure 2a of Ellis et al., 2016, using the first-order correction, as explained in the text.}
-    \label{fig:rep_2a}
- \end{figure}
-
 
 In this section, we describe our attempt to replicate two results from Ellis et al. \cite{ellis2016} where they studied the effect of aspect ratio on the 
 excitation of high-order modes in localized surface phonon-polariton nanostructures. Figure \ref{fig:rep_FS4_ellis} shows the results for
@@ -201,6 +193,13 @@ Figure 2a of Ellis et al. shows results of experiments and simulations with the 
 but we also sought the validation of \pygbe using these experimental results. The quantity plotted in the original figures is reflectance as a 
 function of wavenumber, while we compute the extinction cross section. Since the quantity of interest is the wavenumber at which the resonance 
 peaks/dips happen, the results are comparable. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.85\textwidth]{replication_FOA_fig2a_Ellis.pdf} 
+  \caption{Replication of the simulations in Figure 2a of Ellis et al., 2016, using the first-order correction, as explained in the text.}
+  \label{fig:rep_2a}
+\end{figure}
 
 Figure \ref{fig:pygbe_vs_exp_2a} shows the results of our simulations using \pygbe on an isolated pillar, compared with the experimental results
 of Ellis et al.\ on an array of pillars. The results with \pygbe do not account for the effect of coupling among the pillars, which explains the  
