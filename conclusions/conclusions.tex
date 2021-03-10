@@ -11,14 +11,14 @@ nanoparticle.
 
 We developed an open source boundary integral solver for computational nanoplasmonics in the quasistatic limit. We extended \pygbe to work 
 with complex values, and added the functionality needed to solve localized surface plasmon resonance problems. \pygbe 
-counts with an algorithmic acceleration with a treecode, and hardware acceleration with GPUs, making this solver 
+benefits from an algorithmic acceleration with a treecode, and hardware acceleration with GPUs, making this solver 
 suitable to compute problems of at least a half million boundary elements, which is required to represent the solvent excluded 
 surface of the biomolecule accurately.
 
-We verified our solver against an analytical solution based on the Mie theory for silver nanospheres (section \ref{sec:verification}), and 
+We verified our solver against an analytical solution based on Mie theory for silver nanospheres (section \ref{sec:verification}), and 
 presented convergence studies for our results, building confidence on the suitability of our boundary integral model and the  
 correctness of our solver. We performed a sensitivity study of an LSPR biosensor model by computing the resonance-frequency shift
-while varying the distance between the nanoparticle and the biomolecules. We showed that our boundary element methods approach in
+while varying the distance between the nanoparticle and the biomolecules. We showed that our boundary element method approach in
 the quasistatic limit can capture the characteristic behavior of LSPR biosensors (section \ref{sec:lspr_response_bsa}).
 
 We explored different reduced-order models for the protein, and showed that geometries like ellipsoids and spheres
@@ -26,7 +26,7 @@ are not accurate models for the protein representation compared to using a mesh 
 none of these models were accurate compared to the crystal structure model of the protein, the volume equivalent ellipsoidal model performed better 
 compared to the surface based ellipsoidal model and the volume equivalent spherical model. Using volume equivalent ellipsoids for the protein representation 
 translated to fast computations, that even if they were not accurate compared to the full model, they served as great candidates to
-explore the different components of the computational model of the biosensor. We used this model to shine light on the effects of multiple factors such as 
+explore the different components of the computational model of the biosensor. We used this model to shine some light on the effects of multiple factors such as 
 the orientation of the protein, the presence of charges in the protein, the number of proteins, and the effect of the incoming electric field \ref{sec:ell_study}.
 We found that using real dielectrics for the protein and the embedding medium does not affect the shift in the resonance frequency, 
 as long as they are averaged values from the real part of the original complex data. However, using real dielectrics does affect the 
@@ -37,13 +37,13 @@ in the exploratory stage on the design or study of biosensors.
 We matched and replicated the findings of computational results in the general area of nanostructure responses to electromagnetic waves 
 from Rockstuhl et al. \cite{rockstuhl2005} and Ellis et al.\cite{ellis2016} (section \ref{sec:rep_rockstuhl} and \ref{sec:rep_val_ellis}). We validated
 \pygbe against experimental results of reflectance of localized surface phonon polariton (SPhP) nanostructures from Ellis et 
-al. (section \ref{sec:rep_val_ellis}). Both replication and validation studies were difficult to achieve due to insufficient data and experiments 
+al. (section \ref{sec:rep_val_ellis}). Both replication and validation studies were difficult to achieve due to insufficient data from the experiments 
 and/or simulation details, and we stated that the lack of reproducible open practices is the primary cause. We concluded that open reproducible 
 practices are needed not only to guarantee the work published is possible to reproduce, but also for future replicability and validation studies. 
 
 All of the results of this work, along with the materials needed to reproduce or replicate them, are publicly available in the form of 
 reproducibility packages (sections \ref{sec:repro_lspr}, \ref{sec:repro_ell}, and \ref{sec:repro_val}). The nanoplasmonics extension of \pygbe, and 
-the results of this work, can offer a valuable computational approach for the future studies on the field, and aid in the design of LSPR biosensors 
+the results of this work, can offer a valuable computational approach for future studies on the field, and aid in the design of LSPR biosensors 
 as well as SPhP based sensors. 
 
 
