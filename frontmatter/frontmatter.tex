@@ -156,20 +156,39 @@ limit, electrostatics serves as a good approximation. This work uses this approa
 to compute the extinction cross section of metallic and dielectric nanoparticles in the presence of biomolecules. \pygbe is a Python
 boundary integral research software for continuum electrostatics, where the computationally expensive parts are accelerated on GPU 
 hardware. It is also algorithmically accelerated via a treecode that offers $\mathcal{O}(N \log N)$ computational complexity, allowing
- \pygbe to handle problems with over half a million boundary elements. These features enable \pygbe to represent the target 
-molecule as a solvent excluded mesh based on the crystal structure and capture its complexity.
+\pygbe to handle problems with over half a million boundary elements. These features enable \pygbe to represent the target 
+molecule as a solvent excluded mesh based on the crystal structure and capture its complexity. Our results show grid convergence
+as 1/N, and accurate computation of the extinction cross-section as a function of wavelength. The computations are compared to 
+the analytical solution for the case of an isolated nanoparticle, and compared to the Richardson extrapolation when we have 
+the presence of an analyte.
 
 We demonstrate the suitability of \pygbe for computational nanoplasmonics for biosensing applications. We verified our solver 
 against an analytical solution of the extinction cross section as a function of the wavelength for a silver nanosphere in a
 water medium. We present a sensitivity study for a biosensor model, where we computed the resonance frequency shift for different
-distances between the proteins and the nanoparticle, and show that the shift decays as the proteins move away from the sensor.
+distances between two proteins located in the z-axis and the nanoparticle, and show that the shift decays from $0.75$ nm
+to $0.25$ nm as the proteins move away from the sensor from a distance of $0.5$ nm to $2$ nm. We also show that this behavior 
+varies depending on the position of the proteins as we see no shift when the proteins are located at $1$ nm on the $x$ or $y$
+axis.
+
 Computational studies to date in the field of nanoplasmonic biosensing have used full Maxwell's equations with simplified models 
 of the sensor-analyte system. We show that reduced order models for the analyte are not sufficiently accurate compared to the full 
-protein representation extracted from its crystal structure. However, using them results in faster computations that
-we use to explore the multiple factors involved in the computational model of a biosensor. 
-We replicated two studies in electromagnetic excitations on silicon carbide nanostructures, where the quantity of interest 
-is the wavelength of the resonance peak. Finally, we validated \pygbe by comparing against experiments that measured 
-the polarized reflectance of silicon carbide nanopillars. All the results in this work are reproducible, and all the materials 
+protein representation extracted from its crystal structure. Compared to the crystal structure model, the volume equivalent model
+overestimates the shift by $50$ $\%$ and the surfaced equivalent by $400$ $\%$. Despite the overestimation of the shift, we show 
+that ellipsoidal models capture orientation effects, while spherical models do not. We show that using the volume equivalent is 
+still valuable since it results in faster computations that we use to explore the multiple factors involved in the computational
+model of a biosensor. 
+
+We replicate two studies in electromagnetic excitations on silicon carbide nanostructures, where the quantity of interest 
+is the wavelength of the resonance peak. Despite the differences in our method, we replicate a result by Rockstuhl et al. \cite{rockstuhl2005}
+were they use a two-dimensional boundary element method on silicon carbide rectangular cylinders. The second replication case correspond to 
+a result in the work of Ellis et al. \cite{ellis2016}, were they look at the aspect ratio effects on high-order modes of
+localized surface phonon-polariton nanostructures. We partially replicate the results since the wavenumber position of certain modes match
+while for others there is a discrepancy that cannot be explained without detailed information (not provided) of the original simulations. Finally, we
+validated \pygbe by comparing against experiments from the work of Ellis et al \cite{ellis2016} that measured 
+the polarized reflectance of silicon carbide nanopillars. We perform a first order correction in our results, which leads to a match on the wavenumber for the 
+dominant mode and two more, but with some differences in other minor modes.
+
+All the results in this work are reproducible, and all the materials 
 needed to run the computations and re-create the figures are openly available in the form of reproducibility packages 
 that include input files, scripts to run the simulations and process the results, and any additional data needed 
 to reproduce the results.}
