@@ -1,6 +1,6 @@
 # PhD Dissertation
 
-**Title**: Computational Nanoplasmonics for Biosensing Applications: A Boundary Integral Implementation in the Quasistatic Limit.
+**Title**: Computational Nanoplasmonics for Biosensing Applications: A Boundary Integral Implementation in the Quasistatic Limit.  
 **Author**: Natalia C. Clementi  
 **Advisor**: Prof. Lorena A. Barba  
 **University**: The George Washington University, School of Engineering and Applied Science, Department of Mechanical and Aerospace Engineering.
