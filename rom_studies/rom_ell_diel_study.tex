@@ -36,7 +36,7 @@ in computational models. This chapter covers the results of using different assu
 The crystal structure of the BSA (pdb 4f5s) used in our simulations corresponds
 to a dimer. Knowing that this structure can be modeled as an ellipsoid \cite{SquireETal1968},
 we look for different alternatives to decide the dimensions of the ellipsoid. We took two
-different approaches, a surface equivalent model and a volume equivalent model. The surface equivalent
+different approaches, a surface-equivalent model and a volume-equivalent model. The surface-equivalent
 model consists of finding the dimensions of an ellipsoid that encapsulates all the charges within the protein. We determined the principal axes of this
 ellipsoid using Principal Component Analysis (PCA). Principal component analysis is a technique that
 uses orthogonal transformations and brings out patterns in a set of data. When 
@@ -147,7 +147,7 @@ is $1456.0781$ nm$^2$, giving us a percentage error of $1.63 \%$.
 
 \subsubsection{Charges model analysis} \label{ssub:pqr_analysis}
 
-In order to know if we could use a volume equivalent (VE) approach we studied the effect of the charges inside the protein. We analyzed
+In order to know if we could use a volume-equivalent (VE) approach we studied the effect of the charges inside the protein. We analyzed
 the different representations of charges (full distribution and equivalent monopole), as well as the impact of having
 no charges. The setup of the simulations consists of a silver sphere sensor ($r=8$ nm) with a PCA ellipsoid 
 at $1$ nm from the surface of the sensor in the $z$-direction, oriented such that the dipole moment is aligned with the $y$-axis. We ran 
@@ -172,14 +172,14 @@ three different cases, one with the full distribution of charges, a second case 
  charges inside the protein does not affect the wavelength shift. However, it does affect the intensity of the maximum value of the 
  extinction cross section. Finally, we can say that using a monopole approximation for the distribution of charges 
  is equivalent to using the full distribution of charges. Therefore, we will use the monopole charge model when doing computations with 
- a volume equivalent ellipsoid. 
+ a volume-equivalent ellipsoid. 
 
 
-\subsection{Surface equivalent vs Volume equivalent model} \label{ssec:surf_vol_ell}
+\subsection{Surface-equivalent vs Volume-equivalent model} \label{ssec:surf_vol_ell}
 
 In section \ref{ssub:pqr_analysis} we show that using a monopole approximation is equivalent to using the full distribution of charges. This 
-allows us to explore the effects of the volume equivalent model. Similar to the PCA case, we present a convergence study for the volume in section \ref{sssec:ve_conv}. 
-Following the convergence study of the volume equivalent ellipsoid we show, in section \ref{sssec:ell_mod_comp}, the comparison of the PCA ellipsoid model and the volume equivalent 
+allows us to explore the effects of the volume-equivalent model. Similar to the PCA case, we present a convergence study for the volume in section \ref{sssec:ve_conv}. 
+Following the convergence study of the volume-equivalent ellipsoid we show, in section \ref{sssec:ell_mod_comp}, the comparison of the PCA ellipsoid model and the volume-equivalent 
 model with the original BSA protein structure model, replicating the configuration shown in Figure \ref{fig:display_z}. 
 
 \begin{figure}[h] %  figure placement: here, top, bottom, or page
@@ -194,9 +194,9 @@ model with the original BSA protein structure model, replicating the configurati
     \label{fig:pqr_pca}
  \end{figure}
 
-\subsubsection{Volume Equivalent ellipsoid convergence analysis}\label{sssec:ve_conv}
+\subsubsection{Volume-equivalent ellipsoid convergence analysis}\label{sssec:ve_conv}
 
-We performed a grid convergence analysis on the VE (volume equivalent) ellipsoid - sensor system containing a monopole charge located 
+We performed a grid convergence analysis on the VE (volume-equivalent) ellipsoid - sensor system containing a monopole charge located 
 in the center of mass of the charge distribution. (see Figure \ref{fig:one_ve_sketch}). Since we compute the extinction cross section of the sensor 
 (8 nm radius silver sphere), we set a fixed mesh density for the ellipsoid and refined 
 the mesh of the sphere ($N=512,\,  2048,\, 8192,\, 32768$). We found that a mesh with $N=1280$ elements for the ellipsoid was fine enough for the convergence study.
@@ -210,7 +210,7 @@ with the number of boundary elements $1/N$. This provides evidence that the nume
 \begin{figure}[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.65\textwidth]{viz/one_ve_cm_gc_display.png} 
-    \caption{Sensor protein display: Volume equivalent ellipsoid with monopole charge ("CM"), located at $1$ nm of the 
+    \caption{Sensor protein display: Volume-equivalent ellipsoid with monopole charge ("CM"), located at $1$ nm of the 
     nanoparticle in the $z$-direction. The geometric center ("GC") is displayed for reference.}
     \label{fig:one_ve_sketch}
 \end{figure}
@@ -224,7 +224,7 @@ the relaxed parameters is $1713.1972$ nm$^2$. If we compute the percentage error
     \centering
     \includegraphics[width=0.75\textwidth]{convergence_sensor_ve_w380.pdf} 
     \caption{Grid-convergence study of extinction cross-section of a spherical silver
-             nanoparticle with a volume equivalent ellipsoid at $d=1$ nm which contains 
+             nanoparticle with a volume-equivalent ellipsoid at $d=1$ nm which contains 
              a monopole charge.}
     \label{fig:err_sph-ve}
  \end{figure}
@@ -259,14 +259,14 @@ that the model chosen to represent the analytes matters.
     \includegraphics[width=0.75\textwidth]{two_ell_analysis.pdf} 
     \caption{Extinction cross-section as a function of wavelength for a 8 nm silver sphere immersed 
     in water with two BSA proteins ("BSA"), two PCA-ellipsoids with one equivalent charge ("PCA"), and two
-    volume equivalent ellipsoids ("VE") with one equivalent charge. In all cases the proteins or equivalents
+    volume-equivalent ellipsoids ("VE") with one equivalent charge. In all cases the proteins or equivalents
     are placed at $\pm 1$ nm away from the surface in the $z$-direction, except for the case where there is 
     no protein ("Sensor").}
     \label{fig:2pz_ell_resp}
  \end{figure}
 
-The PCA model (surface based model, surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, 
-with a shift of $2.5$ nm ($400\%$ more) than the original shift ($0.5$ nm). The VE model (volume based based)  
+The PCA model (surface-equivalent model, surface of PCA is $1.14$ times the original surface) over estimates the LSPR response, 
+with a shift of $2.5$ nm ($400\%$ more) than the original shift ($0.5$ nm). The VE model (volume-equivalent)  
 overestimates the original by $50\%$ (shift $0.75$ nm), but we can say that a reduced order model based on the volume 
 is a closer representation of the full protein. In both cases we see that the intensity of the peak decreases. This can be 
 a problem, along with the overestimation of the shift, if the results are intended for use in the computation of sensitivity. The Figure of
@@ -277,7 +277,7 @@ overestimate the shift, can lead to incorrect assessments.
 
 In summary, using an ellipsoidal shape of equivalent surface that contains all charges is not a good approximation
 since it overestimates the shift considerably. The VE-equivalent model exhibits a shift of $0.75$ nm, which is still  
-an overestimated response. However, we believe that the volume equivalent approximation can be used to investigate 
+an overestimated response. However, we believe that the volume-equivalent approximation can be used to investigate 
 qualitative behaviors and take advantage of less expensive simulations to get insights on the physics of problems 
 that might be impossible to simulate due to memory restrictions.
 
@@ -304,7 +304,7 @@ the peak is $<1\%$ (computational results in reproducibility materials, section 
     \centering
     \includegraphics[width=0.75\textwidth]{two_ve_ell_sph_vs_BSA.pdf} 
     \caption{Extinction cross-section as a function of wavelength for an $8$ nm
-    silver sphere immersed in water, under a constant electric field, with two volume equivalent 
+    silver sphere immersed in water, under a constant electric field, with two volume-equivalent 
     ellipsoids/spheres placed $\pm 1$ nm away from the surface in the $z$-direction.}
     \label{fig:sph_vs_ell_ve}
  \end{figure}
@@ -317,14 +317,14 @@ when we use a spherical model for the protein we lose any information regarding 
 
 Until this point we always kept the orientation of the proteins such that the dipole moment was parallel to the $y$-axis ("orig" in Fig. \ref{fig:two_ve_conf_display}). In this 
 section we explore the effects of protein orientation with respect to the nanoparticle in the LSPR response. For this study we use the 
-volume equivalent ellipsoids in three different orientations: the original configuration where the dipole moment is parallel to 
+volume-equivalent ellipsoids in three different orientations: the original configuration where the dipole moment is parallel to 
 the $y$-axis, a configuration such that the principal axis $a$ is parallel to $y$-axis, 
 and finally a configuration where the principal axis $b$ is parallel to $y$ (see Figure \ref{fig:two_ve_conf_display} for configurations). 
  
  \begin{figure}[h] %  figure placement: here, top, bottom, or page
     \centering
     \includegraphics[width=0.55\textwidth]{viz/two_ve_conf_display.pdf} 
-    \caption{Different configurations for two volume equivalent ellipsoids.}
+    \caption{Different configurations for two volume-equivalent ellipsoids.}
     \label{fig:two_ve_conf_display}
  \end{figure}
   
@@ -336,7 +336,7 @@ $1$ nm. The final orientation we study is when $b//y$ which has a peak of $3898.
 in a shift of $0.375$ nm. These results tell us that the orientation of the protein affects the LSPR response, we can 
 see that the shifts vary depending on the orientation, as well as the intensity of the peak. When using a spherical model, 
 all these effects are not captured due to the symmetry of the geometry, which can lead to misleading conclusions. Even though 
-we know that using a volume equivalent ellipsoid model overestimates the shift, it stills captures the effect of the orientation, making
+we know that using a volume-equivalent ellipsoid model overestimates the shift, it stills captures the effect of the orientation, making
 it a better candidate compared to a simple sphere.
 
 \begin{figure}[h] %  figure placement: here, top, bottom, or page
@@ -352,7 +352,7 @@ it a better candidate compared to a simple sphere.
 \subsubsection{Effect of number of proteins}
 
 In this section we study the effect of having multiple proteins around the nanoparticle. Even though we know 
-that volume equivalent ellipsoids overestimate the response, they still account for the effects of 
+that volume-equivalent ellipsoids overestimate the response, they still account for the effects of 
 orientation and they can give us an estimation on how the LSPR response changes when having multiple 
 ellipsoids. We used the same orientations shown in Figure \ref{fig:two_ve_conf_display} but we added ellipsoids 
 at $\pm 1$ nm in the $x$ and $y$ directions too. Figure \ref{fig:mult_ell} shows the results of the LSPR response 
@@ -397,7 +397,7 @@ and study its effect on the LSPR response.
     \subfloat{\includegraphics[width=0.75\textwidth]{VE_ell_cm_elec_field_var.pdf}}\\
     \subfloat{\includegraphics[width=0.75\textwidth]{VE_ell_cm_elec_field_var_zoom.pdf}} 
     \caption{Extinction cross-section as a function of wavelength for an $8$ nm
-    silver sphere immersed in water, under a constant electric field, with a volume equivalent ellipsoid
+    silver sphere immersed in water, under a constant electric field, with a volume-equivalent ellipsoid
     located at $1$ nm in the $z$-direction. The different colors represent different magnitudes of the 
     electric field where the units are $[e]/([{\text{\AA}}^2][\epsilon_0])$. The bottom figure is a zoom of the top 
     figure.}
@@ -405,7 +405,7 @@ and study its effect on the LSPR response.
  \end{figure}
 
 Figure \ref{fig:efield_effect} shows how the magnitude of the incident electric field affects the LSPR response 
-of a silver nanoparticle of radius $r=8$ nm when having a volume equivalent ellipsoid located 
+of a silver nanoparticle of radius $r=8$ nm when having a volume-equivalent ellipsoid located 
 $\pm 1$ nm in the $z$-direction (display Figure \ref{fig:one_ve_sketch}). We can see that as we decrease the magnitude of the electric field, 
 the intensity of the extinction cross section increases. For all the different values of electric field except 
 $1\times10^{-5}$ the peak occurs at $384.25$ nm. When the magnitude is $1\times10^{-5}$ the peak occurs at 
