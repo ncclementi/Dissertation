@@ -151,7 +151,7 @@ Committee Member\\
 % Some abstract text
 \abstract{
 Localized surface plasmon resonance biosensors provide high sensitivity in detecting biomolecules via shifts in the resonance 
-frequency when targets are in the vicinity. The physics of this phenomenon are modeled with Maxwell's equations, but in the long-wavelength 
+frequency when targets are in the vicinity. The physics of this phenomenon is modeled with Maxwell's equations, but in the long-wavelength 
 limit, electrostatics serves as a good approximation. This work uses this approach, expanding the open-source \pygbe software
 to compute the extinction cross section of metallic and dielectric nanoparticles in the presence of biomolecules. \pygbe is a Python
 boundary integral research software for continuum electrostatics, where the computationally expensive parts are accelerated on GPU 
@@ -172,19 +172,19 @@ axis.
 
 Computational studies to date in the field of nanoplasmonic biosensing have used full Maxwell's equations with simplified models 
 of the sensor-analyte system. We show that reduced order models for the analyte are not sufficiently accurate compared to the full 
-protein representation extracted from its crystal structure. Compared to the crystal structure model, the volume equivalent model
-overestimates the shift by $50$ $\%$ and the surfaced equivalent by $400$ $\%$. Despite the overestimation of the shift, we show 
-that ellipsoidal models capture orientation effects, while spherical models do not. We show that using the volume equivalent is 
+protein representation extracted from its crystal structure. Compared to the crystal structure model, the volume-equivalent model
+overestimates the shift by $50$ $\%$ and the surface-equivalent by $400$ $\%$. Despite the overestimation of the shift, we show 
+that ellipsoidal models capture orientation effects, while spherical models do not. We show that using the volume-equivalent is 
 still valuable since it results in faster computations that we use to explore the multiple factors involved in the computational
 model of a biosensor. 
 
-We replicate two studies in electromagnetic excitations on silicon carbide nanostructures, where the quantity of interest 
-is the wavelength of the resonance peak. Despite the differences in our method, we replicate a result by Rockstuhl et al. \cite{rockstuhl2005}
-were they use a two-dimensional boundary element method on silicon carbide rectangular cylinders. The second replication case correspond to 
-a result in the work of Ellis et al. \cite{ellis2016}, were they look at the aspect ratio effects on high-order modes of
-localized surface phonon-polariton nanostructures. We partially replicate the results since the wavenumber position of certain modes match
+We replicated two studies in electromagnetic excitations on silicon carbide nanostructures, where the quantity of interest 
+is the wavelength of the resonance peak. Despite the differences in our method, we replicated a result by Rockstuhl et al. \cite{rockstuhl2005}
+where they used a two-dimensional boundary element method on silicon carbide rectangular cylinders. The second replication case corresponds to 
+a result in the work of Ellis et al. \cite{ellis2016}, where they looked at the aspect ratio effects on high-order modes of
+localized surface phonon-polariton nanostructures. We partially replicated the results since the wavenumber position of certain modes match
 while for others there is a discrepancy that cannot be explained without detailed information (not provided) of the original simulations. Finally, we
-validated \pygbe by comparing against experiments from the work of Ellis et al \cite{ellis2016} that measured 
+validated \pygbe by comparing against experiments from the work of Ellis et al. \cite{ellis2016} that measured 
 the polarized reflectance of silicon carbide nanopillars. We perform a first order correction in our results, which leads to a match on the wavenumber for the 
 dominant mode and two more, but with some differences in other minor modes.
 
