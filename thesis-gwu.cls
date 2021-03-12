@@ -494,11 +494,11 @@
     degree of \insertdegree~as of \insertdefensedate. This is the
     final and approved form of the dissertation.
     \end{doublespace}
-
+  \vskip 0.5in  
   \begin{center}
     \begin{singlespace}
       {\normalsize\bfseries\inserttitle} \\[1\baselineskip]
-      \insertauthor \\[3\baselineskip]
+      \insertauthor \\[3.5\baselineskip]
     \end{singlespace}
 \end{center}
   % Non-justified content
